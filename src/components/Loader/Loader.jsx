@@ -1,9 +1,21 @@
+import { LineWave } from "react-loader-spinner";
+import s from "./Loader.module.css";
+
 function Loader() {
-  return (
-    <div>
-      Loading
-    </div>
-  )
+    return (
+        <LineWave
+            visible={true}
+            height="100"
+            width="100"
+            color="#4fa94d"
+            ariaLabel="line-wave-loading"
+            wrapperStyle={{}}
+            wrapperClass={s.div}
+            firstLineColor=""
+            middleLineColor=""
+            lastLineColor=""
+        />
+    );
 }
 
-export default Loader
+export default Loader;
