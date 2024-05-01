@@ -30,11 +30,11 @@ const LoginForm = () => {
                     <Field type="password" name="password" />
                     <ErrorMessage name="password" component="div" />
                 </div>
+                <button type="submit" className={s.button_log}>
+                    Login
+                </button>
                 <Link className={s.link} to="/registration">
                     <button className={s.button_reg}>Registration</button>
-                </Link>
-                <Link className={s.link} to="/login">
-                    <button className={s.button_log}>Login</button>
                 </Link>
             </Form>
         </Formik>
