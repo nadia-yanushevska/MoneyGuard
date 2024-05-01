@@ -65,3 +65,69 @@
 .expense_active {
     color: #ff868d;
 }
+
+.sum_data_wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+}
+
+.sum_wrap {
+    width: 181px;
+
+    input {
+        width: 181px;
+    }
+}
+
+.data_wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* gap: 33px; */
+
+    input {
+        width: 93px;
+        color: #fbfbfb;
+        font-family: Poppins;
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        background-color: transparent;
+        outline: none;
+        border: none;
+        margin-right: 32px;
+    }
+}
+.svg_wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.react-datepicker-wrapper {
+    display: inline-block; /* Делает контейнер DatePicker встроенным */
+    width: 100%; /* Установите ширину по вашему усмотрению */
+}
+
+.react-datepicker {
+    font-family: inherit; /* Использует шрифт родительского элемента */
+}
+
+.react-datepicker__input-container {
+    display: inline-block; /* Делает контейнер ввода встроенным */
+    width: 100%; /* Установите ширину по вашему усмотрению */
+}
+
+.react-datepicker__input-container input {
+    width: 100%; /* Установите ширину по вашему усмотрению */
+    height: 100%; /* Установите высоту по вашему усмотрению */
+    padding: 8px; /* Добавляет внутренний отступ для ввода */
+    box-sizing: border-box; /* Учитывает отступ в размере */
+}
+
+.react-datepicker__portal {
+    z-index: 9999; /* Устанавливает z-index, чтобы DatePicker был выше других элементов */
+}
