@@ -1,38 +1,32 @@
-import { TiHome } from 'react-icons/ti';
-import { FaDollarSign } from 'react-icons/fa';
-import { BiStats } from 'react-icons/bi';
+import { NavLink } from 'react-router-dom';
+import styles from './Navigation.module.css';
+import { Icon } from '../../Icons';
 
-export const Navigation = () => {
-  return (
-    <StyledNav className="navigation">
-      <ul className="list">
-        <li>
-          <StyledLinkHome className="linkHome" to="/home">
-            <div className="boxIcon">
-              <TiHome className="icon" />
-            </div>
-            <StyledSpan className="styledSpan">Home</StyledSpan>
-          </StyledLinkHome>
-        </li>
-        <li>
-          <StyledLinkHome className="linkHome" to="/statistics">
-            <div className="boxIcon">
-              <BiStats className="icon iconRevers" />
-            </div>
+const Navigation = () => {
+    return (
+        <div className={styles.navigation}>
+            <NavLink to="/dashboard" end className={({ isActive }) => (isActive ? `${styles.navLink} ${styles.active}` : `${styles.navLink}`)}>
+                <a href="../../sprite.svg" className={styles.linkIcon}>
+                    <Icon id="#icon-home" className={styles.homeIcon}></Icon>
+                </a>
+                <span className={styles.linkText}>Home</span>
+            </NavLink>
 
-            <StyledSpan className="styledSpan">Statistics</StyledSpan>
-          </StyledLinkHome>
-        </li>
-        <li>
-          <StyledLinkHome className="linkHome" to="/currency">
-            <div className="boxIconDollar">
-              <FaDollarSign className="icon dollar" />
-            </div>
-          </StyledLinkHome>
-        </li>
-      </ul>
-    </StyledNav>
-  );
+            <NavLink to="/dashboard/statistics" className={({ isActive }) => (isActive ? `${styles.navLink} ${styles.active}` : `${styles.navLink} `)}>
+                <a href="../../sprite.svg" className={styles.linkIcon}>
+                    <Icon id="#icon-graphic" className={styles.graphicIcon}></Icon>
+                </a>
+                <span className={styles.linkText}>Statistics</span>
+            </NavLink>
+
+            <NavLink to="currency" className={({ isActive }) => (isActive ? `${styles.navLink} ${styles.active}` : `${styles.navLink} ${styles.currencyLink}`)}>
+                <a href="../../sprite.svg" className={styles.linkIcon}>
+                    <Icon id="#icon-dollar" className={styles.dollarIcon}></Icon>
+                </a>
+                <span className={styles.linkText}>Currency</span>
+            </NavLink>
+        </div>
+    );
 };
 
 export default Navigation;
