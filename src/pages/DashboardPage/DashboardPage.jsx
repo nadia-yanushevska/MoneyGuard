@@ -9,7 +9,7 @@ function DashboardPage() {
             <ModalAddTransaction />
             Dashboard
             <Outlet />
-            <Navigation />
+            {/* <Navigation /> */}
         </div>
     );
 }

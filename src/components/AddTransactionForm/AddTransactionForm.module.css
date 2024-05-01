@@ -1,0 +1,85 @@
+.switch__wrapper {
+    display: flex;
+    gap: 20px;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.switch {
+    background-color: black;
+    width: 80px;
+    height: 40px;
+    position: relative;
+    background-color: transparent;
+}
+
+.switch__input {
+    width: 0;
+    height: 0;
+    opacity: 0;
+}
+
+.switch__slider {
+    position: absolute;
+    cursor: pointer;
+    border-radius: 30px;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, 1);
+}
+
+/* .switch__slider::before {
+    content: '';
+    position: absolute;
+    cursor: pointer;
+    left: -4px;
+    top: -2px;
+    height: 44px;
+    width: 44px;
+    border-radius: 50%;
+    border-radius: 50%;
+    background-color: rgb(255, 182, 39);
+    filter: drop-shadow(0px 6px 7.5px rgb(255, 182, 39, 0.5));
+    transition: 0.4s;
+} */
+
+.switch__slider svg {
+    content: '';
+    position: absolute;
+    cursor: pointer;
+    left: -17px;
+    top: -11px;
+    transition: 0.4s;
+}
+
+.switch__input:checked + .switch__slider svg {
+    content: '';
+
+    transform: translateX(44px);
+    circle {
+        fill: #ff868d;
+        backdrop-filter: #ff868d;
+    }
+
+    circle.feDropShadow {
+        /* Измените параметры тени, если нужно */
+        stddeviation: 10;
+        flood-color: rgba(0, 0, 0, 0.5); /* Цвет тени */
+    }
+}
+
+/* .switch__input:checked + .switch__slider {
+    background-color: lightcoral;
+} */
+/* 
+.switch__input:checked + .switch__slider::before {
+    content: '';
+    transform: translateX(44px);
+    background-color: rgba(255, 134, 141, 1);
+    filter: drop-shadow(0px 6px 7.5px rgb(255, 134, 141, 0.5));
+    -webkit-transform: translateX(44px);
+    -ms-transform: translateX(44px);
+} */
