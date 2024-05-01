@@ -34,3 +34,5 @@ export const Navigation = () => {
     </StyledNav>
   );
 };
+
+export default Navigation;
