@@ -16,10 +16,27 @@ import { useMediaQuery } from "react-responsive";
 
 const DashboardPage = lazy(() => import("./pages/DashboardPage/DashboardPage"));
 
+{/* Приклад підключення іконки */}
+
+// import { Icon } from "./Icons"
+
 function App() {
     const isMobile = useMediaQuery({ query: "(max-width: 767.98px)" });
     return (
         <>
+            {/* Приклад підключення іконки */}
+
+            {/* <a href="./sprite.svg" className="red">
+                <Icon id="#icon-email" className="small" ></Icon>
+            </a>  */}
+            {/* Приклад підключення іконки */}
+
+
+
+
+
+
+
             <Routes>
                 <Route
                     path="/"

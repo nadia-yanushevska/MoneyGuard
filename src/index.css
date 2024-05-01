@@ -1,0 +1,75 @@
+@import url(./utils/variables.css);
+
+@font-face {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(../public/fonts/Poppins-Regular.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url(../public/fonts/Poppins-SemiBold.ttf) format('truetype');
+}
+
+:root {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    letter-spacing: 0.1em;
+    line-height: 1.5;
+    font-weight: 400;
+
+    color: var(--text-color);
+    background-color: black;
+    background-image: url('../public/img/gradient-desktop.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin: 0;
+}
+
+p:last-child {
+    margin-bottom: 0;
+}
+
+ul, ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+a {
+    color: currentColor;
+    text-decoration: none;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+
