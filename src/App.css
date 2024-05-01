@@ -31,6 +31,9 @@
     box-shadow: 1px 9px 15px 0 rgba(0, 0, 0, 0.2);
 }
 .btn_plus {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 44px;
     height: 44px;
     background: var(--button-gradient);
@@ -44,3 +47,5 @@
     box-shadow: 0 4px 60px 0 rgba(0, 0, 0, 0.25);
     background: rgba(255, 255, 255, 0.1);
 }
+
+

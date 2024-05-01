@@ -1,13 +1,30 @@
+@import url(./utils/variables.css);
+
+@font-face {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(../public/fonts/Poppins-Regular.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url(../public/fonts/Poppins-SemiBold.ttf) format('truetype');
+}
 
 :root {
-    font-family: 'Inter Tight', sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 18px;
     letter-spacing: 0.1em;
     line-height: 1.5;
     font-weight: 400;
 
     color: var(--text-color);
-    background-color: #000;
+    background-color: black;
     background-image: url('../public/img/gradient-desktop.webp');
     background-repeat: no-repeat;
     background-size: cover;
@@ -18,22 +35,6 @@
     -moz-osx-font-smoothing: grayscale;
     -webkit-text-size-adjust: 100%;
 }
-
-:root {
-    --text-color: #fbfbfb;
-    --icon-active: #734aef;
-    --red-color: #ff868d;
-    --white-color: #fff;
-    --yellow-color: #ffb627;
-    --text-button: #623f8b;
-    --button-color: #fcfcfc;
-    --text-rgba: color: rgba(255, 255, 255, 0.6);
-
-    --button-gradient: linear-gradient(167deg, #ffc727 0%, #9e40ba 61.46%, #7000ff 90.54%);
-    --dropdown: linear-gradient(360deg, rgba(83, 61, 186, 0.7) 0%, rgba(80, 48, 154, 0.7) 35.94%, rgba(106, 70, 165, 0.7) 61.04%, rgba(133, 93, 175, 0.7) 100%);
-    
-}
-
 
 h1,
 h2,
