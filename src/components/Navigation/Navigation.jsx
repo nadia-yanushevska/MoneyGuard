@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import styles from './Navigation.module.css';
-import icons from '../../Icons';
+import { Icon } from "../../Icons";
 
 const Navigation = () => {
   return (
@@ -12,11 +12,9 @@ const Navigation = () => {
           isActive ? `${styles.navLink} ${styles.active}` : `${styles.navLink}`
         }
       >
-        <div className={styles.linkIcon}>
-          <svg className={styles.homeIcon}>
-            <use href={`${icons}#icon-home`}></use>
-          </svg>
-        </div>
+        <a href="../../sprite.svg" className={styles.linkIcon}>
+                <Icon id="#icon-home" className={styles.homeIcon}></Icon>
+        </a>
         <span className={styles.linkText}>Home</span>
       </NavLink>
 
@@ -26,11 +24,9 @@ const Navigation = () => {
           isActive ? `${styles.navLink} ${styles.active}` : `${styles.navLink} `
         }
       >
-        <div className={styles.linkIcon}>
-          <svg className={styles.graphicIcon}>
-            <use href={`${icons}#icon-graphic`}></use>
-          </svg>
-        </div>
+        <a href="../../sprite.svg" className={styles.linkIcon}>
+                <Icon id="#icon-graphic" className={styles.graphicIcon} ></Icon>
+        </a>
         <span className={styles.linkText}>Statistics</span>
       </NavLink>
 
@@ -42,11 +38,9 @@ const Navigation = () => {
             : `${styles.navLink} ${styles.currencyLink}`
         }
       >
-        <div className={styles.linkIcon}>
-          <svg className={styles.dollarIcon}>
-            <use href={`${icons}#icon-dollar`}></use>
-          </svg>
-        </div>
+        <a href="../../sprite.svg" className={styles.linkIcon}>
+                <Icon id="#icon-dollar" className={styles.dollarIcon} ></Icon>
+        </a>
         <span className={styles.linkText}>Currency</span>
       </NavLink>
     </div>
@@ -54,3 +48,5 @@ const Navigation = () => {
 };
 
 export default Navigation;
+
+

@@ -10,7 +10,6 @@ div.navigation {
 }
 
 .navLink .linkIcon {
-    background-color: rgba(255, 255, 255, 0.6);
     border-radius: 6px;
     width: 38px;
     height: 38px;
@@ -25,21 +24,15 @@ div.navigation {
 }
 
 .linkIcon .homeIcon {
-    width: 27.33px;
-    height: 23.22px;
-    fill: #3c2371;
+    fill: rgba(255, 255, 255, 0.4);
 }
 
 .linkIcon .graphicIcon {
-    width: 25.67px;
-    height: 14.67px;
-    fill: #3c2371;
+    fill: rgba(255, 255, 255, 0.4);
 }
 
 .linkIcon .dollarIcon {
-    width: 12.67px;
-    height: 22.4px;
-    fill: #3c2371;
+    fill: rgba(255, 255, 255, 0.4);
 }
 
 .navLink.active .linkIcon .homeIcon,
@@ -78,7 +71,6 @@ div.navigation {
         font-weight: 700;
         font-size: 20px;
         transition: all 0.5s ease 0s;
-
         cursor: not-allowed;
     }
 
@@ -88,18 +80,12 @@ div.navigation {
     }
 
     .navLink .linkIcon {
-        width: 18px;
-        height: 18px;
         border-radius: 2px;
     }
 
-    .linkIcon .homeIcon {
-        width: 12px;
-        height: 11px;
+    /*.linkIcon .homeIcon {
     }
 
     .linkIcon .graphicIcon {
-        width: 14px;
-        height: 8px;
-    }
+    }*/
 }
