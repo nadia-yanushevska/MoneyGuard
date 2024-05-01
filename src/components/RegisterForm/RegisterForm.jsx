@@ -2,8 +2,16 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
 import s from './RegisterForm.module.css';
+import { useDispatch } from 'react-redux';
+import { register } from '../../redux/AuthSlice/ops';
 
 const RegistrationForm = () => {
+    const dispatch = useDispatch();
+    const onSubmit = ({ email, name, password }, { resetForm }) => {
+        console.log(email, name, password);
+        dispatch(register({ email, name, password }));
+        resetForm();
+    };
     return (
         <>
             <Formik
@@ -21,38 +29,32 @@ const RegistrationForm = () => {
                         .oneOf([Yup.ref('password'), null], 'Passwords must match')
                         .required('Required'),
                 })}
-                onSubmit={(values, { setSubmitting }) => {
-                    setTimeout(() => {
-                        alert(JSON.stringify(values, null, 2));
-                        setSubmitting(false);
-                    }, 400);
-                }}
+                onSubmit={onSubmit}
             >
-                <Form className={s.form}>
-                    <p className={s.title}>Money Guard</p>
-                    <div className={s.label}>
-                        <Field className={s.input} type="email" name="email" placeholder="E-mail" />
-                        <ErrorMessage name="email" component="div" />
-                    </div>
-                    <div className={s.label}>
-                        <Field className={s.input} type="text" name="name" placeholder="Name" />
-                        <ErrorMessage name="name" component="div" />
-                    </div>
-                    <div className={s.label}>
-                        <Field className={s.input} type="password" name="password" placeholder="Password" />
-                        <ErrorMessage name="password" component="div" />
-                    </div>
-                    <div className={s.label}>
-                        <Field className={s.input} type="password" name="confirmPassword" placeholder="Confirm password" />
-                        <ErrorMessage name="confirmPassword" component="div" />
-                    </div>
-                    <button type="submit" className={s.button_reg}>
-                        Registration
-                    </button>
-                    <Link className={s.link} to="/login">
-                        <button className={s.button_log}>Login</button>
-                    </Link>
-                </Form>
+                {({ isSabmiting }) => (
+                    <Form className={s.form}>
+                        <p className={s.title}>Money Guard</p>
+                        <div className={s.label}>
+                            <Field className={s.input} type="email" name="email" placeholder="E-mail" />
+                            <ErrorMessage name="email" component="div" />
+                        </div>
+                        <div className={s.label}>
+                            <Field className={s.input} type="text" name="name" placeholder="Name" />
+                            <ErrorMessage name="name" component="div" />
+                        </div>
+                        <div className={s.label}>
+                            <Field className={s.input} type="password" name="password" placeholder="Password" />
+                            <ErrorMessage name="password" component="div" />
+                        </div>
+
+                        <button disabled={isSabmiting} type="submit" className={s.button_reg}>
+                            Registration
+                        </button>
+                        <Link className={s.link} to="/login">
+                            <button className={s.button_log}>Login</button>
+                        </Link>
+                    </Form>
+                )}
             </Formik>
         </>
     );
