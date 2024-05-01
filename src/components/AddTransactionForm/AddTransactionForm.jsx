@@ -63,7 +63,7 @@ function AddTransactionForm() {
             </div>
             <div className={s.sum_data_wrap}>
                 <div className={s.sum_wrap}>
-                    <input type="text" />
+                    <input type="text" placeholder="0.00" className={s.sum} />
                 </div>
                 <div className={s.data_wrap}>
                     <DatePicker selected={startDate} onChange={date => setStartDate(date)} dateFormat="dd.MM.yyyy" />

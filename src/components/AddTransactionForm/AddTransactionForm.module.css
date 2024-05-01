@@ -74,20 +74,69 @@
 }
 
 .sum_wrap {
+    position: relative;
     width: 181px;
 
     input {
-        width: 181px;
+        padding: 0;
+        width: 100%;
     }
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: -8px;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background-color: rgba(255, 255, 255, 0.4);
+    }
+}
+.sum {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    text-align: center;
+    color: rgba(255, 255, 255);
+    text-align: center;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.sum:focus {
+    caret-color: rgba(255, 255, 255, 0.6);
+}
+
+.sum::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+    text-align: center;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
 }
 
 .data_wrap {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    /* gap: 33px; */
+    width: 181px;
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: -8px;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background-color: rgba(255, 255, 255, 0.4);
+    }
 
     input {
+        padding: 0;
         width: 93px;
         color: #fbfbfb;
         font-family: Poppins;
@@ -105,29 +154,4 @@
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.react-datepicker-wrapper {
-    display: inline-block; /* Делает контейнер DatePicker встроенным */
-    width: 100%; /* Установите ширину по вашему усмотрению */
-}
-
-.react-datepicker {
-    font-family: inherit; /* Использует шрифт родительского элемента */
-}
-
-.react-datepicker__input-container {
-    display: inline-block; /* Делает контейнер ввода встроенным */
-    width: 100%; /* Установите ширину по вашему усмотрению */
-}
-
-.react-datepicker__input-container input {
-    width: 100%; /* Установите ширину по вашему усмотрению */
-    height: 100%; /* Установите высоту по вашему усмотрению */
-    padding: 8px; /* Добавляет внутренний отступ для ввода */
-    box-sizing: border-box; /* Учитывает отступ в размере */
-}
-
-.react-datepicker__portal {
-    z-index: 9999; /* Устанавливает z-index, чтобы DatePicker был выше других элементов */
 }
