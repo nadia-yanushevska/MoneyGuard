@@ -29,24 +29,21 @@ const RegistrationForm = () => {
                 }}
             >
                 <Form className={s.form}>
+                    <p className={s.title}>Money Guard</p>
                     <div className={s.label}>
-                        <label>Email:</label>
-                        <Field type="email" name="email" />
+                        <Field className={s.input} type="email" name="email" placeholder="E-mail" />
                         <ErrorMessage name="email" component="div" />
                     </div>
                     <div className={s.label}>
-                        <label>Name:</label>
-                        <Field type="text" name="name" />
+                        <Field className={s.input} type="text" name="name" placeholder="Name" />
                         <ErrorMessage name="name" component="div" />
                     </div>
                     <div className={s.label}>
-                        <label>Password:</label>
-                        <Field type="password" name="password" />
+                        <Field className={s.input} type="password" name="password" placeholder="Password" />
                         <ErrorMessage name="password" component="div" />
                     </div>
                     <div className={s.label}>
-                        <label>Confirm Password:</label>
-                        <Field type="password" name="confirmPassword" />
+                        <Field className={s.input} type="password" name="confirmPassword" placeholder="Confirm password" />
                         <ErrorMessage name="confirmPassword" component="div" />
                     </div>
                     <button type="submit" className={s.button_reg}>
