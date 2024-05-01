@@ -16,6 +16,7 @@ import { useMediaQuery } from "react-responsive";
 
 const DashboardPage = lazy(() => import("./pages/DashboardPage/DashboardPage"));
 
+
 function App() {
     const isMobile = useMediaQuery({ query: "(max-width: 767.98px)" });
     return (
