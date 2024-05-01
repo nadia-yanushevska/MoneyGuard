@@ -1,0 +1,123 @@
+.navigation {
+    padding: 12px 15px;
+}
+
+@media screen and (min-width: 768px) {
+    .navigation {
+        padding-top: 40px;
+        padding-bottom: 28px;
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .navigation {
+        padding-left: 16px;
+    }
+}
+
+.list {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+}
+
+@media screen and (min-width: 768px) {
+    .list {
+        flex-direction: column;
+        gap: 12px 20px;
+    }
+}
+
+.linkHome {
+    color: #fbfbfb;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+}
+
+.boxIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 4px;
+    background-color: #734aef;
+}
+
+@media screen and (min-width: 768px) {
+    .boxIcon {
+        width: 24px;
+        height: 24px;
+        margin-right: 20px;
+    }
+}
+
+.boxIconDollar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 4px;
+    background-color: #734aef;
+}
+
+@media screen and (min-width: 768px) {
+    .boxIconDollar {
+        display: none;
+    }
+}
+
+.active {
+    font-weight: 700;
+    border-radius: 4px;
+    background-color: #800080;
+}
+
+@media screen and (min-width: 768px) {
+    .active {
+        background-color: transparent;
+    }
+}
+
+.icon {
+    color: rgba(255, 255, 255, 0.4);
+    width: 100%;
+    height: 100%;
+    padding: 4px;
+}
+
+.active .icon {
+    color: #fbfbfb;
+    background-color: #800080;
+    border-radius: 4px;
+}
+
+.iconRevers {
+    transform: scale(-1, 1);
+}
+
+.dollar {
+    width: 100%;
+    height: 100%;
+    padding: 4px;
+}
+
+@media screen and (min-width: 768px) {
+    .dollar {
+        display: none;
+    }
+}
+
+.styledSpan {
+    display: none;
+}
+
+@media screen and (min-width: 768px) {
+    .styledSpan {
+        display: block;
+    }
+}
