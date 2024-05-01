@@ -4,33 +4,34 @@ import { BiStats } from 'react-icons/bi';
 
 export const Navigation = () => {
   return (
-    <Nav className="navigation">
+    <StyledNav className="navigation">
       <ul className="list">
         <li>
-          <LinkHome className="linkHome" to="/home">
+          <StyledLinkHome className="linkHome" to="/home">
             <div className="boxIcon">
               <TiHome className="icon" />
             </div>
-            <Span className="styledSpan">Home</Span>
-          </LinkHome>
+            <StyledSpan className="styledSpan">Home</StyledSpan>
+          </StyledLinkHome>
         </li>
         <li>
-          <LinkHome className="linkHome" to="/statistics">
+          <StyledLinkHome className="linkHome" to="/statistics">
             <div className="boxIcon">
               <BiStats className="icon iconRevers" />
             </div>
-            <Span className="styledSpan">Statistics</Span>
-          </LinkHome>
+
+            <StyledSpan className="styledSpan">Statistics</StyledSpan>
+          </StyledLinkHome>
         </li>
         <li>
-          <LinkHome className="linkHome" to="/currency">
+          <StyledLinkHome className="linkHome" to="/currency">
             <div className="boxIconDollar">
               <FaDollarSign className="icon dollar" />
             </div>
-          </LinkHome>
+          </StyledLinkHome>
         </li>
       </ul>
-    </Nav>
+    </StyledNav>
   );
 };
 
