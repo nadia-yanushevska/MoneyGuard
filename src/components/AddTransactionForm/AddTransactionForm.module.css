@@ -44,3 +44,24 @@
     content: '';
     transform: translateX(44px);
 }
+
+.span_text {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.income_active,
+.expense_active {
+    transition: color 0.4s;
+}
+
+.income_active {
+    color: #ffb627;
+}
+
+.expense_active {
+    color: #ff868d;
+}

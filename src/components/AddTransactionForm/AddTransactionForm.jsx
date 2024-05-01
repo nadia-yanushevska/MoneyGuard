@@ -1,5 +1,6 @@
 import s from './AddTransactionForm.module.css';
 import { useState } from 'react';
+import clsx from 'clsx';
 
 function AddTransactionForm() {
     const [isChecked, setIsChecked] = useState(false);
@@ -9,7 +10,7 @@ function AddTransactionForm() {
     return (
         <div>
             <div className={s.switch__wrapper}>
-                <span>Income</span>
+                {!isChecked ? <span className={clsx(s.span_text, s.income_active)}>Income</span> : <span className={s.span_text}>Income</span>}
                 <label htmlFor="switch" className={s.switch}>
                     <input type="checkbox" id="switch" checked={isChecked} onChange={handleChange} className={s.switch__input} />
                     {isChecked ? (
@@ -55,7 +56,7 @@ function AddTransactionForm() {
                         </span>
                     )}
                 </label>
-                <span>Expense</span>
+                {isChecked ? <span className={clsx(s.span_text, s.expense_active)}>Expense</span> : <span className={s.span_text}>Expense</span>}
             </div>
         </div>
     );
