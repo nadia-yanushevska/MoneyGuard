@@ -10,6 +10,7 @@
 }
 
 .modal {
+    position: relative;
     width: 540px;
     border-radius: 8px;
     margin: 104px auto;
@@ -32,4 +33,11 @@
         font-weight: 400;
         line-height: normal;
     }
+}
+
+.modal_close {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    cursor: pointer;
 }

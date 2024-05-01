@@ -1,9 +1,9 @@
 .switch__wrapper {
     display: flex;
     gap: 20px;
-
     justify-content: center;
     align-items: center;
+    margin-bottom: 42px;
 }
 
 .switch {
