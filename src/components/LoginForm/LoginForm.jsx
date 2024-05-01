@@ -2,6 +2,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { Link } from 'react-router-dom';
 import s from './LoginForm.module.css';
+
 const LoginForm = () => {
     return (
         <Formik
@@ -15,26 +16,24 @@ const LoginForm = () => {
             })}
             onSubmit={(values, { setSubmitting }) => {
                 alert(JSON.stringify(values, null, 2));
-                // Your backend API call logic here
                 setSubmitting(false);
             }}
         >
             <Form className={s.form}>
                 <div className={s.label}>
-                    <label>Email:</label>
-                    <Field type="email" name="email" />
+                    <Field className={s.input} type="email" name="email" placeholder="E-mail" />
                     <ErrorMessage name="email" component="div" />
                 </div>
                 <div className={s.label}>
-                    <label>Password:</label>
-                    <Field type="password" name="password" />
+                    <Field className={s.input} type="password" name="password" placeholder="Password" />
                     <ErrorMessage name="password" component="div" />
                 </div>
-                <button type="submit" className={s.button_log}>
+
+                <button type="submit" className={s.button_reg}>
                     Login
                 </button>
-                <Link className={s.link} to="/registration">
-                    <button className={s.button_reg}>Registration</button>
+                <Link className={s.link} to="/register">
+                    <button className={s.button_log}>Registration</button>
                 </Link>
             </Form>
         </Formik>

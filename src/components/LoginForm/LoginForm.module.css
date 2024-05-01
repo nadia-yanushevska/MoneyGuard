@@ -47,3 +47,16 @@
     background: #fcfcfc;
     border: none;
 }
+
+.input {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 75px;
+
+    border: none;
+    outline: none;
+    background-color: transparent;
+    border-bottom: 1px solid #ccc;
+    color: rgba(255, 255, 255, 0.4);
+    padding-left: 50px;
+}
