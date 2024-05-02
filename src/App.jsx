@@ -9,7 +9,7 @@ import Home from './components/Home/Home';
 import LoginPage from './pages/LoginPage/LoginPage';
 import RegistrationPage from './pages/RegistrationPage/RegistrationPage';
 
-import { fetchCurrentUser } from './redux/AuthSlice/ops';
+import { refreshThunk } from './redux/Auth/operations';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 
@@ -25,7 +25,7 @@ function App() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(fetchCurrentUser());
+        dispatch(refreshThunk());
     }, [dispatch]);
     const isMobile = useMediaQuery({ query: '(max-width: 767.98px)' });
     return (

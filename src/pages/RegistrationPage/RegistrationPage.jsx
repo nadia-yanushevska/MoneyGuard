@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 
 import AuthForm from '../../components/AuthForm/AuthForm';
-import { register } from '../../redux/AuthSlice/ops';
+import { registerThunk } from '../../redux/Auth/operations';
 
 const RegistrationPage = () => {
     const dispatch = useDispatch();
@@ -21,7 +21,7 @@ const RegistrationPage = () => {
     });
 
     const handleSubmit = ({ username, email, password }, { resetForm }) => {
-        dispatch(register({ username, email, password }))
+        dispatch(registerThunk({ username, email, password }))
             .unwrap()
             .then(data => {
                 toast.success(`Registration is success ${data.user.name}, welcome!`);
