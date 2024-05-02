@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 import AuthForm from '../../components/AuthForm/AuthForm';
 import { login } from '../../redux/AuthSlice/ops';
-// import toast from 'react-hot-toast';
+import toast from 'react-hot-toast';
 
 const LoginPage = () => {
     const dispatch = useDispatch();
