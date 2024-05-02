@@ -26,11 +26,11 @@ function AddTransactionForm() {
             .required('Date is required')
             .default(() => new Date(formattedDate)),
         switch: yup.boolean(),
-        // selectedOption: yup.string().when('switch', {
-        //     is: true,
-        //     then: yup.string().required('Please select an option'),
-        //     otherwise: yup.string().notRequired(),
-        // }),
+        category: yup.string().when('switch', {
+            is: true,
+            then: yup.string().required('Please select an option'),
+            // otherwise: yup.string().notRequired(),
+        }),
         comment: yup.string(),
     });
 
@@ -103,7 +103,25 @@ function AddTransactionForm() {
             </div>
             {isChecked && (
                 <div className={s.comment}>
-                    <input type="text" className={s.input} placeholder="Select a category" />
+                    <Controller
+                        name="category"
+                        defaultValue=""
+                        control={control}
+                        render={({ field }) => (
+                            <input
+                                {...field}
+                                type="text"
+                                className={s.input}
+                                placeholder="Select a category"
+                                onChange={e => {
+                                    field.onChange(e.target.value); // Обновляем значение поля ввода, управляемое react-hook-form
+                                    if (!isChecked) {
+                                        field.onChange(''); // Очищаем значение поля ввода
+                                    }
+                                }}
+                            />
+                        )}
+                    />
                 </div>
             )}
             <div className={s.sum_data_wrap}>
