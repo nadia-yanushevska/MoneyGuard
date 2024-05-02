@@ -3,6 +3,9 @@ import { useState } from 'react';
 import clsx from 'clsx';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { useForm, Controller } from 'react-hook-form';
+import * as yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
 
 function AddTransactionForm() {
     const [isChecked, setIsChecked] = useState(false);
@@ -11,12 +14,40 @@ function AddTransactionForm() {
         setIsChecked(!isChecked);
     };
 
+    const schema = yup.object().shape({
+        number: yup.number().required('number invalid value'),
+        date: yup.date().required('date invalid value'),
+        switch: yup.boolean(),
+        // selectedOption: yup.string().when('switch', {
+        //     is: true,
+        //     then: yup.string().required('Please select an option'),
+        //     otherwise: yup.string().notRequired(),
+        // }),
+        comment: yup.string(),
+    });
+
+    const {
+        handleSubmit,
+        control,
+        formState: { errors },
+    } = useForm({
+        resolver: yupResolver(schema),
+    });
+
+    const onSubmit = data => {
+        console.log(data);
+    };
+
     return (
-        <div>
+        <form onSubmit={handleSubmit(onSubmit)}>
             <div className={s.switch__wrapper}>
                 {!isChecked ? <span className={clsx(s.span_text, s.income_active)}>Income</span> : <span className={s.span_text}>Income</span>}
                 <label htmlFor="switch" className={s.switch}>
-                    <input type="checkbox" id="switch" checked={isChecked} onChange={handleChange} className={s.switch__input} />
+                    <Controller
+                        name="switch"
+                        control={control}
+                        render={({ field }) => <input {...field} type="checkbox" id="switch" checked={isChecked} onChange={handleChange} className={s.switch__input} />}
+                    />
                     {isChecked ? (
                         <span className={s.switch__slider}>
                             <svg xmlns="http://www.w3.org/2000/svg" width="74" height="74" viewBox="0 0 74 74" fill="none">
@@ -62,12 +93,32 @@ function AddTransactionForm() {
                 </label>
                 {isChecked ? <span className={clsx(s.span_text, s.expense_active)}>Expense</span> : <span className={s.span_text}>Expense</span>}
             </div>
+            {isChecked && (
+                <div className={s.comment}>
+                    <input type="text" className={s.input} placeholder="Select a category" />
+                </div>
+            )}
             <div className={s.sum_data_wrap}>
                 <div className={s.sum_wrap}>
-                    <input type="text" placeholder="0.00" className={s.sum} />
+                    <Controller name="number" defaultValue="" control={control} render={({ field }) => <input {...field} type="text" placeholder="0.00" className={s.sum} />} />
+                    {errors.number && <span>{'number'}</span>}
+                    {errors.date && <span>{errors.date.message}</span>}
+                    {errors.switch && <span>{'switch'}</span>}
+                    {errors.comment && <span>{'comment'}</span>}
                 </div>
                 <div className={s.data_wrap}>
-                    <DatePicker selected={startDate} onChange={date => setStartDate(date)} dateFormat="dd.MM.yyyy" />
+                    <Controller
+                        name="date"
+                        control={control}
+                        render={({ field }) => (
+                            <DatePicker
+                                selected={startDate} // Используйте значение из field.value
+                                onChange={date => setStartDate(date)} // Обновите значение с помощью field.onChange
+                                dateFormat="dd.MM.yyyy"
+                            />
+                        )}
+                    />
+                    {/* <DatePicker selected={startDate} onChange={date => setStartDate(date)} dateFormat="dd.MM.yyyy" /> */}
                     <div className={s.svg_wrap}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                             <g clip-path="url(#clip0_60_133)">
@@ -90,7 +141,7 @@ function AddTransactionForm() {
             </div>
             <button className={clsx(s.btn, s.btn_add)}>Add</button>
             <button className={clsx(s.btn, s.btn_cancel)}>Cancel</button>
-        </div>
+        </form>
     );
 }
 
