@@ -9,14 +9,17 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { format } from 'date-fns';
 import { selectCategories } from '../../redux/Statistics/selectors';
 import { useSelector } from 'react-redux';
+import Select from 'react-select';
 
 function AddTransactionForm() {
     const categories = useSelector(selectCategories);
+    console.log(categories);
     const [isChecked, setIsChecked] = useState(false);
     const [startDate, setStartDate] = useState(new Date());
     const handleChange = () => {
         setIsChecked(!isChecked);
     };
+    const [selectedOption, setSelectedOption] = useState(null);
 
     const currentDate = new Date(); // Получаем текущую дату и время
     const formattedDate = format(currentDate, "EEE MMM dd yyyy HH:mm:ss 'GMT'XXX (zzz)"); // Форматируем дату
