@@ -12,9 +12,9 @@ const Navigation = () => {
           isActive ? `${styles.navLink} ${styles.active}` : `${styles.navLink}`
         }
       >
-        <a href="../../sprite.svg" className={styles.linkIcon}>
+        <div className={styles.linkIcon}>
                 <Icon id="#icon-home" className={styles.homeIcon}></Icon>
-        </a>
+        </div>
         <span className={styles.linkText}>Home</span>
       </NavLink>
 
@@ -24,9 +24,9 @@ const Navigation = () => {
           isActive ? `${styles.navLink} ${styles.active}` : `${styles.navLink} `
         }
       >
-        <a href="../../sprite.svg" className={styles.linkIcon}>
+        <div className={styles.linkIcon}>
                 <Icon id="#icon-graphic" className={styles.graphicIcon} ></Icon>
-        </a>
+        </div>
         <span className={styles.linkText}>Statistics</span>
       </NavLink>
 
@@ -38,9 +38,9 @@ const Navigation = () => {
             : `${styles.navLink} ${styles.currencyLink}`
         }
       >
-        <a href="../../sprite.svg" className={styles.linkIcon}>
+        <div className={styles.linkIcon}>
                 <Icon id="#icon-dollar" className={styles.dollarIcon} ></Icon>
-        </a>
+        </div>
         <span className={styles.linkText}>Currency</span>
       </NavLink>
     </div>

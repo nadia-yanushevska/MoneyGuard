@@ -50,7 +50,8 @@ p:last-child {
     margin-bottom: 0;
 }
 
-ul, ol {
+ul,
+ol {
     margin: 0;
     padding: 0;
     list-style: none;
@@ -72,4 +73,27 @@ img {
     height: auto;
 }
 
+.navLink.active .linkIcon {
+    background-color: rgba(74, 86, 226, 1);
+    box-shadow: 0px 3px 10px 0px rgba(74, 86, 226, 0.5);
+}
 
+.navLink.active .linkIcon .homeIcon,
+.navLink.active .linkIcon .graphicIcon,
+.navLink.active .linkIcon .dollarIcon {
+    fill: rgba(255, 255, 255, 1);
+}
+
+@media screen and (min-width: 768px) {
+    .navLink.active .linkText {
+        font-weight: 700;
+        font-size: 20px;
+        transition: all 0.5s ease 0s;
+        cursor: not-allowed;
+    }
+
+    .navLink:not(.active):hover > .linkText {
+        text-decoration: underline;
+        transition: all 0.5s ease 0s;
+    }
+}
