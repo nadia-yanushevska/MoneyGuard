@@ -1,9 +1,11 @@
 import { Navigate } from 'react-router-dom';
 
+import { selectIsLogIn } from '../redux/AuthSlice/selectors';
+import { useSelector } from 'react-redux';
+
 function PrivateRoute({ children }) {
-    //TODO temp value replace with select
-    const isLoggedIn = true;
-    // Зробити true
+    const isLoggedIn = useSelector(selectIsLogIn);
+
     return isLoggedIn ? children : <Navigate to="/login" />;
 }
 

@@ -13,7 +13,6 @@ const token = {
 };
 
 export const register = createAsyncThunk('auth/register', async (credentials, thunkAPI) => {
-    console.log('credet', credentials);
     try {
         const { data } = await axios.post('auth/sign-up', credentials);
         token.set(data.token);
