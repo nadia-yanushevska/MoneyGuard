@@ -5,7 +5,7 @@
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url(../public/fonts/Poppins-Regular.ttf) format('truetype');
+    src: url(../fonts/Poppins-Regular.ttf) format('truetype');
 }
 
 @font-face {
@@ -13,7 +13,7 @@
     font-style: normal;
     font-weight: 600;
     font-display: swap;
-    src: url(../public/fonts/Poppins-SemiBold.ttf) format('truetype');
+    src: url(../fonts/Poppins-SemiBold.ttf) format('truetype');
 }
 
 :root {
@@ -25,7 +25,7 @@
 
     color: var(--text-color);
     background-color: black;
-    background-image: url('../public/img/gradient-desktop.webp');
+    background-image: url('../img/gradient-desktop.webp');
     background-repeat: no-repeat;
     background-size: cover;
 
@@ -50,7 +50,8 @@ p:last-child {
     margin-bottom: 0;
 }
 
-ul, ol {
+ul,
+ol {
     margin: 0;
     padding: 0;
     list-style: none;
@@ -71,5 +72,3 @@ img {
     max-width: 100%;
     height: auto;
 }
-
-
