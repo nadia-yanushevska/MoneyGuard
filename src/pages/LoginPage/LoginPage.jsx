@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import AuthForm from '../../components/AuthForm/AuthForm';
-import { login } from '../../redux/AuthSlice/ops';
+import { loginThunk } from '../../redux/Auth/operations';
 import toast from 'react-hot-toast';
 
 const LoginPage = () => {
@@ -16,7 +16,7 @@ const LoginPage = () => {
     });
 
     const handleSubmit = values => {
-        dispatch(login(values))
+        dispatch(loginThunk(values))
             .unwrap()
             .then(data => {
                 toast.success(`Welcome ${data.user.name}`);
