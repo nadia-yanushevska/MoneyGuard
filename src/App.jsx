@@ -1,41 +1,41 @@
-import { Navigate, Route, Routes } from "react-router-dom";
-import "./App.css";
-import Layout from "./components/Layout/Layout";
-// import DashboardPage from "./pages/DashboardPage/DashboardPage";
-import PublicRoute from "./routes/PublicRoute";
-import PrivateRoute from "./routes/PrivateRoute";
-// import LoginPage from "./pages/LoginPage/LoginPage";
-// import RegistrationPage from "./pages/RegistrationPage/RegistrationPage";
-import { lazy } from "react";
-import Statistics from "./components/Statistics/Statistics";
-import Currency from "./components/Currency/Currency";
-import Home from "./components/Home/Home";
-import LoginPage from "./pages/LoginPage/LoginPage";
-import RegistrationPage from "./pages/RegistrationPage/RegistrationPage";
-import { useMediaQuery } from "react-responsive";
+import { Navigate, Route, Routes } from 'react-router-dom';
+import './App.css';
+import DashboardPage from './pages/DashboardPage/DashboardPage';
+import PublicRoute from './routes/PublicRoute';
+import PrivateRoute from './routes/PrivateRoute';
+import Statistics from './components/Statistics/Statistics';
+import Currency from './components/Currency/Currency';
+import Home from './components/Home/Home';
+import LoginPage from './pages/LoginPage/LoginPage';
+import RegistrationPage from './pages/RegistrationPage/RegistrationPage';
 
-const DashboardPage = lazy(() => import("./pages/DashboardPage/DashboardPage"));
+import { refreshThunk } from './redux/Auth/operations';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 
-{/* Приклад підключення іконки */}
+import { useMediaQuery } from 'react-responsive';
 
-// import { Icon } from "./Icons"
+{
+    /* Приклад підключення іконки */
+}
+
+// import { Icon } from './Icons';
 
 function App() {
-    const isMobile = useMediaQuery({ query: "(max-width: 767.98px)" });
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(refreshThunk());
+    }, [dispatch]);
+    const isMobile = useMediaQuery({ query: '(max-width: 767.98px)' });
     return (
         <>
             {/* Приклад підключення іконки */}
 
             {/* <a href="./sprite.svg" className="red">
-                <Icon id="#icon-email" className="small" ></Icon>
-            </a>  */}
+                <Icon id="#icon-email" className="small"></Icon>
+            </a> */}
             {/* Приклад підключення іконки */}
-
-
-
-
-
-
 
             <Routes>
                 <Route
@@ -48,10 +48,7 @@ function App() {
                 >
                     <Route index element={<Home />} />
                     <Route path="statistics" element={<Statistics />} />
-                    <Route
-                        path="currency"
-                        element={isMobile ? <Currency /> : <Navigate to="/" />}
-                    />
+                    <Route path="currency" element={isMobile ? <Currency /> : <Navigate to="/" />} />
                 </Route>
                 <Route
                     path="login"
