@@ -6,6 +6,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { useForm, Controller } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { format } from 'date-fns';
 
 function AddTransactionForm() {
     const [isChecked, setIsChecked] = useState(false);
@@ -14,9 +15,16 @@ function AddTransactionForm() {
         setIsChecked(!isChecked);
     };
 
+    const currentDate = new Date(); // Получаем текущую дату и время
+    const formattedDate = format(currentDate, "EEE MMM dd yyyy HH:mm:ss 'GMT'XXX (zzz)"); // Форматируем дату
+    // console.log(formattedDate); // Выводим отформатированную дату в консоль
+
     const schema = yup.object().shape({
         number: yup.number().required('number invalid value'),
-        date: yup.date().required('date invalid value'),
+        date: yup
+            .date()
+            .required('Date is required')
+            .default(() => new Date(formattedDate)),
         switch: yup.boolean(),
         // selectedOption: yup.string().when('switch', {
         //     is: true,
@@ -111,11 +119,13 @@ function AddTransactionForm() {
                         name="date"
                         control={control}
                         render={({ field }) => (
-                            <DatePicker
-                                selected={startDate} // Используйте значение из field.value
-                                onChange={date => setStartDate(date)} // Обновите значение с помощью field.onChange
-                                dateFormat="dd.MM.yyyy"
-                            />
+                            <>
+                                <DatePicker
+                                    selected={field.value || formattedDate} // Используйте значение из field.value
+                                    onChange={date => field.onChange(date)} // Обновите значение с помощью field.onChange
+                                    dateFormat="dd.MM.yyyy"
+                                />
+                            </>
                         )}
                     />
                     {/* <DatePicker selected={startDate} onChange={date => setStartDate(date)} dateFormat="dd.MM.yyyy" /> */}
@@ -137,7 +147,8 @@ function AddTransactionForm() {
                 </div>
             </div>
             <div className={s.comment}>
-                <input type="text" className={s.input} placeholder="Comment" />
+                <Controller name="comment" defaultValue="" control={control} render={({ field }) => <input {...field} type="text" className={s.input} placeholder="Comment" />} />
+                {/* <input type="text" className={s.input} placeholder="Comment" /> */}
             </div>
             <button className={clsx(s.btn, s.btn_add)}>Add</button>
             <button className={clsx(s.btn, s.btn_cancel)}>Cancel</button>
