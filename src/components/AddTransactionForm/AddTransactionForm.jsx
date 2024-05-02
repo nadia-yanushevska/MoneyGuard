@@ -10,6 +10,7 @@ function AddTransactionForm() {
     const handleChange = () => {
         setIsChecked(!isChecked);
     };
+
     return (
         <div>
             <div className={s.switch__wrapper}>
@@ -83,6 +84,9 @@ function AddTransactionForm() {
                         </svg>
                     </div>
                 </div>
+            </div>
+            <div className={s.comment}>
+                <input type="text" className={s.input} placeholder="Comment" />
             </div>
         </div>
     );
