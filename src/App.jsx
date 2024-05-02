@@ -11,6 +11,7 @@ import Home from './components/Home/Home';
 import LoginPage from './pages/LoginPage/LoginPage';
 import RegistrationPage from './pages/RegistrationPage/RegistrationPage';
 import { useMediaQuery } from 'react-responsive';
+import ChartDoughnut from './components/ChartDoughnut/ChartDoughnut';
 
 {
     /* Приклад підключення іконки */
@@ -29,7 +30,7 @@ function App() {
             </a> */}
             {/* Приклад підключення іконки */}
 
-            <Routes>
+            {/* <Routes>
                 <Route
                     path="/"
                     element={
@@ -60,7 +61,8 @@ function App() {
                 />
 
                 <Route path="*" element={<Navigate to="/" />}></Route>
-            </Routes>
+            </Routes> */}
+            <ChartDoughnut/>
         </>
     );
 }
