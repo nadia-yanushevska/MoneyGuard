@@ -3,13 +3,16 @@ import './App.css';
 import DashboardPage from './pages/DashboardPage/DashboardPage';
 import PublicRoute from './routes/PublicRoute';
 import PrivateRoute from './routes/PrivateRoute';
-// import LoginPage from "./pages/LoginPage/LoginPage";
-// import RegistrationPage from "./pages/RegistrationPage/RegistrationPage";
 import Statistics from './components/Statistics/Statistics';
 import Currency from './components/Currency/Currency';
 import Home from './components/Home/Home';
 import LoginPage from './pages/LoginPage/LoginPage';
 import RegistrationPage from './pages/RegistrationPage/RegistrationPage';
+
+import { fetchCurrentUser } from './redux/AuthSlice/ops';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+
 import { useMediaQuery } from 'react-responsive';
 import ChartDoughnut from './components/ChartDoughnut/ChartDoughnut';
 
@@ -20,6 +23,11 @@ import ChartDoughnut from './components/ChartDoughnut/ChartDoughnut';
 // import { Icon } from './Icons';
 
 function App() {
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(fetchCurrentUser());
+    }, [dispatch]);
     const isMobile = useMediaQuery({ query: '(max-width: 767.98px)' });
     return (
         <>

@@ -6,6 +6,7 @@ import { authReducer } from './AuthSlice/slice';
 import { transactionsReducer } from './Transactions/slice';
 import { statisticsReducer } from './Statistics/slice';
 import { currencyReducer } from './Currency/slice';
+import { balanceReducer } from './Balance/slice';
 
 const authPersistConfig = {
     key: 'auth',
@@ -19,6 +20,7 @@ export const store = configureStore({
         transactions: transactionsReducer,
         statistics: statisticsReducer,
         currency: currencyReducer,
+        balance: balanceReducer,
     },
     middleware: getDefaultMiddleware =>
         getDefaultMiddleware({
@@ -26,8 +28,6 @@ export const store = configureStore({
                 ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
             },
         }),
-
-    // devTools: process.env.NODE_ENV === 'development',
 });
 
 export const persistor = persistStore(store);
