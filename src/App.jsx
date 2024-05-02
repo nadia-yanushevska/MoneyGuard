@@ -14,6 +14,7 @@ import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 
 import { useMediaQuery } from 'react-responsive';
+import useMedia from './hooks/useMedia';
 
 {
     /* Приклад підключення іконки */
@@ -27,7 +28,11 @@ function App() {
     useEffect(() => {
         dispatch(refreshThunk());
     }, [dispatch]);
-    const isMobile = useMediaQuery({ query: '(max-width: 767.98px)' });
+    //TODO MobileCustomHook
+    const isMobile = useMedia();
+
+    //TODO Logo component
+
     return (
         <>
             {/* Приклад підключення іконки */}
