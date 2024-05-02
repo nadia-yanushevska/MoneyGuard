@@ -88,6 +88,8 @@ function AddTransactionForm() {
             <div className={s.comment}>
                 <input type="text" className={s.input} placeholder="Comment" />
             </div>
+            <button className={clsx(s.btn, s.btn_add)}>Add</button>
+            <button className={clsx(s.btn, s.btn_cancel)}>Cancel</button>
         </div>
     );
 }
