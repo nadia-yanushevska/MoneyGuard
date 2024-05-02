@@ -13,7 +13,6 @@ import Select from 'react-select';
 
 function AddTransactionForm() {
     const categories = useSelector(selectCategories);
-    console.log(categories);
     const [isChecked, setIsChecked] = useState(false);
     const [startDate, setStartDate] = useState(new Date());
     const handleChange = () => {
@@ -26,22 +25,19 @@ function AddTransactionForm() {
     // console.log(formattedDate); // Выводим отформатированную дату в консоль
 
     const schema = yup.object().shape({
-        number: yup.number().required('number invalid value'),
-        date: yup
+        amount: yup.number().required('number invalid value'),
+        transactionDate: yup
             .date()
             .required('Date is required')
             .default(() => new Date(formattedDate)),
         switch: yup.boolean(),
-        category: yup.string().when('switch', {
-            is: true,
-            then: yup.string().required('Please select an option'),
-            // otherwise: yup.string().notRequired(),
-        }),
+        category: yup.string(),
         comment: yup.string(),
     });
 
     const {
         handleSubmit,
+        register,
         control,
         formState: { errors },
     } = useForm({
@@ -50,6 +46,14 @@ function AddTransactionForm() {
 
     const onSubmit = data => {
         // '2024-05-20'
+        const categoryId = categories.filter(el => el.name === data.category);
+        console.log(categoryId[0].id);
+        data.categoryId = categoryId[0].id;
+        const originalDate = new Date(data.transactionDate);
+        const formattedDate = format(originalDate, 'yyyy-MM-dd');
+        data.transactionDate = formattedDate;
+
+        console.log(formattedDate); // Выведет: '2024-05-08'
         const { category, ...income } = data;
         isChecked ? console.log(data) : console.log(income);
         console.log(isChecked);
@@ -60,11 +64,7 @@ function AddTransactionForm() {
             <div className={s.switch__wrapper}>
                 {!isChecked ? <span className={clsx(s.span_text, s.income_active)}>Income</span> : <span className={s.span_text}>Income</span>}
                 <label htmlFor="switch" className={s.switch}>
-                    <Controller
-                        name="switch"
-                        control={control}
-                        render={({ field }) => <input {...field} type="checkbox" id="switch" checked={isChecked} onChange={handleChange} className={s.switch__input} />}
-                    />
+                    <input {...register('switch')} type="checkbox" id="switch" checked={isChecked} onChange={handleChange} className={s.switch__input} />
                     {isChecked ? (
                         <span className={s.switch__slider}>
                             <svg xmlns="http://www.w3.org/2000/svg" width="74" height="74" viewBox="0 0 74 74" fill="none">
@@ -112,55 +112,33 @@ function AddTransactionForm() {
             </div>
             {isChecked && (
                 <div className={s.comment}>
-                    <Controller
-                        name="category"
-                        defaultValue=""
-                        control={control}
-                        render={({ field }) => (
-                            <select
-                                {...field}
-                                type="text"
-                                className={s.input}
-                                placeholder="Select a category"
-                                autoComplete="off"
-                                onChange={e => {
-                                    field.onChange(e.target.value); // Обновляем значение поля ввода, управляемое react-hook-form
-                                    if (!isChecked) {
-                                        field.onChange(''); // Очищаем значение поля ввода
-                                    }
-                                }}
-                            >
-                                {categories.map(item => (
-                                    <option key={item.id}>{item.name}</option>
-                                ))}
-                            </select>
-                        )}
-                    />
+                    <select className={s.select_style} {...register('category')} type="text" className={s.input} placeholder="Select a category" autoComplete="off">
+                        {categories.map(item => (
+                            <option key={item.id} className={s.select}>
+                                {item.name}
+                            </option>
+                        ))}
+                    </select>
                 </div>
             )}
             <div className={s.sum_data_wrap}>
                 <div className={s.sum_wrap}>
-                    <Controller name="number" defaultValue="" control={control} render={({ field }) => <input {...field} type="text" autoComplete="off" placeholder="0.00" className={s.sum} />} />
-                    {errors.number && <span>{'number'}</span>}
-                    {errors.date && <span>{errors.date.message}</span>}
+                    <input {...register('amount')} type="text" autoComplete="off" placeholder="0.00" className={s.sum} />
+                    {errors.number && <span>{'amount'}</span>}
+                    {errors.transactionDate && <span>{errors.transactionDate.message}</span>}
                     {errors.switch && <span>{'switch'}</span>}
                     {errors.comment && <span>{'comment'}</span>}
                 </div>
                 <div className={s.data_wrap}>
                     <Controller
-                        name="date"
+                        name="transactionDate"
                         control={control}
                         render={({ field }) => (
                             <>
-                                <DatePicker
-                                    selected={field.value || formattedDate} // Используйте значение из field.value
-                                    onChange={date => field.onChange(date)} // Обновите значение с помощью field.onChange
-                                    dateFormat="dd.MM.yyyy"
-                                />
+                                <DatePicker selected={field.value || formattedDate} onChange={date => field.onChange(date)} dateFormat="dd.MM.yyyy" />
                             </>
                         )}
                     />
-                    {/* <DatePicker selected={startDate} onChange={date => setStartDate(date)} dateFormat="dd.MM.yyyy" /> */}
                     <div className={s.svg_wrap}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                             <g clip-path="url(#clip0_60_133)">
@@ -179,8 +157,7 @@ function AddTransactionForm() {
                 </div>
             </div>
             <div className={s.comment}>
-                <Controller name="comment" defaultValue="" control={control} render={({ field }) => <input {...field} type="text" className={s.input} placeholder="Comment" autoComplete="off" />} />
-                {/* <input type="text" className={s.input} placeholder="Comment" /> */}
+                <input {...register('comment')} type="text" className={s.input} placeholder="Comment" autoComplete="off" />
             </div>
             <button className={clsx(s.btn, s.btn_add)}>Add</button>
             <button className={clsx(s.btn, s.btn_cancel)}>Cancel</button>

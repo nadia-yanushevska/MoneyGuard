@@ -3,7 +3,7 @@ import AddTransactionForm from '../AddTransactionForm/AddTransactionForm';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { getTransactionsCategories } from '../../redux/Statistics/operations';
-import { selectCategories } from '../../redux/Statistics/selectors';
+
 function ModalAddTransaction() {
     const dispatch = useDispatch();
     useEffect(() => {
