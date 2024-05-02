@@ -43,7 +43,10 @@ function AddTransactionForm() {
     });
 
     const onSubmit = data => {
-        console.log(data);
+        // '2024-05-20'
+        const { category, ...income } = data;
+        isChecked ? console.log(data) : console.log(income);
+        console.log(isChecked);
     };
 
     return (
@@ -113,6 +116,7 @@ function AddTransactionForm() {
                                 type="text"
                                 className={s.input}
                                 placeholder="Select a category"
+                                autoComplete="off"
                                 onChange={e => {
                                     field.onChange(e.target.value); // Обновляем значение поля ввода, управляемое react-hook-form
                                     if (!isChecked) {
@@ -126,7 +130,7 @@ function AddTransactionForm() {
             )}
             <div className={s.sum_data_wrap}>
                 <div className={s.sum_wrap}>
-                    <Controller name="number" defaultValue="" control={control} render={({ field }) => <input {...field} type="text" placeholder="0.00" className={s.sum} />} />
+                    <Controller name="number" defaultValue="" control={control} render={({ field }) => <input {...field} type="text" autoComplete="off" placeholder="0.00" className={s.sum} />} />
                     {errors.number && <span>{'number'}</span>}
                     {errors.date && <span>{errors.date.message}</span>}
                     {errors.switch && <span>{'switch'}</span>}
@@ -165,7 +169,7 @@ function AddTransactionForm() {
                 </div>
             </div>
             <div className={s.comment}>
-                <Controller name="comment" defaultValue="" control={control} render={({ field }) => <input {...field} type="text" className={s.input} placeholder="Comment" />} />
+                <Controller name="comment" defaultValue="" control={control} render={({ field }) => <input {...field} type="text" className={s.input} placeholder="Comment" autoComplete="off" />} />
                 {/* <input type="text" className={s.input} placeholder="Comment" /> */}
             </div>
             <button className={clsx(s.btn, s.btn_add)}>Add</button>
