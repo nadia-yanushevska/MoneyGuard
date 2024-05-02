@@ -7,8 +7,11 @@ import { useForm, Controller } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { format } from 'date-fns';
+import { selectCategories } from '../../redux/Statistics/selectors';
+import { useSelector } from 'react-redux';
 
 function AddTransactionForm() {
+    const categories = useSelector(selectCategories);
     const [isChecked, setIsChecked] = useState(false);
     const [startDate, setStartDate] = useState(new Date());
     const handleChange = () => {
@@ -111,7 +114,7 @@ function AddTransactionForm() {
                         defaultValue=""
                         control={control}
                         render={({ field }) => (
-                            <input
+                            <select
                                 {...field}
                                 type="text"
                                 className={s.input}
@@ -123,7 +126,11 @@ function AddTransactionForm() {
                                         field.onChange(''); // Очищаем значение поля ввода
                                     }
                                 }}
-                            />
+                            >
+                                {categories.map(item => (
+                                    <option key={item.id}>{item.name}</option>
+                                ))}
+                            </select>
                         )}
                     />
                 </div>
