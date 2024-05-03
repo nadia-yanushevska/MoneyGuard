@@ -1,35 +1,106 @@
 .currency_wrapper {
-    justify-content: center;
-    align-items: center;
     color: #fbfbfb;
-    max-width: 336px;
-
     background-color: rgba(74, 86, 226, 0.1);
+    margin-top: 32px;
+    max-width: 480px;
+    grid-area: currency;
 }
 
-/* .currency_table {
-    max-height: 170px;
+.currency_table {
     width: 100%;
     margin-bottom: 24px;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
-    @media only screen and (max-width: 1280px) {
+    /* @media only screen and (max-width: 1280px) {
         margin-top: 0;
         margin-bottom: 0;
     }
-
-    @media only screen and (max-width: 320px) {
-        width: 320px;
-    }
 } */
-
+}
 .currency_table_head {
+    display: flex;
+
+    gap: 15px;
+    align-items: center;
     height: 48px;
-    padding: 13px 0;
-    margin: 0 auto 8px;
-    min-width: 320px;
+    padding: 0 20px;
+    width: 100%;
     background-color: rgba(255, 255, 255, 0.2);
     font-weight: 600;
     font-size: 16px;
+    margin-bottom: 8px;
+    line-height: normal;
+}
+
+.currency_tr {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 60px;
+    font-size: 16px;
+}
+
+img {
+    width: 320px;
+}
+
+.diagram {
+    position: relative;
+}
+
+.lowerNumber {
+    position: absolute;
+    top: 15px;
+    left: 40px;
+
+    color: #ff868d;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.higherNumber {
+    position: absolute;
+    top: -18px;
+    right: 92px;
+    color: #ff868d;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+@media screen and (min-width: 768px) {
+    .currency_wrapper {
+        border-radius: 0px 0px 8px 8px;
+        gap: 12px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .currency_wrapper,
+    .currency_table_head {
+        border-radius: 8px;
+    }
+    img {
+        width: 480px;
+    }
+    .currency_table {
+        max-width: 480px;
+    }
+    .currency_table_head {
+        height: 56px;
+        margin-bottom: 24px;
+        padding-left: 75px;
+        gap: 35px;
+    }
+    .table_body {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
+    .currency_tr {
+        padding: 0 20px 0;
+        margin-bottom: 14px;
+        margin: 0;
+    }
 }

@@ -1,54 +1,60 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectCurrencyData } from '../../redux/Currency/selectors';
-import { useMediaQuery } from 'react-responsive';
+
 import s from './Currency.module.css';
-import image from '../../../public/img/currency.png';
+
 import imageTab from '../../../public/img/currency.png';
 import { getCurrency } from '../../redux/Currency/operations';
+import useMedia from '../../hooks/useMedia';
 
 const Currency = () => {
     const currency = useSelector(selectCurrencyData);
 
     const dispatch = useDispatch();
 
-    const isTablet = useMediaQuery({ query: '(max-width: 1279px' });
-    const isDesktop = useMediaQuery({ query: '(min-width: 1280px)' });
+    const { isDesktop } = useMedia();
 
     useEffect(() => {
         dispatch(getCurrency());
     }, [dispatch]);
-    console.log(currency);
+
     const rateBuyDollar = currency?.dollar.rateBuy.toFixed(2);
     const rateSellDollar = currency?.dollar.rateSell.toFixed(2);
     const rateSellEuro = currency?.euro.rateSell.toFixed(2);
     const rateBuyEuro = currency?.euro.rateBuy.toFixed(2);
-    console.log(rateBuyDollar);
+
     return (
         <div className={s.currency_wrapper}>
-            <table className={s.currency_table}>
-                <thead className={s.currency_table_head}>
-                    <tr>
-                        <th className={s.currency_item}>Currency</th>
-                        <th className={s.currency_item}>Purchase</th>
-                        <th className={s.currency_item}>Sale</th>
-                    </tr>
-                </thead>
-                <tbody className={s.body}>
-                    <tr className={s.table}>
-                        <td>USD</td>
-                        <td>{rateBuyDollar}</td>
-                        <td>{rateSellDollar}</td>
-                    </tr>
-                    <tr className={s.table}>
-                        <td>EUR</td>
-                        <td>{rateBuyEuro}</td>
-                        <td> {rateSellEuro}</td>
-                    </tr>
-                </tbody>
-            </table>
-            {isDesktop && <img src={image} alt="" />}
-            {isTablet && <img src={imageTab} alt="" />}
+            <div className={s.currency_table}>
+                <ul className={s.currency_table_head}>
+                    <li className={s.currency_item}>Currency</li>
+                    <li className={s.currency_item}>Purchase</li>
+                    <li className={s.currency_item}>Sale</li>
+                </ul>
+                <ul className={s.table_body}>
+                    <li className={s.currency_tr}>
+                        <p>USD</p>
+                        <p>{rateBuyDollar}</p>
+                        <p>{rateSellDollar}</p>
+                    </li>
+                    <li className={s.currency_tr}>
+                        <p>EUR</p>
+                        <p>{rateBuyEuro}</p>
+                        <p> {rateSellEuro}</p>
+                    </li>
+                </ul>
+            </div>
+
+            {isDesktop ? (
+                <div className={s.diagram}>
+                    <p className={s.lowerNumber}>{rateBuyDollar}</p>
+                    <p className={s.higherNumber}>{rateBuyEuro}</p>
+                    <img src={imageTab} alt="" />
+                </div>
+            ) : (
+                <img src={imageTab} />
+            )}
         </div>
     );
 };

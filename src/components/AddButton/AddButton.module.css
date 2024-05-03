@@ -1,0 +1,17 @@
+.btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--button-gradient);
+    border-radius: 100%;
+    padding: 12px;
+    position: fixed;
+    right: 40px;
+    bottom: 40px;
+}
+
+.icon{
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+}
