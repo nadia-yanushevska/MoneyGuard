@@ -13,9 +13,7 @@ import { refreshThunk } from './redux/Auth/operations';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 
-import { useMediaQuery } from 'react-responsive';
 import useMedia from './hooks/useMedia';
-
 {
     /* Приклад підключення іконки */
 }
@@ -24,14 +22,11 @@ import useMedia from './hooks/useMedia';
 
 function App() {
     const dispatch = useDispatch();
-
     useEffect(() => {
         dispatch(refreshThunk());
     }, [dispatch]);
-    //TODO MobileCustomHook
-    const isMobile = useMedia();
 
-    //TODO Logo component
+    const { isMobile } = useMedia();
 
     return (
         <>
@@ -41,7 +36,6 @@ function App() {
                 <Icon id="#icon-email" className="small"></Icon>
             </a> */}
             {/* Приклад підключення іконки */}
-
             <Routes>
                 <Route
                     path="/"
@@ -51,7 +45,19 @@ function App() {
                         </PrivateRoute>
                     }
                 >
-                    <Route index element={<Home />} />
+                    <Route
+                        index
+                        element={
+                            isMobile ? (
+                                <>
+                                    <div>Balance</div>
+                                    <Home />
+                                </>
+                            ) : (
+                                <Home />
+                            )
+                        }
+                    />
                     <Route path="statistics" element={<Statistics />} />
                     <Route path="currency" element={isMobile ? <Currency /> : <Navigate to="/" />} />
                 </Route>
