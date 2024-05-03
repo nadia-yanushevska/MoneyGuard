@@ -46,9 +46,18 @@ function AddTransactionForm() {
 
     const onSubmit = data => {
         // '2024-05-20'
-        const categoryId = categories.filter(el => el.name === data.category);
-        console.log(categoryId[0].id);
-        data.categoryId = categoryId[0].id;
+
+        if (!isChecked) {
+            // data.categoryId = '063f1132-ba5d-42b4-951d-44011ca46262' Income;
+            const categoryId = categories.filter(el => el.name === 'Income');
+            console.log(categoryId[0].id);
+            data.categoryId = categoryId[0].id;
+        } else {
+            const categoryId = categories.filter(el => el.name === data.category);
+            console.log(categoryId[0].id);
+            data.categoryId = categoryId[0].id;
+        }
+
         const originalDate = new Date(data.transactionDate);
         const formattedDate = format(originalDate, 'yyyy-MM-dd');
         data.transactionDate = formattedDate;
@@ -159,8 +168,12 @@ function AddTransactionForm() {
             <div className={s.comment}>
                 <input {...register('comment')} type="text" className={s.input} placeholder="Comment" autoComplete="off" />
             </div>
-            <button className={clsx(s.btn, s.btn_add)}>Add</button>
-            <button className={clsx(s.btn, s.btn_cancel)}>Cancel</button>
+            <button className={clsx(s.btn, s.btn_add)} type="submit">
+                Add
+            </button>
+            <button className={clsx(s.btn, s.btn_cancel)} type="button">
+                Cancel
+            </button>
         </form>
     );
 }
