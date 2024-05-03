@@ -14,7 +14,6 @@ import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 
 import { useMediaQuery } from 'react-responsive';
-import ChartDoughnut from './components/ChartDoughnut/ChartDoughnut';
 
 {
     /* Приклад підключення іконки */
@@ -38,7 +37,7 @@ function App() {
             </a> */}
             {/* Приклад підключення іконки */}
 
-            {/* <Routes>
+            <Routes>
                 <Route
                     path="/"
                     element={
@@ -69,8 +68,7 @@ function App() {
                 />
 
                 <Route path="*" element={<Navigate to="/" />}></Route>
-            </Routes> */}
-            <ChartDoughnut/>
+            </Routes>
         </>
     );
 }

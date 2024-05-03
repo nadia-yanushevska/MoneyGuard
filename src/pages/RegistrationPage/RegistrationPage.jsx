@@ -1,7 +1,7 @@
 import * as yup from 'yup';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import toast from 'react-hot-toast';
+// import toast from 'react-hot-toast';
 
 import AuthForm from '../../components/AuthForm/AuthForm';
 import { register } from '../../redux/AuthSlice/ops';

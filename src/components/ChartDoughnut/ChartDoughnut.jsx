@@ -2,6 +2,8 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 
 import s from "./ChartDoughnut.module.css"
+import { useSelector } from "react-redux";
+import { selectTotalBalance } from "../../redux/Balance/selectors";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -33,8 +35,10 @@ const data = {
   };
 
 const ChartDoughnut = () => {
+    const total = useSelector(selectTotalBalance)
+    const donatData = data
   return (
-    <div className={s.doughnut_wrapper}>
+    <div className={s.doughnut}>
       <Doughnut data={data} />
     </div>
   )
