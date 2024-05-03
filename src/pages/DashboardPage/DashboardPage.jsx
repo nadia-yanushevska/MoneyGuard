@@ -7,17 +7,14 @@ import useMedia from '../../hooks/useMedia';
 
 function DashboardPage() {
     const { isMobile } = useMedia();
-    //TODO if location is home
     return (
         <>
             <Header />
             {isMobile && <Navigation />}
 
             <div className={s.container}>
-                {/*TODO if location is home */}
-                {isMobile && <div>Balance</div>}
                 <div className={s.column_narrow}>
-                    {!isMobile && <Navigation />}
+                    <Navigation />
                     <div>Balance</div>
                     <Currency />
                 </div>
