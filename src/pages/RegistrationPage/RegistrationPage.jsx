@@ -1,44 +1,33 @@
-import * as yup from 'yup';
 import { useDispatch } from 'react-redux';
-import toast from 'react-hot-toast';
+import { toast } from 'react-toastify';
+
+import { registerSchema } from '../../schemas/schemas';
 
 import AuthForm from '../../components/AuthForm/AuthForm';
 import { registerThunk } from '../../redux/Auth/operations';
 
+const initialValues = {
+    username: '',
+    password: '',
+    email: '',
+    confirmPassword: '',
+};
+
 const RegistrationPage = () => {
     const dispatch = useDispatch();
 
-    //TODO винести в окремий файл
-    const validationSchema = yup.object().shape({
-        username: yup.string().min(3, 'Name must be at least 3 characters').required('Name is required'),
-        email: yup.string().email('Invalid email').required('Email is required'),
-        password: yup.string().min(7, 'Password must be at least 7 characters').required('Password is required'),
-        confirmPassword: yup
-            .string()
-            .oneOf([yup.ref('password'), null], 'Passwords must match')
-            .required('Confirm Password is required'),
-    });
-
     const handleSubmit = ({ username, email, password }, { resetForm }) => {
         dispatch(registerThunk({ username, email, password }))
-            .unwrap()
+            .then(unwrapResult)
             .then(data => {
                 toast.success(`Registration is success ${data.user.name}, welcome!`);
-                console.log({ data });
             })
-            .catch(() => toast.error('Credentials invalid'));
+            .catch(console.log('ssfsdfs'));
 
         resetForm();
     };
 
-    const initialValues = {
-        username: '',
-        password: '',
-        email: '',
-        confirmPassword: '',
-    };
-
-    return <AuthForm type="register" title="Registration" onSubmit={handleSubmit} validationSchema={validationSchema} initialValues={initialValues} />;
+    return <AuthForm type="register" title="Registration" onSubmit={handleSubmit} validationSchema={registerSchema} initialValues={initialValues} />;
 };
 
 export default RegistrationPage;
