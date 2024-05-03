@@ -45,7 +45,19 @@ function App() {
                         </PrivateRoute>
                     }
                 >
-                    <Route index element={<Home />} />
+                    <Route
+                        index
+                        element={
+                            isMobile ? (
+                                <>
+                                    <div>Balance</div>
+                                    <Home />
+                                </>
+                            ) : (
+                                <Home />
+                            )
+                        }
+                    />
                     <Route path="statistics" element={<Statistics />} />
                     <Route path="currency" element={isMobile ? <Currency /> : <Navigate to="/" />} />
                 </Route>
