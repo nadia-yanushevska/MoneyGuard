@@ -56,7 +56,13 @@ function TransactionItem({ transaction, id, first = false }) {
                     );
                 })}
                 <li className={clsx(s.row_item, s.controls)}>
-                    <button type="button" className={s.btn_edit}>
+                    <button
+                        type="button"
+                        className={s.btn_edit}
+                        onClick={() => {
+                            // тут відкриття модального вікна і передавання id
+                        }}
+                    >
                         <Icon id="#icon-pen" className={s.edit}></Icon>
                     </button>
                     <button type="button" className="btn_delete" onClick={() => dispatch(deleteTransactions(id))}>

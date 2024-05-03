@@ -8,6 +8,7 @@ import { getFormattedTransactions } from '../../helpers/transactionsFormatter';
 function TransactionList() {
     const reduxTransactions = useSelector(selectTransactions);
     const categories = useSelector(selectCategories);
+    console.log(reduxTransactions);
 
     const transactions = getFormattedTransactions(reduxTransactions, categories);
     return (
@@ -17,6 +18,7 @@ function TransactionList() {
             ) : (
                 <ul className={s.list}>
                     {transactions.map(({ id, ...item }, idx) => {
+                        console.log(id);
                         return <TransactionItem key={id} id={id} transaction={item} first={idx === 0} />;
                     })}
                 </ul>
