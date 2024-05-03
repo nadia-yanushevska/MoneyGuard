@@ -13,6 +13,7 @@ import Select from 'react-select';
 import { customStyles } from './customStyles';
 import { useDispatch } from 'react-redux';
 import { addTransactions } from '../../redux/Transactions/operations';
+import { closeAddModal } from '../../redux/Modals/slice';
 
 function AddTransactionForm() {
     const categories = useSelector(selectCategories);
@@ -183,7 +184,13 @@ function AddTransactionForm() {
             <button className={clsx(s.btn, s.btn_add)} type="submit">
                 Add
             </button>
-            <button className={clsx(s.btn, s.btn_cancel)} type="button">
+            <button
+                className={clsx(s.btn, s.btn_cancel)}
+                type="button"
+                onClick={() => {
+                    dispatch(closeAddModal());
+                }}
+            >
                 Cancel
             </button>
         </form>

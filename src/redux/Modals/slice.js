@@ -38,6 +38,7 @@ const modalsSlice = createSlice({
         },
         closeAddModal: state => {
             state.isAddModalOpen = false;
+            state = initialState;
         },
         addEditId: (state, { payload }) => {
             state.isEditId = payload;

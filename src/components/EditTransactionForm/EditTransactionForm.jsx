@@ -108,6 +108,7 @@ function EditTransactionForm() {
         console.log(IdForEdit);
 
         dispatch(editTransactions({ id: IdForEdit, transaction: data }));
+        dispatch(closeEditModal());
     };
 
     return (
