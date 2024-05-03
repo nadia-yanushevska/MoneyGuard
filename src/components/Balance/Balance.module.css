@@ -9,6 +9,7 @@
     gap: 11px;
     align-self: center;
     width: 100%;
+    grid-area: balance;
 }
 
 .balance h3 {
