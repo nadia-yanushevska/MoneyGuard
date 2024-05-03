@@ -63,5 +63,6 @@
     .column {
         padding-top: 40px;
         padding-right: 25px;
+        flex-grow: 1;
     }
 }
