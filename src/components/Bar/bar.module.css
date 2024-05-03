@@ -1,0 +1,21 @@
+.passwordStrengthContainer{
+    margin-top: 8px;
+    width: 100%;
+    background-color: var(--text-rgba) ;
+    border-radius: 5px;
+    height: 4px;
+}
+
+
+.strengthBar{
+     border-radius: 5px;
+    height: 4px;
+    transition: width 0.2s ease-in-out, background-color 0.2s ease-in-out,  filter 0.2s ease-in-out;
+
+}
+
+@media screen and (min-width: 768px) {
+.strengthBar, .passwordStrengthContainer{
+ width: 409px;
+}
+}
