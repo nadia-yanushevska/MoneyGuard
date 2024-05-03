@@ -10,6 +10,7 @@ import { format } from 'date-fns';
 import { selectCategories } from '../../redux/Statistics/selectors';
 import { useSelector } from 'react-redux';
 import Select from 'react-select';
+import './AddTransactionForm.css';
 
 function AddTransactionForm() {
     const categories = useSelector(selectCategories);
@@ -84,6 +85,8 @@ function AddTransactionForm() {
             ...provided,
             background: 'transparent',
             color: 'transparent',
+            border: 0,
+            boxShadow: 'none',
             display: 'flex',
             flexWrap: 'nowrap',
             borderColor: 'transparent',
@@ -97,10 +100,26 @@ function AddTransactionForm() {
             ...provider,
             color: 'rgba(255, 255, 255, 0.60)',
         }),
+        menuList: val => ({
+            ...val,
+            overflow: 'auto',
+            scrollBar: 'none',
+            '::-webkit-scrollbar': {
+                width: '0px',
+                height: '0px',
+            },
+        }),
+        singleValue: val => ({
+            ...val,
+            color: 'rgba(251, 251, 251, 1)',
+            fontSize: '18px',
+            fontWeight: 400,
+        }),
         menu: provided => ({
             // 'menu' is from the div class too.
             ...provided,
             background: 'linear-gradient(0deg, rgba(83, 61, 186, 0.70) 0%, rgba(80, 48, 154, 0.70) 43.14%, rgba(106, 70, 165, 0.52) 73.27%, rgba(133, 93, 175, 0.13) 120.03%)',
+            color: 'rgba(251, 251, 251, 1)',
         }),
         indicatorSeparator: () => {},
         dropdownIndicator: (provider, state) => ({
@@ -170,7 +189,7 @@ function AddTransactionForm() {
                         ))}
                     </select> */}
                     <Select
-                        classNamePrefix="select"
+                        classNamePrefix="react-select"
                         // {...register('category')}
                         styles={customStyles}
                         defaultValue={selectedOption}
