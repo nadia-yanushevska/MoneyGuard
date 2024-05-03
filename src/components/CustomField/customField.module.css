@@ -1,0 +1,46 @@
+.input {
+    display: flex;
+    flex-direction: column;
+    margin-top: 35px;
+    width: 280px;
+    padding: 5px 0;
+
+    border: none;
+    outline: none;
+    background-color: transparent;
+    border-bottom: 1px solid #ccc;
+    color:  var(--text-rgba);
+    padding-left: 50px;
+
+    font-size: 18px;
+}
+
+
+@media screen and (min-width: 768px) {
+.input {
+ width: 409px;
+}
+}
+
+.label{
+    font-size: 10px;
+    color: var( --red-color);
+}
+
+.input::placeholder {
+    font-size: 18px;
+    color: var(--text-rgba);
+}
+
+.buttonPassword {  
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--text-rgba);
+    cursor: pointer;
+}
+
