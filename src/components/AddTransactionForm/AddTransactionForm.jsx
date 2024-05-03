@@ -11,6 +11,8 @@ import { selectCategories } from '../../redux/Statistics/selectors';
 import { useSelector } from 'react-redux';
 import Select from 'react-select';
 import { customStyles } from './customStyles';
+import { useDispatch } from 'react-redux';
+import { addTransactions } from '../../redux/Transactions/operations';
 
 function AddTransactionForm() {
     const categories = useSelector(selectCategories);
@@ -20,6 +22,7 @@ function AddTransactionForm() {
     const handleChange = () => {
         setIsChecked(!isChecked);
     };
+    const dispatch = useDispatch();
 
     const categoriesForSelect = categories.map(category => ({ value: category.id, label: category.name }));
 
@@ -52,15 +55,21 @@ function AddTransactionForm() {
         if (!isChecked) {
             const categoryId = categories.filter(el => el.name === 'Income');
             data.categoryId = categoryId[0].id;
+            data.type = 'INCOME';
         } else if (selectedOption) {
             data.categoryId = selectedOption.value;
+            data.type = 'EXPENSE';
+            data.amount = Math.abs(data.amount);
         }
 
         const originalDate = new Date(data.transactionDate);
         const formattedDate = format(originalDate, 'yyyy-MM-dd');
         data.transactionDate = formattedDate;
+
+        delete data.switch;
         console.log(data);
-        const { category, ...income } = data;
+
+        dispatch(addTransactions(data));
     };
 
     return (

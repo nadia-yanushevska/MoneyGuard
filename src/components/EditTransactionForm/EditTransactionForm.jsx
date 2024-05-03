@@ -1,5 +1,5 @@
 import s from './EditTransactionForm.module.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import clsx from 'clsx';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -11,18 +11,45 @@ import { selectCategories } from '../../redux/Statistics/selectors';
 import { useSelector } from 'react-redux';
 import Select from 'react-select';
 import { customStyles } from '../AddTransactionForm/customStyles';
+import { selectIsEditID, closeEditModal } from '../../redux/Modals/slice';
+import { selectTransactions } from '../../redux/Transactions/selectors';
+import { useDispatch } from 'react-redux';
+import { editTransactions } from '../../redux/Transactions/operations';
 
 function EditTransactionForm() {
     const categories = useSelector(selectCategories);
+    const transactions = useSelector(selectTransactions);
     const [isChecked, setIsChecked] = useState(true);
     const [startDate, setStartDate] = useState(new Date());
     const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
+    const dispatch = useDispatch();
 
     const handleChange = () => {
         setIsChecked(!isChecked);
     };
 
+    const IdForEdit = useSelector(selectIsEditID);
+    console.log(IdForEdit);
+
+    const foundObject = transactions.find(item => item.id === IdForEdit);
+    console.log(foundObject);
+
+    useEffect(() => {
+        if (foundObject.type === 'INCOME') {
+            setIsChecked(false);
+        } else if (foundObject.type === 'EXPENSE') {
+            setIsChecked(true);
+        }
+    }, [foundObject.type]);
+
+    const amountDefaultValue = Math.abs(foundObject.amount);
+    const startDateDefaultValue = new Date(foundObject.transactionDate);
+    const commentDefaultValue = foundObject.comment;
+
     const categoriesForSelect = categories.map(category => ({ value: category.id, label: category.name }));
+
+    const selectDefaultValue = categoriesForSelect.find(item => item.value === foundObject.categoryId);
+    console.log(selectDefaultValue);
 
     const [selectedOption, setSelectedOption] = useState(null);
 
@@ -53,15 +80,22 @@ function EditTransactionForm() {
         if (!isChecked) {
             const categoryId = categories.filter(el => el.name === 'Income');
             data.categoryId = categoryId[0].id;
+            data.type = 'INCOME';
         } else if (selectedOption) {
             data.categoryId = selectedOption.value;
+            data.type = 'EXPENSE';
+            data.amount = Math.abs(data.amount);
         }
 
         const originalDate = new Date(data.transactionDate);
         const formattedDate = format(originalDate, 'yyyy-MM-dd');
         data.transactionDate = formattedDate;
+
+        delete data.switch;
         console.log(data);
-        const { category, ...income } = data;
+        console.log(IdForEdit);
+
+        dispatch(editTransactions(IdForEdit, data));
     };
 
     return (
@@ -82,7 +116,7 @@ function EditTransactionForm() {
                         <Select
                             classNamePrefix="react-select"
                             styles={customStyles}
-                            defaultValue={selectedOption}
+                            defaultValue={selectDefaultValue}
                             onChange={setSelectedOption}
                             options={categoriesForSelect}
                             placeholder="Select a category"
@@ -91,7 +125,7 @@ function EditTransactionForm() {
                 )}
                 <div className={s.sum_data_wrap}>
                     <div className={s.sum_wrap}>
-                        <input {...register('amount')} type="text" autoComplete="off" placeholder="0.00" className={s.sum} />
+                        <input {...register('amount')} type="text" autoComplete="off" placeholder="0.00" defaultValue={amountDefaultValue} className={s.sum} />
                         {errors.number && <span>{'amount'}</span>}
                         {errors.transactionDate && <span>{errors.transactionDate.message}</span>}
                         {errors.switch && <span>{'switch'}</span>}
@@ -105,7 +139,8 @@ function EditTransactionForm() {
                             render={({ field }) => (
                                 <>
                                     <DatePicker
-                                        selected={field.value || formattedDate}
+                                        selected={field.value || startDateDefaultValue}
+                                        // startDate={startDateDefaultValue}
                                         onChange={date => field.onChange(date)}
                                         dateFormat="dd.MM.yyyy"
                                         open={isDatePickerOpen}
@@ -133,12 +168,18 @@ function EditTransactionForm() {
                     </div>
                 </div>
                 <div className={s.comment}>
-                    <input {...register('comment')} type="text" className={s.input} placeholder="Comment" autoComplete="off" />
+                    <input {...register('comment')} type="text" className={s.input} placeholder="Comment" defaultValue={commentDefaultValue} autoComplete="off" />
                 </div>
                 <button className={clsx(s.btn, s.btn_add)} type="submit">
                     Save
                 </button>
-                <button className={clsx(s.btn, s.btn_cancel)} type="button">
+                <button
+                    className={clsx(s.btn, s.btn_cancel)}
+                    type="button"
+                    onClick={() => {
+                        dispatch(closeEditModal());
+                    }}
+                >
                     Cancel
                 </button>
             </form>
