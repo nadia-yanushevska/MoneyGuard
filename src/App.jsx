@@ -15,6 +15,7 @@ import { useEffect } from 'react';
 
 import useMedia from './hooks/useMedia';
 import Balance from './components/Balance/Balance';
+
 {
     /* Приклад підключення іконки */
 }

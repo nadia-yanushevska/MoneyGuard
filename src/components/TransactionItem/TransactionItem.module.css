@@ -1,0 +1,129 @@
+.row {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+
+    color: var(--text-color);
+
+    position: relative;
+}
+
+.row::after {
+    display: block;
+    content: '';
+    width: calc(100% - 40px);
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.41);
+
+    position: absolute;
+    bottom: 0;
+}
+
+.row:last-child::after {
+    display: none;
+}
+
+.btn_edit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.edit {
+    stroke: var(--text-color);
+    size: 14px;
+    width: 14px;
+    height: 14px;
+}
+/* MOBILE ONLY */
+@media only screen and (max-width: 767.98px) {
+    .card {
+        width: 280px;
+        height: 293px;
+        border-radius: 10px;
+        background-color: rgba(255, 255, 255, 0.1);
+        position: relative;
+        overflow: hidden;
+
+        &::before {
+            display: block;
+            content: '';
+            width: 5px;
+            height: 100%;
+            background-color: currentColor;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    }
+    .row {
+        justify-content: space-between;
+    }
+}
+/* TABLET */
+@media only screen and (min-width: 768px) {
+    .row {
+        display: flex;
+        align-items: center;
+        padding: 16px 20px;
+
+        position: relative;
+    }
+
+    .row:first-child {
+        display: flex;
+
+        text-transform: capitalize;
+
+        border-radius: 8px;
+        background: rgba(82, 59, 126, 0.6);
+        box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
+        backdrop-filter: blur(50px);
+        font-weight: 600;
+        font-size: 14px;
+
+        &::after {
+            display: none;
+        }
+    }
+
+    .row_item {
+        text-wrap: wrap;
+        margin: auto;
+        color: var(--text-color);
+    }
+
+    .row_item:first-child {
+        width: 54px;
+        margin-left: 0;
+    }
+    .row_item:nth-child(2) {
+        width: 40px;
+        text-align: center;
+    }
+    .row_item:nth-child(3) {
+        width: 77px;
+    }
+    .row_item:nth-child(4) {
+        width: 118px;
+    }
+    .row_item:nth-child(5) {
+        width: 62px;
+        text-align: center;
+        font-weight: 600;
+        color: currentColor;
+    }
+    .row_item:nth-child(6) {
+        width: 100px;
+        margin-right: 0;
+    }
+
+    .controls {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+    }
+}
+/* DESKTOP */
+@media only screen and (min-width: 1280px) {
+}
