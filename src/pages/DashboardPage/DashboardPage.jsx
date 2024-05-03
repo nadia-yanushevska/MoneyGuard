@@ -7,8 +7,8 @@ function DashboardPage() {
     return (
         <div>
             <Header />
-            {/* <ModalAddTransaction /> */}
-            <ModalEditTransaction />
+            <ModalAddTransaction />
+            {/* <ModalEditTransaction /> */}
             Dashboard
             <Outlet />
             {/* <Navigation /> */}

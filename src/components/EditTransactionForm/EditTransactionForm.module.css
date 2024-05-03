@@ -88,6 +88,11 @@
     align-items: center;
     gap: 32px;
     margin-bottom: 48px;
+    cursor: pointer;
+}
+
+.customDatePicker {
+    cursor: pointer;
 }
 
 .sum_wrap {
@@ -287,4 +292,8 @@
 
 .custom-select .option:hover {
     background-color: #e0e0e0;
+}
+
+.date {
+    padding-right: 70px;
 }

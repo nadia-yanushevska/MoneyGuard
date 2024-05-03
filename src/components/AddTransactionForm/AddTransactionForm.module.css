@@ -124,6 +124,7 @@
     justify-content: center;
     align-items: center;
     width: 181px;
+    cursor: pointer;
 
     &::after {
         content: '';
@@ -149,6 +150,10 @@
         border: none;
         margin-right: 32px;
     }
+}
+
+.customDatePicker {
+    cursor: pointer;
 }
 .svg_wrap {
     display: flex;

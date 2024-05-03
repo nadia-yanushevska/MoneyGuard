@@ -16,6 +16,8 @@ function EditTransactionForm() {
     const categories = useSelector(selectCategories);
     const [isChecked, setIsChecked] = useState(true);
     const [startDate, setStartDate] = useState(new Date());
+    const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
+
     const handleChange = () => {
         setIsChecked(!isChecked);
     };
@@ -35,7 +37,7 @@ function EditTransactionForm() {
             .default(() => new Date(formattedDate)),
         switch: yup.boolean(),
         category: yup.string(),
-        comment: yup.string(),
+        comment: yup.string().required('Comment is required'),
     });
 
     const {
@@ -95,13 +97,21 @@ function EditTransactionForm() {
                         {errors.switch && <span>{'switch'}</span>}
                         {errors.comment && <span>{'comment'}</span>}
                     </div>
-                    <div className={s.data_wrap}>
+                    <div className={s.data_wrap} onClick={() => setIsDatePickerOpen(true)}>
                         <Controller
                             name="transactionDate"
+                            className={s.date}
                             control={control}
                             render={({ field }) => (
                                 <>
-                                    <DatePicker selected={field.value || formattedDate} onChange={date => field.onChange(date)} dateFormat="dd.MM.yyyy" />
+                                    <DatePicker
+                                        selected={field.value || formattedDate}
+                                        onChange={date => field.onChange(date)}
+                                        dateFormat="dd.MM.yyyy"
+                                        open={isDatePickerOpen}
+                                        onClickOutside={() => setIsDatePickerOpen(false)}
+                                        className={s.customDatePicker}
+                                    />
                                 </>
                             )}
                         />

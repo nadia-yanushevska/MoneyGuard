@@ -16,6 +16,7 @@ function AddTransactionForm() {
     const categories = useSelector(selectCategories);
     const [isChecked, setIsChecked] = useState(false);
     const [startDate, setStartDate] = useState(new Date());
+    const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
     const handleChange = () => {
         setIsChecked(!isChecked);
     };
@@ -133,13 +134,20 @@ function AddTransactionForm() {
                     {errors.switch && <span>{'switch'}</span>}
                     {errors.comment && <span>{'comment'}</span>}
                 </div>
-                <div className={s.data_wrap}>
+                <div className={s.data_wrap} onClick={() => setIsDatePickerOpen(true)}>
                     <Controller
                         name="transactionDate"
                         control={control}
                         render={({ field }) => (
                             <>
-                                <DatePicker selected={field.value || formattedDate} onChange={date => field.onChange(date)} dateFormat="dd.MM.yyyy" />
+                                <DatePicker
+                                    selected={field.value || formattedDate}
+                                    onChange={date => field.onChange(date)}
+                                    dateFormat="dd.MM.yyyy"
+                                    open={isDatePickerOpen}
+                                    onClickOutside={() => setIsDatePickerOpen(false)}
+                                    className={s.customDatePicker}
+                                />
                             </>
                         )}
                     />
