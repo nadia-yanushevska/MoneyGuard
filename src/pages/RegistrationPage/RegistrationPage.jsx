@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 import { useDispatch } from 'react-redux';
-import toast from 'react-hot-toast';
+// import toast from 'react-hot-toast';
 
 import AuthForm from '../../components/AuthForm/AuthForm';
 import { registerThunk } from '../../redux/Auth/operations';

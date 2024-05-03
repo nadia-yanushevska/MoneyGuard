@@ -1,4 +1,5 @@
-const StatisticsTable = () => {
+const StatisticsTable = ({ data, expenseTotal, incomeTotal }) => {
+
   return (
     <div>
       <div>
@@ -6,25 +7,28 @@ const StatisticsTable = () => {
         <p>Sum</p>
       </div>
       <ul>
-        {categoriesSummary.map((category, index) => (
+        {data.length ?
+        data.map((category, index) => (
           <li key={index}>
-            <div>
-              <span color={category.color} />
+            <div style={{backgroundColor: `${category.color}`}}>
+              
               <p>{category.name}</p>
             </div>
-            <p>{formatCurrency(category.total)}</p>
+            <p>{category.total}</p>
           </li>
-        ))}
+        )) : [] && <p>No data</p>
+        
+        }
       </ul>
       <div>
-        <p>Expenses:</p>{' '}
+        <p>Expenses:</p>
         <span>
-          {formatCurrency(expenseSummary)}
+          {expenseTotal}
         </span>
       </div>
       <div>
-        <p>Income:</p>{' '}
-        <span>{formatCurrency(incomeSummary)}</span>{' '}
+        <p>Income:</p>
+        <span>{incomeTotal}</span>
       </div>
     </div>
   );
