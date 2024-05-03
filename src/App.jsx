@@ -14,6 +14,7 @@ import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 
 import useMedia from './hooks/useMedia';
+import Balance from './components/Balance/Balance';
 {
     /* Приклад підключення іконки */
 }
@@ -50,7 +51,7 @@ function App() {
                         element={
                             isMobile ? (
                                 <>
-                                    <div>Balance</div>
+                                    <Balance />
                                     <Home />
                                 </>
                             ) : (
