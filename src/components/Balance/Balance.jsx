@@ -17,7 +17,7 @@ function Balance() {
         <div className={css.balance}>
             <h3>Your balance</h3>
             <p>
-                <span>{balance ? formatter.format(balance) : '0.00'}</span>
+                <span>{balance ? formatter.format(balance) : '$0.00'}</span>
             </p>
         </div>
     );

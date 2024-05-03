@@ -1,3 +1,3 @@
-export const selectTransactions = (state) => state.statistics.transactions;
-export const selectTransLoading = (state) => state.statistics.isTransLoading;
-export const selectTransError = (state) => state.statistics.isTransError;
+export const selectTransactions = state => state.transactions.transactions;
+export const selectTransLoading = state => state.transactions.isTransLoading;
+export const selectTransError = state => state.transactions.isTransError;
