@@ -26,3 +26,8 @@
         background-size: inherit;
       }
 }
+.doughnut_wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
