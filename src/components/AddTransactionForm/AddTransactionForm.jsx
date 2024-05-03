@@ -10,7 +10,6 @@ import { format } from 'date-fns';
 import { selectCategories } from '../../redux/Statistics/selectors';
 import { useSelector } from 'react-redux';
 import Select from 'react-select';
-import './AddTransactionForm.css';
 import { customStyles } from './customStyles';
 
 function AddTransactionForm() {
