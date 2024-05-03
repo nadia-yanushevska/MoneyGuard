@@ -7,15 +7,24 @@ import s from './TransactionItem.module.css';
 function TransactionItem({ transaction, first = false }) {
     const { isMobile } = useMedia();
     return isMobile ? (
-        <ul>
+        <ul className={s.card}>
             {[...Object.keys(transaction)].map((tKey, idx) => {
                 return (
-                    <li key={idx} className={s.row_item}>
-                        <span>{tKey}</span>
-                        <span>{transaction[tKey]}</span>
+                    <li key={idx} className={s.row}>
+                        <span className={s.row_item}>{tKey}</span>
+                        <span className={s.row_item}>{transaction[tKey]}</span>
                     </li>
                 );
             })}
+
+            <li className={s.row}>
+                <button type="button" className={clsx(s.btn_edit, s.row_item)}>
+                    <Icon id="#icon-pen" className={s.edit}></Icon>
+                </button>
+                <button type="button" className={clsx(s.btn_edit, s.row_item, 'btn_delete')}>
+                    Delete
+                </button>
+            </li>
         </ul>
     ) : (
         <>

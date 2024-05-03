@@ -2,14 +2,17 @@
     display: flex;
     flex-direction: column;
 
-    width: 715px;
-
     color: var(--text-color);
     font-size: 14px;
 }
 
 /* MOBILE ONLY */
 @media only screen and (max-width: 767.98px) {
+    .list {
+        margin-top: 32px;
+        align-items: center;
+        gap: 8px;
+    }
 }
 /* TABLET */
 @media only screen and (min-width: 768px) {

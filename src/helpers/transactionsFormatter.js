@@ -1,7 +1,6 @@
 import { nanoid } from '@reduxjs/toolkit';
 
 export function getFormattedTransactions(transactions, categories) {
-    transactions = transactions.concat(transactions);
     return transactions.map(transaction => getFormattedTransaction(transaction, categories));
 }
 function getFormattedTransaction(transaction, categories) {
