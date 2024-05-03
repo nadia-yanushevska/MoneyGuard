@@ -1,5 +1,5 @@
-import { LineWave } from "react-loader-spinner";
-import s from "./Loader.module.css";
+import { LineWave } from 'react-loader-spinner';
+import s from './Loader.module.css';
 
 function Loader() {
     return (
@@ -7,7 +7,7 @@ function Loader() {
             visible={true}
             height="100"
             width="100"
-            color="#4fa94d"
+            color="var(--text-color)"
             ariaLabel="line-wave-loading"
             wrapperStyle={{}}
             wrapperClass={s.div}
