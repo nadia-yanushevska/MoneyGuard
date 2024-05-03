@@ -26,10 +26,7 @@ function App() {
         dispatch(refreshThunk());
     }, [dispatch]);
 
-    //TODO MobileCustomHook
-    const isMobile = useMedia();
-
-    //TODO Logo component
+    const { isMobile } = useMedia();
 
     return (
         <>

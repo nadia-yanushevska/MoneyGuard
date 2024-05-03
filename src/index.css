@@ -22,6 +22,7 @@
     letter-spacing: 0.1em;
     line-height: 1.5;
     font-weight: 400;
+    overflow: hidden;
 
     color: var(--text-color);
     background-color: black;
@@ -34,6 +35,12 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -webkit-text-size-adjust: 100%;
+}
+
+@media only screen and (max-width: 768.98px) {
+    :root {
+        overflow: scroll;
+    }
 }
 
 h1,
