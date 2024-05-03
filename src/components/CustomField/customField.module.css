@@ -27,6 +27,8 @@
     color: var( --red-color);
 }
 
+
+
 .input::placeholder {
     font-size: 18px;
     color: var(--text-rgba);
