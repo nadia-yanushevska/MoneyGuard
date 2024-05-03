@@ -23,7 +23,7 @@ export const addTransactions = createAsyncThunk('transactions/add', async (trans
 
 export const deleteTransactions = createAsyncThunk('transactions/delete', async (id, thunkApi) => {
     try {
-        await userTransactionsApi.delete(`/api/transactions${id}`);
+        await userTransactionsApi.delete(`/api/transactions/${id}`);
         return id;
     } catch (error) {
         return thunkApi.rejectWithValue(error.message);
@@ -32,7 +32,7 @@ export const deleteTransactions = createAsyncThunk('transactions/delete', async 
 
 export const editTransactions = createAsyncThunk('transactions/edit', async ({ id, transaction }, thunkApi) => {
     try {
-        const { data } = await userTransactionsApi.patch(`/api/transactions${id}`, transaction);
+        const { data } = await userTransactionsApi.patch(`/api/transactions/${id}`, transaction);
         return data;
     } catch (error) {
         return thunkApi.rejectWithValue(error.message);

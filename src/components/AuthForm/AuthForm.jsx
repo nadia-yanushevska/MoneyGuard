@@ -1,23 +1,35 @@
 import { Formik, Form } from 'formik';
-import CustomField from '../CustomField/CustomField';
+// import PasswordStrengthBar from 'react-password-strength-bar';
 import { Link } from 'react-router-dom';
 
-const AuthForm = ({ title, type, validationSchema, initialValues, onSubmit }) => {
-    return (
-        <div className="formWrapper flexCenter">
-            <Formik validationSchema={validationSchema} initialValues={initialValues} onSubmit={onSubmit}>
-                <Form>
-                    {type == 'register' && <CustomField type="text" name="username" placeholder="Enter your name" />}
-                    <CustomField type="text" name="email" placeholder="Enter your email" />
-                    <CustomField type="password" name="password" placeholder="Enter your password" />
-                    {type == 'register' && <CustomField type="password" name="confirmPassword" placeholder="Enter your password" />}
+import CustomField from '../CustomField/CustomField';
+import Bar from '../Bar/Bar';
 
-                    <button type="submit">{title}</button>
-                    <p>
-                        You {type === 'register' ? 'already have an account?' : "don't have an account?"}{' '}
-                        <Link to={type === 'register' ? '/login' : '/register'}> {type === 'register' ? 'Login' : 'Register'}</Link>
-                    </p>
-                </Form>
+import style from './authForm.module.css';
+
+const AuthForm = ({ type, validationSchema, initialValues, onSubmit }) => {
+    return (
+        <div className={`${type === 'register' ? style.register : style.login} ${style.formWrapper}`}>
+            <Formik validationSchema={validationSchema} initialValues={initialValues} onSubmit={onSubmit}>
+                {({ values: { confirmPassword, password } }) => (
+                    <Form className={style.form}>
+                        {type == 'register' && <CustomField type="text" name="username" placeholder="Name" />}
+                        <CustomField type="text" name="email" placeholder="E-mail" />
+                        <CustomField type="password" name="password" placeholder="Password" />
+                        {type === 'register' && <CustomField type="password" name="confirmPassword" placeholder="Confirm password" />}
+                        {type === 'register' && <Bar password={password} confirmPassword={confirmPassword} />}
+
+                        <button className={style.button_main} type="submit">
+                            {type === 'register' ? 'Register' : 'Login'}
+                        </button>
+
+                        <Link to={type === 'register' ? '/login' : '/register'}>
+                            <button className={style.button_secondary} type="submit">
+                                {type === 'register' ? 'Login' : 'Register'}
+                            </button>
+                        </Link>
+                    </Form>
+                )}
             </Formik>
         </div>
     );
