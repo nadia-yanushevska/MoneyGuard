@@ -2,5 +2,24 @@
     display: flex;
     flex-direction: column;
 
-    width: 100%;
+    width: 715px;
+
+    color: var(--text-color);
+    font-size: 14px;
+}
+
+/* MOBILE ONLY */
+@media only screen and (max-width: 767.98px) {
+}
+/* TABLET */
+@media only screen and (min-width: 768px) {
+    .list {
+        width: 704px;
+    }
+}
+/* DESKTOP */
+@media only screen and (min-width: 1280px) {
+    .list {
+        width: 715px;
+    }
 }

@@ -1,15 +1,97 @@
-.row {
-    display: flex;
+.row:first-child {
+    text-transform: capitalize;
 }
 
-.row:first-child {
-    height: 56px;
-    display: flex;
+/* MOBILE ONLY */
+@media only screen and (max-width: 767.98px) {
+}
+/* TABLET */
+@media only screen and (min-width: 768px) {
+    .row {
+        display: flex;
+        align-items: center;
+        padding: 16px 20px;
 
-    text-transform: capitalize;
+        position: relative;
+    }
 
-    border-radius: 8px;
-    background: rgba(82, 59, 126, 0.6);
-    box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
-    backdrop-filter: blur(50px);
+    .row:first-child {
+        display: flex;
+
+        border-radius: 8px;
+        background: rgba(82, 59, 126, 0.6);
+        box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
+        backdrop-filter: blur(50px);
+        font-weight: 600;
+        font-size: 14px;
+
+        &::after {
+            display: none;
+        }
+    }
+
+    .row:last-child::after {
+        display: none;
+    }
+
+    .row::after {
+        display: block;
+        content: '';
+        width: calc(100% - 40px);
+        height: 1px;
+        background-color: rgba(255, 255, 255, 0.41);
+
+        position: absolute;
+        bottom: 0;
+    }
+
+    .row_item {
+        text-wrap: wrap;
+        margin: auto;
+    }
+
+    .row_item:first-child {
+        width: 54px;
+        margin-left: 0;
+    }
+    .row_item:nth-child(2) {
+        width: 40px;
+        text-align: center;
+    }
+    .row_item:nth-child(3) {
+        width: 77px;
+    }
+    .row_item:nth-child(4) {
+        width: 118px;
+    }
+    .row_item:nth-child(5) {
+        width: 62px;
+        text-align: center;
+    }
+    .row_item:nth-child(6) {
+        width: 100px;
+        margin-right: 0;
+    }
+
+    .btn_edit {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .edit {
+        stroke: var(--text-color);
+        size: 14px;
+        width: 14px;
+        height: 14px;
+    }
+
+    .controls {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+    }
+}
+/* DESKTOP */
+@media only screen and (min-width: 1280px) {
 }

@@ -15,9 +15,9 @@ function TransactionList() {
             {transactions.length === 0 ? (
                 <p>No transactions available.</p>
             ) : (
-                <ul className={s.list} >
-                        {transactions.map(({ id, ...item }) => {
-                        return <TransactionItem key={id} transaction={item} />;
+                <ul className={s.list}>
+                    {transactions.map(({ id, ...item }, idx) => {
+                        return <TransactionItem key={id} transaction={item} first={idx === 0} />;
                     })}
                 </ul>
             )}
