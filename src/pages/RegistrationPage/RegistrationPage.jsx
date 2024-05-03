@@ -1,6 +1,5 @@
 import * as yup from 'yup';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 
 import AuthForm from '../../components/AuthForm/AuthForm';
@@ -8,8 +7,8 @@ import { registerThunk } from '../../redux/Auth/operations';
 
 const RegistrationPage = () => {
     const dispatch = useDispatch();
-    const navigate = useNavigate();
 
+    //TODO винести в окремий файл
     const validationSchema = yup.object().shape({
         username: yup.string().min(3, 'Name must be at least 3 characters').required('Name is required'),
         email: yup.string().email('Invalid email').required('Email is required'),
@@ -26,7 +25,6 @@ const RegistrationPage = () => {
             .then(data => {
                 toast.success(`Registration is success ${data.user.name}, welcome!`);
                 console.log({ data });
-                navigate('/');
             })
             .catch(() => toast.error('Credentials invalid'));
 

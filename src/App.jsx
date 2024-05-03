@@ -13,8 +13,8 @@ import { refreshThunk } from './redux/Auth/operations';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 
-import { useMediaQuery } from 'react-responsive';
-
+import useMedia from './hooks/useMedia';
+import Balance from './components/Balance/Balance';
 {
     /* Приклад підключення іконки */
 }
@@ -23,11 +23,12 @@ import { useMediaQuery } from 'react-responsive';
 
 function App() {
     const dispatch = useDispatch();
-
     useEffect(() => {
         dispatch(refreshThunk());
     }, [dispatch]);
-    const isMobile = useMediaQuery({ query: '(max-width: 767.98px)' });
+
+    const { isMobile } = useMedia();
+
     return (
         <>
             {/* Приклад підключення іконки */}
@@ -36,7 +37,6 @@ function App() {
                 <Icon id="#icon-email" className="small"></Icon>
             </a> */}
             {/* Приклад підключення іконки */}
-
             <Routes>
                 <Route
                     path="/"
@@ -46,7 +46,19 @@ function App() {
                         </PrivateRoute>
                     }
                 >
-                    <Route index element={<Home />} />
+                    <Route
+                        index
+                        element={
+                            isMobile ? (
+                                <>
+                                    <Balance />
+                                    <Home />
+                                </>
+                            ) : (
+                                <Home />
+                            )
+                        }
+                    />
                     <Route path="statistics" element={<Statistics />} />
                     <Route path="currency" element={isMobile ? <Currency /> : <Navigate to="/" />} />
                 </Route>
