@@ -79,6 +79,7 @@ function EditTransactionForm() {
     const onSubmit = data => {
         if (!isChecked) {
             const categoryId = categories.filter(el => el.name === 'Income');
+            console.log(categoryId);
             data.categoryId = categoryId[0].id;
             data.type = 'INCOME';
         } else if (selectedOption) {
@@ -87,15 +88,26 @@ function EditTransactionForm() {
             data.amount = Math.abs(data.amount);
         }
 
+        data.type = foundObject.type;
         const originalDate = new Date(data.transactionDate);
         const formattedDate = format(originalDate, 'yyyy-MM-dd');
         data.transactionDate = formattedDate;
 
+        if (foundObject.type === 'INCOME') {
+            data.categoryId = foundObject.categoryId;
+        } else {
+            if (selectedOption) {
+                data.categoryId = selectedOption.value;
+            } else {
+                data.categoryId = foundObject.categoryId;
+            }
+            data.amount = data.amount * -1;
+        }
         delete data.switch;
         console.log(data);
         console.log(IdForEdit);
 
-        dispatch(editTransactions(IdForEdit, data));
+        dispatch(editTransactions({ id: IdForEdit, transaction: data }));
     };
 
     return (

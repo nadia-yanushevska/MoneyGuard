@@ -31,6 +31,7 @@ export const deleteTransactions = createAsyncThunk('transactions/delete', async 
 });
 
 export const editTransactions = createAsyncThunk('transactions/edit', async ({ id, transaction }, thunkApi) => {
+    console.log(id);
     try {
         const { data } = await userTransactionsApi.patch(`/api/transactions/${id}`, transaction);
         return data;

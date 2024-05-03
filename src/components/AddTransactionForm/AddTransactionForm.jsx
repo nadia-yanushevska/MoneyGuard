@@ -59,7 +59,7 @@ function AddTransactionForm() {
         } else if (selectedOption) {
             data.categoryId = selectedOption.value;
             data.type = 'EXPENSE';
-            data.amount = Math.abs(data.amount);
+            data.amount = data.amount * -1;
         }
 
         const originalDate = new Date(data.transactionDate);
