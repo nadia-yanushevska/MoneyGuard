@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { getTransactions } from '../../redux/Transactions/operations';
 import { getTransactionsCategories } from '../../redux/Statistics/operations';
+import TransactionList from '../TransactionList/TransactionList';
 
 function Home() {
     const dispatch = useDispatch();
@@ -9,7 +10,11 @@ function Home() {
         dispatch(getTransactions());
         dispatch(getTransactionsCategories());
     }, [dispatch]);
-    return <div>Home</div>;
+    return (
+        <>
+            <TransactionList />
+        </>
+    );
 }
 
 export default Home;
