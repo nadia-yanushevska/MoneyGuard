@@ -13,12 +13,21 @@ import Select from 'react-select';
 
 function AddTransactionForm() {
     const categories = useSelector(selectCategories);
+    // console.log(categories);
     const [isChecked, setIsChecked] = useState(false);
     const [startDate, setStartDate] = useState(new Date());
     const handleChange = () => {
         setIsChecked(!isChecked);
     };
+
+    const categoriesForSelect = categories.map(category => ({ value: category.id, label: category.name }));
+    // console.log(categoriesForSelect);
+
     const [selectedOption, setSelectedOption] = useState(null);
+
+    // if (!isChecked) {
+    //     setSelectedOption(null);
+    // }
 
     const currentDate = new Date(); // Получаем текущую дату и время
     const formattedDate = format(currentDate, "EEE MMM dd yyyy HH:mm:ss 'GMT'XXX (zzz)"); // Форматируем дату
@@ -45,6 +54,7 @@ function AddTransactionForm() {
     });
 
     const onSubmit = data => {
+        console.log(selectedOption);
         // '2024-05-20'
 
         if (!isChecked) {
@@ -52,20 +62,51 @@ function AddTransactionForm() {
             const categoryId = categories.filter(el => el.name === 'Income');
             console.log(categoryId[0].id);
             data.categoryId = categoryId[0].id;
-        } else {
-            const categoryId = categories.filter(el => el.name === data.category);
-            console.log(categoryId[0].id);
-            data.categoryId = categoryId[0].id;
+        } else if (selectedOption) {
+            // const categoryId = categories.filter(el => el.name === data.category);
+            // console.log(categoryId[0].id);
+            data.categoryId = selectedOption.value;
         }
 
         const originalDate = new Date(data.transactionDate);
         const formattedDate = format(originalDate, 'yyyy-MM-dd');
         data.transactionDate = formattedDate;
-
-        console.log(formattedDate); // Выведет: '2024-05-08'
+        console.log(data);
+        // console.log(formattedDate); // Выведет: '2024-05-08'
         const { category, ...income } = data;
-        isChecked ? console.log(data) : console.log(income);
-        console.log(isChecked);
+        // isChecked ? console.log(data) : console.log(income);
+        // console.log(isChecked);
+    };
+
+    const customStyles = {
+        control: (provided, state) => ({
+            // class attribute : class=" css-i32vvf-control"
+            ...provided,
+            background: 'transparent',
+            color: 'transparent',
+            display: 'flex',
+            flexWrap: 'nowrap',
+            borderColor: 'transparent',
+            outline: 'transparent',
+        }),
+        valueContainer: val => ({
+            ...val,
+            color: 'red',
+        }),
+        placeholder: provider => ({
+            ...provider,
+            color: 'rgba(255, 255, 255, 0.60)',
+        }),
+        menu: provided => ({
+            // 'menu' is from the div class too.
+            ...provided,
+            background: 'linear-gradient(0deg, rgba(83, 61, 186, 0.70) 0%, rgba(80, 48, 154, 0.70) 43.14%, rgba(106, 70, 165, 0.52) 73.27%, rgba(133, 93, 175, 0.13) 120.03%)',
+        }),
+        indicatorSeparator: () => {},
+        dropdownIndicator: (provider, state) => ({
+            ...provider,
+            color: state.isFocused ? 'black' : 'black',
+        }),
     };
 
     return (
@@ -121,13 +162,22 @@ function AddTransactionForm() {
             </div>
             {isChecked && (
                 <div className={s.comment}>
-                    <select className={s.select_style} {...register('category')} type="text" className={s.input} placeholder="Select a category" autoComplete="off">
+                    {/* <select className={s.select_style} {...register('category')} type="text" className={s.input} placeholder="Select a category" autoComplete="off">
                         {categories.map(item => (
                             <option key={item.id} className={s.select}>
                                 {item.name}
                             </option>
                         ))}
-                    </select>
+                    </select> */}
+                    <Select
+                        classNamePrefix="select"
+                        // {...register('category')}
+                        styles={customStyles}
+                        defaultValue={selectedOption}
+                        onChange={setSelectedOption}
+                        options={categoriesForSelect}
+                        placeholder="Select a category"
+                    />
                 </div>
             )}
             <div className={s.sum_data_wrap}>
