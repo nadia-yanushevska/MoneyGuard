@@ -18,7 +18,7 @@ function TransactionList() {
             ) : (
                 <ul className={s.list}>
                     {transactions.map(({ id, ...item }, idx) => {
-                        console.log(id);
+                        // console.log(id);
                         return <TransactionItem key={id} id={id} transaction={item} first={idx === 0} />;
                     })}
                 </ul>

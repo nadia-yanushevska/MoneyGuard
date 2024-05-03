@@ -5,14 +5,21 @@ import s from './DashboardPage.module.css';
 import Currency from '../../components/Currency/Currency';
 import useMedia from '../../hooks/useMedia';
 import Balance from '../../components/Balance/Balance';
+import ModalAddTransaction from '../../components/ModalAddTransaction/ModalAddTransaction';
+import ModalEditTransaction from '../../components/ModalEditTransaction/ModalEditTransaction';
+import { useSelector } from 'react-redux';
+import { selectIsEditModalOpen } from '../../redux/Modals/slice';
 
 function DashboardPage() {
     const { isMobile } = useMedia();
+    const isEditOpen = useSelector(selectIsEditModalOpen);
+    console.log(isEditOpen);
     return (
         <>
             <Header />
             {isMobile && <Navigation />}
-
+            {/* <ModalAddTransaction /> */}
+            {isEditOpen && <ModalEditTransaction />}
             <div className={s.container}>
                 <div className={s.column_narrow}>
                     <Navigation />

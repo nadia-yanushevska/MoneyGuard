@@ -6,10 +6,12 @@ import s from './TransactionItem.module.css';
 import { getStyleByType } from '../../helpers/transactionsFormatter';
 import { useDispatch } from 'react-redux';
 import { deleteTransactions } from '../../redux/Transactions/operations';
+import { openEditModal, takeTransactionData, addEditId } from '../../redux/Modals/slice';
 
 function TransactionItem({ transaction, id, first = false }) {
     const dispatch = useDispatch();
     const { isMobile } = useMedia();
+    const idForModal = id;
     const style = getStyleByType(transaction.type);
 
     return isMobile ? (
@@ -60,7 +62,9 @@ function TransactionItem({ transaction, id, first = false }) {
                         type="button"
                         className={s.btn_edit}
                         onClick={() => {
-                            // тут відкриття модального вікна і передавання id
+                            const newId = idForModal;
+                            dispatch(addEditId(newId));
+                            dispatch(openEditModal());
                         }}
                     >
                         <Icon id="#icon-pen" className={s.edit}></Icon>
