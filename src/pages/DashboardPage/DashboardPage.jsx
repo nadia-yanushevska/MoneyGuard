@@ -15,10 +15,10 @@ function DashboardPage() {
 
             <div className={s.container}>
                 {/*TODO if location is home */}
-                {isMobile && <div className={s.temp}>Balance</div>}
+                {isMobile && <div>Balance</div>}
                 <div className={s.column_narrow}>
                     {!isMobile && <Navigation />}
-                    <div className={s.temp}>Balance</div>
+                    <div>Balance</div>
                     <Currency />
                 </div>
                 <div className={`${s.column} ${s.temp_1}`}>
