@@ -18,7 +18,7 @@ function DashboardPage() {
                     <div>Balance</div>
                     <Currency />
                 </div>
-                <div className={`${s.column} ${s.temp_1}`}>
+                <div className={`${s.column}`}>
                     <Outlet />
                 </div>
             </div>
