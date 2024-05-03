@@ -3,6 +3,8 @@
     align-items: center;
     padding: 12px 20px;
 
+    color: var(--text-color);
+
     position: relative;
 }
 
@@ -40,6 +42,19 @@
         height: 293px;
         border-radius: 10px;
         background-color: rgba(255, 255, 255, 0.1);
+        position: relative;
+        overflow: hidden;
+
+        &::before {
+            display: block;
+            content: '';
+            width: 5px;
+            height: 100%;
+            background-color: currentColor;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
     }
     .row {
         justify-content: space-between;
@@ -75,6 +90,7 @@
     .row_item {
         text-wrap: wrap;
         margin: auto;
+        color: var(--text-color);
     }
 
     .row_item:first-child {
@@ -94,6 +110,8 @@
     .row_item:nth-child(5) {
         width: 62px;
         text-align: center;
+        font-weight: 600;
+        color: currentColor;
     }
     .row_item:nth-child(6) {
         width: 100px;

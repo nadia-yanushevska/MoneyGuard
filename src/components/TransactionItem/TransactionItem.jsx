@@ -3,11 +3,17 @@ import useMedia from '../../hooks/useMedia';
 import { Icon } from '../../Icons';
 
 import s from './TransactionItem.module.css';
+import { getStyleByType } from '../../helpers/transactionsFormatter';
+import { useDispatch } from 'react-redux';
+import { deleteTransactions } from '../../redux/Transactions/operations';
 
-function TransactionItem({ transaction, first = false }) {
+function TransactionItem({ transaction, id, first = false }) {
+    const dispatch = useDispatch();
     const { isMobile } = useMedia();
+    const style = getStyleByType(transaction.type);
+
     return isMobile ? (
-        <ul className={s.card}>
+        <ul className={s.card} style={style}>
             {[...Object.keys(transaction)].map((tKey, idx) => {
                 return (
                     <li key={idx} className={s.row}>
@@ -41,7 +47,7 @@ function TransactionItem({ transaction, first = false }) {
                     <li className={s.row_item}></li>
                 </ul>
             )}
-            <ul className={s.row}>
+            <ul className={s.row} style={style}>
                 {[...Object.values(transaction)].map((value, idx) => {
                     return (
                         <li key={idx} className={s.row_item}>
@@ -53,7 +59,7 @@ function TransactionItem({ transaction, first = false }) {
                     <button type="button" className={s.btn_edit}>
                         <Icon id="#icon-pen" className={s.edit}></Icon>
                     </button>
-                    <button type="button" className="btn_delete">
+                    <button type="button" className="btn_delete" onClick={() => dispatch(deleteTransactions(id))}>
                         Delete
                     </button>
                 </li>

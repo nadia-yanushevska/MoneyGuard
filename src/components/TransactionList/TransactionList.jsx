@@ -17,7 +17,7 @@ function TransactionList() {
             ) : (
                 <ul className={s.list}>
                     {transactions.map(({ id, ...item }, idx) => {
-                        return <TransactionItem key={id} transaction={item} first={idx === 0} />;
+                        return <TransactionItem key={id} id={id} transaction={item} first={idx === 0} />;
                     })}
                 </ul>
             )}

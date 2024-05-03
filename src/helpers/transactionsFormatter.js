@@ -5,7 +5,7 @@ export function getFormattedTransactions(transactions, categories) {
 }
 function getFormattedTransaction(transaction, categories) {
     const { transactionDate: date, amount: sum, categoryId, type, comment, id } = transaction;
-    const newTransaction = { id, date, type: type === 'EXPENSE' ? '-' : '+', category: getCategoryName(categoryId, categories), comment, sum };
+    const newTransaction = { id, date, type: type === 'EXPENSE' ? '-' : '+', category: getCategoryName(categoryId, categories), comment, sum: Math.abs(sum) };
     return newTransaction;
 }
 
@@ -16,4 +16,11 @@ function getCategoryName(id, categories) {
 
 export function getHeadTransaction() {
     return { id: nanoid(), date: 'date', type: 'type', category: 'category', comment: 'comment', sum: 'sum' };
+}
+
+export function getStyleByType(type) {
+    const currentColor = type === '-' ? 'var(--red-color)' : 'var(--yellow-color)';
+    return {
+        color: currentColor,
+    };
 }
