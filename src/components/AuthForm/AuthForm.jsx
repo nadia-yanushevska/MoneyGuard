@@ -1,7 +1,7 @@
 import { Formik, Form } from 'formik';
-// import PasswordStrengthBar from 'react-password-strength-bar';
 import { Link } from 'react-router-dom';
 
+import { Icon } from '../../Icons';
 import CustomField from '../CustomField/CustomField';
 import Bar from '../Bar/Bar';
 
@@ -13,6 +13,7 @@ const AuthForm = ({ type, validationSchema, initialValues, onSubmit }) => {
             <Formik validationSchema={validationSchema} initialValues={initialValues} onSubmit={onSubmit}>
                 {({ values: { confirmPassword, password } }) => (
                     <Form className={style.form}>
+                        <Icon id="#icon-logo_mobile" className={style.icon_mob}></Icon>
                         {type == 'register' && <CustomField type="text" name="username" placeholder="Name" />}
                         <CustomField type="text" name="email" placeholder="E-mail" />
                         <CustomField type="password" name="password" placeholder="Password" />

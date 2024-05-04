@@ -1,20 +1,23 @@
+
+
 .input {
     display: flex;
     flex-direction: column;
     margin-top: 35px;
     width: 280px;
-    padding: 5px 0;
-
+    padding: 5px 0 5px 55px;
     border: none;
     outline: none;
-    background-color: transparent;
+    background-color: transparent ;
     border-bottom: 1px solid #ccc;
     color:  var(--text-rgba);
-    padding-left: 50px;
-
     font-size: 18px;
+    
 }
 
+.field{
+   position: relative;
+  }
 
 @media screen and (min-width: 768px) {
 .input {
@@ -22,27 +25,37 @@
 }
 }
 
-.label{
-    font-size: 10px;
-    color: var( --red-color);
-}
-
-
-
 .input::placeholder {
     font-size: 18px;
     color: var(--text-rgba);
 }
 
-.buttonPassword {  
+.icon {
     position: absolute;
-    top: 50%;
-    right: 20px;
-    transform: translateY(-50%);
-    background: transparent;
-    border: none;
-    outline: none;
-    color: var(--text-rgba);
-    cursor: pointer;
+    left: 10px;
+    top: 1px;
+    width: 24px;
+    height: 24px;
+    fill: var(--text-rgba);
 }
 
+ @media screen and (min-width: 768px) {
+.icon {
+  top: 37px;
+}
+}
+
+.iconPassword{
+    cursor: pointer
+}
+
+.errorMessage{
+  color: var(--red-color);
+  font-size: 12px;
+
+}
+
+
+
+
+ 
