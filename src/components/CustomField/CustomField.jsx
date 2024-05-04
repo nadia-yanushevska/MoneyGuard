@@ -2,22 +2,26 @@ import { ErrorMessage, Field } from 'formik';
 import { useState } from 'react';
 
 import style from './customField.module.css';
-// import { Icon } from '../../Icons';
+import { Icon } from '../../Icons';
+
+import Icons from '../../sprite.svg';
 
 const CustomField = ({ type, name, placeholder }) => {
     const [showPassword, setShowPassword] = useState(false);
     return (
-        <label className={style.label}>
-            <div>
+        <div className={style.field}>
+            <label className={style.label}>
                 <Field className={style.input} type={showPassword ? 'text' : type} name={name} placeholder={placeholder} />
-                {type === 'password' && (
-                    <button className={style.buttonPassword} type="button" onClick={() => setShowPassword(!showPassword)}>
-                        {/* <Icon id={showPassword ? 'eye-slash' : 'eye'} className={style.icon} size="18" /> */}
-                    </button>
+                {type === 'password' ? (
+                    <svg className={`${style.icon} ${style.iconPassword}`} onClick={() => setShowPassword(!showPassword)}>
+                        <use href={`${Icons}${showPassword ? '#icon-eye-blocked' : '#icon-eye'}`} />
+                    </svg>
+                ) : (
+                    <Icon id={name === 'email' ? '#icon-email' : '#icon-user'} className={style.icon} />
                 )}
-            </div>
-            <ErrorMessage name={name} component={'p'} />
-        </label>
+            </label>
+            <ErrorMessage name={name} component={'p'} className={style.errorMessage} />
+        </div>
     );
 };
 
