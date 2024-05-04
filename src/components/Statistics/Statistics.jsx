@@ -22,6 +22,7 @@ function Statistics() {
     ...item,
     color: coloredCategoriesMap.get(item.name),
   }));
+  
   const dispatch = useDispatch();
   useEffect(() => {
       dispatch(getTransactionsSummaryByPeriod(getCurrentMonthYear()));
