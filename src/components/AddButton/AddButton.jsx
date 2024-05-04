@@ -1,19 +1,24 @@
-import { Icon } from '../../Icons'
-// import { useToggle } from '../../hooks/useToggle'
-import s from './AddButton.module.css'
+import { Icon } from '../../Icons';
+import s from './AddButton.module.css';
+import { openAddModal } from '../../redux/Modals/slice';
+import { useDispatch } from 'react-redux';
 
 const AddButton = () => {
-    // const {isOpen, closeModal, openModal} = useToggle()
-  return (
-    <div className={s.wrap}>
-          <button className={s.btn} type="button" onClick = {()=>{}}> 
-             <Icon id="#icon-plus" className={s.icon}></Icon>
-          </button>
-          {/* {isOpen &&
-              <Modal title='Add Transaction' closeModal={closeModal}></Modal>} */}
-          
-    </div>
-  )
-}
+    const dispatch = useDispatch();
 
-export default AddButton
+    return (
+        <div className={s.wrap}>
+            <button
+                className={s.btn}
+                type="button"
+                onClick={() => {
+                    dispatch(openAddModal());
+                }}
+            >
+                <Icon id="#icon-plus" className={s.icon}></Icon>
+            </button>
+        </div>
+    );
+};
+
+export default AddButton;

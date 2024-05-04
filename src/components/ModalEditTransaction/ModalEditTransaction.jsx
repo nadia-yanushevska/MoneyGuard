@@ -7,7 +7,6 @@ import { closeEditModal, selectIsEditModalOpen } from '../../redux/Modals/slice'
 
 import s from './ModalEditTransaction.module.css';
 
-// Устанавливаем appElement, чтобы React Modal знал, куда рендерить модальное окно
 Modal.setAppElement('#root');
 
 function ModalEditTransaction() {
@@ -19,12 +18,7 @@ function ModalEditTransaction() {
     }, [dispatch]);
 
     return (
-        <Modal
-            isOpen={isOpenModal} // Здесь можно добавить состояние, чтобы управлять открытием и закрытием модального окна
-            className={s.modal}
-            overlayClassName={s.modal_Wrap}
-            onRequestClose={() => dispatch(closeEditModal())}
-        >
+        <Modal isOpen={isOpenModal} className={s.modal} overlayClassName={s.modal_Wrap} onRequestClose={() => dispatch(closeEditModal())}>
             <div className={s.modal_close} onClick={() => dispatch(closeEditModal())}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
                     <path d="M1 1L17 17" stroke="#FBFBFB" />
