@@ -68,9 +68,9 @@ function AddTransactionForm() {
         data.transactionDate = formattedDate;
 
         delete data.switch;
-        console.log(data);
 
         dispatch(addTransactions(data));
+        dispatch(closeAddModal());
     };
 
     return (
