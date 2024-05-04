@@ -1,16 +1,21 @@
 .doughnut {
-  width: 288px;
-  height: 288px;
+  width: 280px;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  @media (max-width: 1279px) {
+  @media (min-width: 767px) {
     width: 336px;
     height: 336px;
+
+
   }
 
-  @media (max-width: 767px) {
-    width: 280px;
-    height: 280px;
+  @media (min-width: 1279px) {
+    width: 288px;
+    height: 288px;
+
   }
 
 }
@@ -22,6 +27,3 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
-
-
-

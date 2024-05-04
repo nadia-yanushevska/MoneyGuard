@@ -8,8 +8,8 @@ import { selectSummary } from '../../redux/Statistics/selectors';
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const options = {
-  cutout: '75%', 
-}
+  cutout: '75%',
+};
 
 const ChartDoughnut = ({ data, expenseTotal, incomeTotal }) => {
   const total = useSelector(selectSummary);
@@ -30,19 +30,16 @@ const ChartDoughnut = ({ data, expenseTotal, incomeTotal }) => {
           <p>Add some expenses and incomes to see the chart</p>
           <p>Your balance is ₴ {total} </p>
         </div>
-      ))
-      || (!expenseTotal && incomeTotal && (
-      <div>
-        <p>Add some expenses</p>
-        <p>Your income is ₴ {incomeTotal}</p>
-      </div>
-      )) || (
-        <div className={s.balance}>
-         ₴ {Math.abs(expenseTotal).toFixed(2)} 
-        </div>
-      )}
-      <Doughnut data={doughnutData} options={options}/>
-
+      )) ||
+        (!expenseTotal && incomeTotal && (
+          <div>
+            <p>Add some expenses</p>
+            <p>Your income is ₴ {incomeTotal}</p>
+          </div>
+        )) || (
+          <div className={s.balance}>₴ {Math.abs(expenseTotal).toFixed(2)}</div>
+        )}
+      <Doughnut data={doughnutData} options={options} />
     </div>
   );
 };

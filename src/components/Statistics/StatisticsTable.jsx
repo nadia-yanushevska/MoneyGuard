@@ -1,6 +1,7 @@
 import s from './StatisticsTable.module.css';
 
 const StatisticsTable = ({ data, expenseTotal, incomeTotal }) => {
+   
   return (
     <div>
       <div className={s.table_head}>
@@ -34,7 +35,7 @@ const StatisticsTable = ({ data, expenseTotal, incomeTotal }) => {
         </div>
         <div className={s.table_bottom}>
           <p>Income:</p>
-          <span className={s.income}>{incomeTotal.toFixed(2)}</span>
+          <span className={s.income}>{Math.abs(incomeTotal).toFixed(2)}</span>
         </div>
       </div>
     </div>
