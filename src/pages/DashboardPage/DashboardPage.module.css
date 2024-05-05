@@ -24,6 +24,9 @@
     .column_narrow {
         padding-top: 0px;
     }
+    .column {
+        overflow: hidden;
+    }
 }
 
 /* TABLET ONLY */

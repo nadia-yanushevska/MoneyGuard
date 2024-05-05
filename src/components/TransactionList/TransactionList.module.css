@@ -16,12 +16,15 @@
 @media only screen and (min-width: 768px) {
     .list {
         width: 704px;
-        overflow: scroll;
+        max-height: calc(100vh - 475px);
+        overflow-y: scroll;
+        margin: auto;
     }
 }
 /* DESKTOP */
 @media only screen and (min-width: 1280px) {
     .list {
         width: 715px;
+        max-height: calc(100vh - 176px);
     }
 }
