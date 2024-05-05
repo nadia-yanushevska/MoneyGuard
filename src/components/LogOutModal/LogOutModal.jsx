@@ -2,10 +2,10 @@ import styles from './LogOutModal.module.css';
 import { useMediaQuery } from 'react-responsive';
 
 import FormButton from '../common/FormButton/FormButton';
-import Logo from '../common/Logo/Logo';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { logoutThunk } from '../../redux/Auth/operations';
+import { Icon } from '../../Icons';
 
 const LogOutModal = ({ closeModal }) => {
   const dispatch = useDispatch();
@@ -33,7 +33,7 @@ const LogOutModal = ({ closeModal }) => {
   return (
     <div className={styles.logOutModal} onClick={closeOnClickOutside}>
       <div className={styles.modalContent}>
-        {screenCondition && <Logo variant={'formLogo'} />}
+        {screenCondition && <Icon id="#icon-logo_tab_desk" className={styles.homeIcon} />}
 
         <p>Are you sure you want to log out?</p>
 
