@@ -2,6 +2,7 @@
     display: flex;
     align-items: center;
     padding: 12px 20px;
+    gap: 8px;
 
     color: var(--text-color);
 
@@ -91,11 +92,13 @@
         text-wrap: wrap;
         margin: auto;
         color: var(--text-color);
+        flex-grow: 1;
     }
 
     .row_item:first-child {
         width: 54px;
         margin-left: 0;
+        flex-grow: 3;
     }
     .row_item:nth-child(2) {
         width: 40px;
@@ -103,9 +106,11 @@
     }
     .row_item:nth-child(3) {
         width: 77px;
+        flex-grow: 2;
     }
     .row_item:nth-child(4) {
         width: 118px;
+        flex-grow: 2;
     }
     .row_item:nth-child(5) {
         width: 62px;
