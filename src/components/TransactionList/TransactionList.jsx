@@ -1,10 +1,11 @@
 import { useSelector } from 'react-redux';
-import s from './TransactionList.module.css';
 import { selectTransError, selectTransLoading, selectTransactions } from '../../redux/Transactions/selectors';
-import TransactionItem from '../TransactionItem/TransactionItem';
 import { selectCategories } from '../../redux/Statistics/selectors';
 import { getFormattedTransactions } from '../../helpers/transactionsFormatter';
+
+import s from './TransactionList.module.css';
 import Loader from '../Loader/Loader';
+import TransactionItem from '../TransactionItem/TransactionItem';
 
 function TransactionList() {
     const reduxTransactions = useSelector(selectTransactions);

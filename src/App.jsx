@@ -1,26 +1,21 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
-import './App.css';
-import DashboardPage from './pages/DashboardPage/DashboardPage';
-import PublicRoute from './routes/PublicRoute';
-import PrivateRoute from './routes/PrivateRoute';
-import Statistics from './components/Statistics/Statistics';
-import Currency from './components/Currency/Currency';
-import Home from './components/Home/Home';
-import LoginPage from './pages/LoginPage/LoginPage';
-import RegistrationPage from './pages/RegistrationPage/RegistrationPage';
-
 import { refreshThunk } from './redux/Auth/operations';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 
 import useMedia from './hooks/useMedia';
+import './App.css';
+
+import PublicRoute from './routes/PublicRoute';
+import PrivateRoute from './routes/PrivateRoute';
+import DashboardPage from './pages/DashboardPage/DashboardPage';
+import LoginPage from './pages/LoginPage/LoginPage';
+import RegistrationPage from './pages/RegistrationPage/RegistrationPage';
+
+import Home from './components/Home/Home';
+import Statistics from './components/Statistics/Statistics';
 import Balance from './components/Balance/Balance';
-
-{
-    /* Приклад підключення іконки */
-}
-
-// import { Icon } from './Icons';
+import Currency from './components/Currency/Currency';
 
 function App() {
     const dispatch = useDispatch();
@@ -32,12 +27,6 @@ function App() {
 
     return (
         <>
-            {/* Приклад підключення іконки */}
-
-            {/* <a href="./sprite.svg" className="red">
-                <Icon id="#icon-email" className="small"></Icon>
-            </a> */}
-            {/* Приклад підключення іконки */}
             <Routes>
                 <Route
                     path="/"

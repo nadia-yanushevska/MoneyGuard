@@ -1,11 +1,12 @@
 import { Outlet } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { selectIsEditModalOpen, selectIsAddModalOpen } from '../../redux/Modals/slice';
-import useMedia from '../../hooks/useMedia';
-import s from './DashboardPage.module.css';
-
-import Header from '../../components/Header/Header';
 import { Suspense, lazy } from 'react';
+import { useSelector } from 'react-redux';
+
+import useMedia from '../../hooks/useMedia';
+import { selectIsEditModalOpen, selectIsAddModalOpen } from '../../redux/Modals/slice';
+
+import s from './DashboardPage.module.css';
+import Header from '../../components/Header/Header';
 import Loader from '../../components/Loader/Loader';
 
 const Navigation = lazy(() => import('../../components/Navigation/Navigation'));
