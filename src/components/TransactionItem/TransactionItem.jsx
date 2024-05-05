@@ -1,12 +1,13 @@
 import clsx from 'clsx';
-import useMedia from '../../hooks/useMedia';
-import { Icon } from '../../Icons';
-
-import s from './TransactionItem.module.css';
-import { getStyleByType } from '../../helpers/transactionsFormatter';
 import { useDispatch } from 'react-redux';
+
+import useMedia from '../../hooks/useMedia';
 import { deleteTransactions } from '../../redux/Transactions/operations';
 import { openEditModal, addEditId } from '../../redux/Modals/slice';
+import { getStyleByType } from '../../helpers/transactionsFormatter';
+
+import s from './TransactionItem.module.css';
+import { Icon } from '../../Icons';
 
 function TransactionItem({ transaction, id, first = false }) {
     const dispatch = useDispatch();
