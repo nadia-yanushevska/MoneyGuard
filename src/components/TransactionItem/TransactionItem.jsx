@@ -6,13 +6,23 @@ import s from './TransactionItem.module.css';
 import { getStyleByType } from '../../helpers/transactionsFormatter';
 import { useDispatch } from 'react-redux';
 import { deleteTransactions } from '../../redux/Transactions/operations';
-import { openEditModal, takeTransactionData, addEditId } from '../../redux/Modals/slice';
+import { openEditModal, addEditId } from '../../redux/Modals/slice';
 
 function TransactionItem({ transaction, id, first = false }) {
     const dispatch = useDispatch();
     const { isMobile } = useMedia();
     const idForModal = id;
     const style = getStyleByType(transaction.type);
+
+    function onEdit() {
+        const newId = idForModal;
+        dispatch(addEditId(newId));
+        dispatch(openEditModal());
+    }
+
+    function OnDelete() {
+        dispatch(deleteTransactions(id));
+    }
 
     return isMobile ? (
         <ul className={s.card} style={style}>
@@ -26,10 +36,10 @@ function TransactionItem({ transaction, id, first = false }) {
             })}
 
             <li className={s.row}>
-                <button type="button" className={clsx(s.btn_edit, s.row_item)}>
+                <button type="button" className={clsx(s.btn_edit, s.row_item)} onClick={onEdit}>
                     <Icon id="#icon-pen" className={s.edit}></Icon>
                 </button>
-                <button type="button" className={clsx(s.btn_edit, s.row_item, 'btn_delete')}>
+                <button type="button" className={clsx(s.btn_edit, s.row_item, 'btn_delete')} onClick={OnDelete}>
                     Delete
                 </button>
             </li>
@@ -58,18 +68,10 @@ function TransactionItem({ transaction, id, first = false }) {
                     );
                 })}
                 <li className={clsx(s.row_item, s.controls)}>
-                    <button
-                        type="button"
-                        className={s.btn_edit}
-                        onClick={() => {
-                            const newId = idForModal;
-                            dispatch(addEditId(newId));
-                            dispatch(openEditModal());
-                        }}
-                    >
+                    <button type="button" className={s.btn_edit} onClick={onEdit}>
                         <Icon id="#icon-pen" className={s.edit}></Icon>
                     </button>
-                    <button type="button" className="btn_delete" onClick={() => dispatch(deleteTransactions(id))}>
+                    <button type="button" className="btn_delete" onClick={OnDelete}>
                         Delete
                     </button>
                 </li>
