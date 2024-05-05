@@ -3,6 +3,9 @@
     flex-direction: row;
     gap: 38px;
     justify-content: center;
+    margin-top: 12px;
+
+    grid-area: navigation;
 }
 
 .linkText {
@@ -42,6 +45,7 @@
         gap: 12px;
         align-self: start;
         margin-left: 30px;
+        margin-top: auto;
     }
 
     .navLink {
