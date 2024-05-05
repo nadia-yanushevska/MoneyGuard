@@ -6,11 +6,16 @@ import { selectIsLoggedIn, selectUser } from '../../redux/Auth/selectors';
 import { Link } from 'react-router-dom';
 import useMedia from '../../hooks/useMedia';
 
+import { useToggle } from "../../hooks/useToggle";
+import LogOutModal from '../LogOutModal/LogOutModal';
+
 function Header() {
     const isLogged = useSelector(selectIsLoggedIn)
     const user = useSelector(selectUser)
     const dispatch = useDispatch()
-    const { isMobile} = useMedia()
+    const { isMobile } = useMedia()
+
+    const { openModal, isOpen, closeModal } = useToggle();
 
     return (
         <header className={s.header}>
@@ -28,11 +33,12 @@ function Header() {
                     </li>
                     <li>
                         <div className={s.wrap}>
-                            <button className={s.btn} onClick={() => { dispatch(logoutThunk()) }} >
+                            <button className={s.btn} onClick={openModal} >
                                 <Icon id="#icon-exit" className={s.exit}>
                                 </Icon>
                                 {isMobile ? null : 'Exit'}
                             </button>
+                            {isOpen && <LogOutModal closeModal={closeModal}/>}
                         </div>
                     </li>
                 </ul>
