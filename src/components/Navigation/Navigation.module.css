@@ -108,14 +108,14 @@
 }
 
 @media (hover: hover) {
-    .active .linkIcon:hover,
-    .active .linkIcon:focus {
-        &::before {
+    .active:hover,
+    .active:focus {
+        & .linkIcon::before {
             background-color: rgb(74, 86, 226);
         }
     }
-    .linkIcon:hover,
-    .linkIcon:focus {
+    .navLink:hover,
+    .navLink:focus {
         & .homeIcon,
         .graphicIcon,
         .dollarIcon {
