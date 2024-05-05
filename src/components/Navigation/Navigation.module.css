@@ -23,8 +23,8 @@
     position: relative;
 }
 
-.navLink.active .linkIcon::before {
-    background-color: rgba(255, 255, 255, 1);
+.active .linkIcon::before {
+    background-color: var(--text-color);
 }
 
 .linkIcon::before {
@@ -46,10 +46,10 @@
     fill: rgba(255, 255, 255, 0.4);
 }
 
-.navLink.active .homeIcon,
-.navLink.active .graphicIcon,
-.navLink.active .dollarIcon {
-    fill: rgba(74, 86, 226, 1);
+.active .homeIcon,
+.active .graphicIcon,
+.active .dollarIcon {
+    fill: rgb(74, 86, 226);
 }
 
 @media screen and (min-width: 768px) {
@@ -84,7 +84,6 @@
         font-weight: 700;
         font-size: 20px;
         transition: all 0.5s ease 0s;
-        cursor: not-allowed;
     }
 
     .navLink.active .linkIcon {
@@ -97,13 +96,30 @@
     }
 
     .linkIcon {
-        width: 24px;
-        height: 24px;
+        width: 32px;
+        height: 32px;
     }
 }
 
 @media screen and (min-width: 1280px) {
     .navigation {
         margin-bottom: 28px;
+    }
+}
+
+@media (hover: hover) {
+    .active .linkIcon:hover,
+    .active .linkIcon:focus {
+        &::before {
+            background-color: rgb(74, 86, 226);
+        }
+    }
+    .linkIcon:hover,
+    .linkIcon:focus {
+        & .homeIcon,
+        .graphicIcon,
+        .dollarIcon {
+            fill: var(--text-color);
+        }
     }
 }
