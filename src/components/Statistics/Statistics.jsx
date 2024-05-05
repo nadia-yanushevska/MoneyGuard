@@ -21,11 +21,12 @@ function Statistics() {
     ...item,
     color: coloredCategoriesMap.get(item.name),
   }));
-
+  
   const dispatch = useDispatch();
   useEffect(() => {
       dispatch(getTransactionsSummaryByPeriod(getCurrentMonthYear()));
   }, [dispatch]);
+  //TODO: Change div-s to components, remove temp classes
   return (
     <div className={s.container}>
       <div className={s.column}>

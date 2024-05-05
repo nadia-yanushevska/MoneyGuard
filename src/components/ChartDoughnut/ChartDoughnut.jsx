@@ -13,12 +13,17 @@ const options = {
 
 const ChartDoughnut = ({ data, expenseTotal, incomeTotal }) => {
   const total = useSelector(selectSummary);
+  
   const doughnutData = {
     datasets: [
       {
-        data: data.map(expense => expense.total),
+        data: !data.length ? [0] : data.map(expense => expense.total),
+        
         backgroundColor: data.map(expense => expense.color),
         borderColor: data.map(expense => expense.color),
+        borderWidth: 1,
+        borderJoinStyle: 'round',
+        borderAlign: 'inner',
       },
     ],
   };
