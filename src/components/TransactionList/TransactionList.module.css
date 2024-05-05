@@ -16,7 +16,7 @@
 @media only screen and (min-width: 768px) {
     .list {
         width: 704px;
-        max-height: calc(100vh - 475px);
+        max-height: calc(100vh - 500px);
         overflow-y: scroll;
         margin: auto;
     }
@@ -25,6 +25,6 @@
 @media only screen and (min-width: 1280px) {
     .list {
         width: 715px;
-        max-height: calc(100vh - 176px);
+        max-height: calc(100vh - 224px);
     }
 }
