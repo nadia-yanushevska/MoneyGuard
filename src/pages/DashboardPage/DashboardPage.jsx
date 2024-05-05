@@ -1,14 +1,18 @@
 import { Outlet } from 'react-router-dom';
-import Header from '../../components/Header/Header';
-import Navigation from '../../components/Navigation/Navigation';
-import s from './DashboardPage.module.css';
-import Currency from '../../components/Currency/Currency';
-import useMedia from '../../hooks/useMedia';
-import Balance from '../../components/Balance/Balance';
-import ModalAddTransaction from '../../components/ModalAddTransaction/ModalAddTransaction';
-import ModalEditTransaction from '../../components/ModalEditTransaction/ModalEditTransaction';
 import { useSelector } from 'react-redux';
 import { selectIsEditModalOpen, selectIsAddModalOpen } from '../../redux/Modals/slice';
+import useMedia from '../../hooks/useMedia';
+import s from './DashboardPage.module.css';
+
+import Header from '../../components/Header/Header';
+import { Suspense, lazy } from 'react';
+import Loader from '../../components/Loader/Loader';
+
+const Navigation = lazy(() => import('../../components/Navigation/Navigation'));
+const Currency = lazy(() => import('../../components/Currency/Currency'));
+const Balance = lazy(() => import('../../components/Balance/Balance'));
+const ModalAddTransaction = lazy(() => import('../../components/ModalAddTransaction/ModalAddTransaction'));
+const ModalEditTransaction = lazy(() => import('../../components/ModalEditTransaction/ModalEditTransaction'));
 
 function DashboardPage() {
     const { isMobile } = useMedia();
@@ -19,19 +23,21 @@ function DashboardPage() {
     return (
         <>
             <Header />
-            {isMobile && <Navigation />}
-            {isAddOpen && <ModalAddTransaction />}
-            {isEditOpen && <ModalEditTransaction />}
-            <div className={s.container}>
-                <div className={s.column_narrow}>
-                    <Navigation />
-                    <Balance />
-                    <Currency />
+            <Suspense fallback={<Loader />}>
+                {isMobile && <Navigation />}
+                {isAddOpen && <ModalAddTransaction />}
+                {isEditOpen && <ModalEditTransaction />}
+                <div className={s.container}>
+                    <div className={s.column_narrow}>
+                        <Navigation />
+                        <Balance />
+                        <Currency />
+                    </div>
+                    <div className={`${s.column}`}>
+                        <Outlet />
+                    </div>
                 </div>
-                <div className={`${s.column}`}>
-                    <Outlet />
-                </div>
-            </div>
+            </Suspense>
         </>
     );
 }
