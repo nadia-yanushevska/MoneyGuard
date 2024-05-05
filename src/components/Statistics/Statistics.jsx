@@ -10,7 +10,6 @@ import { getCurrentMonthYear } from '../../helpers/dateHelper';
 
 function Statistics() {
   const transactions = useSelector(selectSummary);
-  console.log(transactions.categoriesSummary);
   const expense = transactions.categoriesSummary
     ? transactions.categoriesSummary.filter(transaction => transaction.type === 'EXPENSE')
     : [];
@@ -22,6 +21,7 @@ function Statistics() {
     ...item,
     color: coloredCategoriesMap.get(item.name),
   }));
+  
   const dispatch = useDispatch();
   useEffect(() => {
       dispatch(getTransactionsSummaryByPeriod(getCurrentMonthYear()));

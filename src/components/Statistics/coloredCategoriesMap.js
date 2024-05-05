@@ -1,7 +1,7 @@
 const coloredCategoriesMap = new Map([
     ['Main expenses', '#FED057'],
     ['Products', '#FFD8D0'],
-    ['Car', '#FD9498)'],
+    ['Car', '#FD9498'],
     ['Self care', '#C5BAFF'],
     ['Child care', '#6E78E8'],
     ['Household products', '#4A56E2'],
