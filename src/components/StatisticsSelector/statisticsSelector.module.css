@@ -1,0 +1,43 @@
+.select {
+  margin-bottom: 20px;
+ 
+}
+.selectContainer {
+  max-width: 280px;
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media only screen and (min-width: 768px) {
+  .selectContainer {
+    flex-direction: row;
+    gap: 16px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .select {
+    min-width: 160px;
+  }
+  .selectContainer {
+    max-width: 336px;
+    margin-top: 40px;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .select {
+    min-width: 180px;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .selectContainer {
+    gap: 32px;
+    margin-top: 97px;
+    max-width: 395px;
+  }
+}
+

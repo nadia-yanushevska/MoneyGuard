@@ -63,14 +63,16 @@
             <path stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="1.7778"
                 d="M1.778 30.222l28.444-28.444"></path>
         </symbol>
-        <symbol id="icon-vector-up" viewBox="0 0 32 32">
-            <path stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="1.6"
-                d="M1.6 23.2l14.4-14.4 14.4 14.4"></path>
-        </symbol>
-        <symbol id="icon-vector-down" viewBox="0 0 32 32">
-            <path stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="1.6"
-                d="M1.6 8.8l14.4 14.4 14.4-14.4"></path>
-        </symbol>
+     
+        <svg id="icon-vector-down" xmlns="http://www.w3.org/2000/svg" width="20" height="11" viewBox="0 0 20 11" fill="none">
+            <path d="M1 1L10 10L19 1" stroke="#FBFBFB"/>
+        </svg>
+        <svg id="icon-vector-up" xmlns="http://www.w3.org/2000/svg" width="20" height="11" viewBox="0 0 20 11" fill="none">
+            <path d="M19 10L10 1L1 10" stroke="#FBFBFB"/>
+        </svg>
+        <svg  xmlns="http://www.w3.org/2000/svg" width="20" height="11" viewBox="0 0 20 11" fill="none">
+            <path d="M1 1L10 10L19 1" stroke="#FBFBFB"/>
+        </svg>
         <symbol id="icon-eye-blocked" viewBox="0 0 32 32">
             <path
                 d="M29.561 0.439c-0.586-0.586-1.535-0.586-2.121 0l-6.318 6.318c-1.623-0.492-3.342-0.757-5.122-0.757-6.979 0-13.028 4.064-16 10 1.285 2.566 3.145 4.782 5.407 6.472l-4.968 4.968c-0.586 0.586-0.586 1.535 0 2.121 0.293 0.293 0.677 0.439 1.061 0.439s0.768-0.146 1.061-0.439l27-27c0.586-0.586 0.586-1.536 0-2.121zM13 10c1.32 0 2.44 0.853 2.841 2.037l-3.804 3.804c-1.184-0.401-2.037-1.521-2.037-2.841 0-1.657 1.343-3 3-3zM3.441 16c1.197-1.891 2.79-3.498 4.67-4.697 0.122-0.078 0.246-0.154 0.371-0.228-0.311 0.854-0.482 1.776-0.482 2.737 0 1.715 0.54 3.304 1.459 4.607l-1.904 1.904c-1.639-1.151-3.038-2.621-4.114-4.323z">
