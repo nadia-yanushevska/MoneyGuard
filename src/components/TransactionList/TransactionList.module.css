@@ -32,7 +32,9 @@
         width: 704px;
         max-height: calc(100vh - 500px);
         margin: auto;
+
         overflow-y: scroll;
+        scrollbar-width: thin;
     }
     .container {
         width: 704px;
