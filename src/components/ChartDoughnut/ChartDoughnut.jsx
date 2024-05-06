@@ -42,9 +42,12 @@ const ChartDoughnut = ({ data, expenseTotal, incomeTotal }) => {
             <p>Your income is ₴ {incomeTotal}</p>
           </div>
         )) || (
-          <div className={s.balance}>₴ {Math.abs(expenseTotal).toFixed(2)}</div>
-        )}
+<div>
+      <div className={s.balance}>₴ {Math.abs(expenseTotal).toFixed(2)}</div>
       <Doughnut data={doughnutData} options={options} />
+    </div>
+        )}
+      
     </div>
   );
 };
