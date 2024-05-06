@@ -8,6 +8,7 @@ import { getStyleByType } from '../../helpers/transactionsFormatter';
 
 import s from './TransactionItem.module.css';
 import { Icon } from '../../Icons';
+import { getBalanceThunk } from '../../redux/Auth/operations';
 
 function TransactionItem({ transaction, id, first = false }) {
     const dispatch = useDispatch();
@@ -21,8 +22,9 @@ function TransactionItem({ transaction, id, first = false }) {
         dispatch(openEditModal());
     }
 
-    function OnDelete() {
-        dispatch(deleteTransactions(id));
+    async function OnDelete() {
+        await dispatch(deleteTransactions(id));
+        dispatch(getBalanceThunk());
     }
 
     return isMobile ? (
