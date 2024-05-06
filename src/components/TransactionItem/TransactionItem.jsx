@@ -40,7 +40,7 @@ function TransactionItem({ transaction, id, first = false }) {
                 <button type="button" className={clsx(s.btn_edit, s.row_item)} onClick={onEdit}>
                     <Icon id="#icon-pen" className={s.edit}></Icon>
                 </button>
-                <button type="button" className={clsx(s.btn_edit, s.row_item, 'btn_delete')} onClick={OnDelete}>
+                <button type="button" className={clsx(s.colored, 'btn_delete')} onClick={OnDelete}>
                     Delete
                 </button>
             </li>
@@ -72,7 +72,7 @@ function TransactionItem({ transaction, id, first = false }) {
                     <button type="button" className={s.btn_edit} onClick={onEdit}>
                         <Icon id="#icon-pen" className={s.edit}></Icon>
                     </button>
-                    <button type="button" className="btn_delete" onClick={OnDelete}>
+                    <button type="button" className={clsx(s.colored, 'btn_delete')} onClick={OnDelete}>
                         Delete
                     </button>
                 </li>
