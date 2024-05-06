@@ -34,7 +34,7 @@ function Statistics() {
             </div>
 
             <div className={s.column}>
-                <div className={s.temp_selectors}>Selectors</div>
+                {/* <div className={s.temp_selectors}>Selectors</div> */}
                 <StatisticsSelector />
                 <StatisticsTable data={data} expenseTotal={expenseTotal} incomeTotal={incomeTotal} />
             </div>

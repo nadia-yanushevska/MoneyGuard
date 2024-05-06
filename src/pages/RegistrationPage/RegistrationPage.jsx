@@ -18,11 +18,13 @@ const RegistrationPage = () => {
 
     const handleSubmit = ({ username, email, password }, { resetForm }) => {
         dispatch(registerThunk({ username, email, password }))
-            .then(unwrapResult)
+            .unwrap()
             .then(data => {
                 toast.success(`Registration is success ${data.user.name}, welcome!`);
             })
-            .catch(console.log('ssfsdfs'));
+            .catch(() => {
+                toast.error('email or password invalid');
+            });
 
         resetForm();
     };

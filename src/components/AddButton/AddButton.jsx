@@ -15,7 +15,7 @@ const AddButton = () => {
                     dispatch(openAddModal());
                 }}
             >
-                <Icon id="#icon-plus" className={s.icon}></Icon>
+                <Icon id="#icon-plus" className={s.icon} ></Icon>
             </button>
         </div>
     );

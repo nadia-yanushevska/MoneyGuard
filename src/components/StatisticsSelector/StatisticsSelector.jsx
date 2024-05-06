@@ -17,6 +17,8 @@ function StatisticsSelector() {
 
     const [month, setMonth] = useState({ value: currentMonth, label: monthName });
     const [year, setYear] = useState({ value: currentYear, label: currentYear });
+    const [monthOptions, setMonthOptions] = useState([]);
+    console.log(monthOptions);
 
     const handleMonthChange = selectedMonth => {
         setMonth(selectedMonth);
@@ -34,20 +36,31 @@ function StatisticsSelector() {
 
     const filteredYearOptions = optionsYear.filter(option => option.value <= currentYear);
 
-    const filteredMonthOptions = optionsMonth.filter(option => {
-        if (year.value === currentYear) {
-            return option.value <= currentMonth;
-        } else {
-            return true;
-        }
-    });
+    useEffect(() => {
+        const filteredOptions = optionsMonth.filter(option => {
+            if (year.value === currentYear) {
+                return option.value <= currentMonth;
+            } else {
+                return true;
+            }
+        });
+        setMonthOptions(filteredOptions);
+    }, [year]);
+
+    // const filteredMonthOptions = optionsMonth.filter(option => {
+    //     if (year.value === currentYear) {
+    //         return option.value <= currentMonth;
+    //     } else {
+    //         return true;
+    //     }
+    // });
 
     return (
         <div className={style.selectContainer}>
             <Select
                 className={style.select}
                 styles={styleSelect}
-                options={filteredMonthOptions}
+                options={monthOptions}
                 value={month.label}
                 onChange={handleMonthChange}
                 name="optionsMonth"
