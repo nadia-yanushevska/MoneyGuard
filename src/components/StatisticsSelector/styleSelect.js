@@ -32,6 +32,7 @@ export const styleSelect = {
         borderRadius: '8px',
         boxShadow: 'none',
         backgroundColor: 'rgba(74, 86, 226, 0.10)',
+        cursor: 'pointer',
     }),
 
     singleValue: (provided, state) => {
