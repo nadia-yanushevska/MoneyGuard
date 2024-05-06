@@ -1,19 +1,17 @@
 .select {
   margin-bottom: 20px;
- 
 }
 .selectContainer {
-  max-width: 280px;
+ 
   display: flex;
   flex-direction: column;
   margin-left: auto;
   margin-right: auto;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (max-width: 768px) {
   .selectContainer {
-    flex-direction: row;
-    gap: 16px;
+   width: 280px;
   }
 }
 
@@ -22,18 +20,23 @@
     min-width: 160px;
   }
   .selectContainer {
+    flex-direction: row;
+    gap: 16px;
     max-width: 336px;
     margin-top: 40px;
   }
 }
 
-@media only screen and (min-width: 1280px) {
+/* @media only screen and (min-width: 1280px) {
   .select {
     min-width: 180px;
   }
-}
+} */
 
 @media only screen and (min-width: 1280px) {
+    .select {
+    min-width: 180px;
+  }
   .selectContainer {
     gap: 32px;
     margin-top: 97px;
