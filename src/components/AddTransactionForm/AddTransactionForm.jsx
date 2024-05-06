@@ -27,6 +27,8 @@ function AddTransactionForm() {
 
     const categoriesForSelect = categories.map(category => ({ value: category.id, label: category.name }));
 
+    const selectDefaultValue = categoriesForSelect.find(item => item.label === 'Main expenses');
+
     const [selectedOption, setSelectedOption] = useState(null);
 
     const currentDate = new Date();
@@ -40,7 +42,7 @@ function AddTransactionForm() {
             .default(() => new Date(formattedDate)),
         switch: yup.boolean(),
         category: yup.string(),
-        comment: yup.string(),
+        comment: yup.string().required(),
     });
 
     const {
@@ -60,7 +62,12 @@ function AddTransactionForm() {
         } else if (selectedOption) {
             data.categoryId = selectedOption.value;
             data.type = 'EXPENSE';
-            data.amount = data.amount * -1;
+            data.amount = Math.abs(data.amount) * -1;
+        } else if (!selectedOption) {
+            const categoryId = categories.filter(el => el.name === 'Main expenses');
+            data.categoryId = categoryId[0].id;
+            data.type = 'EXPENSE';
+            data.amount = Math.abs(data.amount) * -1;
         }
 
         const originalDate = new Date(data.transactionDate);
@@ -129,7 +136,7 @@ function AddTransactionForm() {
                     <Select
                         classNamePrefix="react-select"
                         styles={customStyles}
-                        defaultValue={selectedOption}
+                        defaultValue={selectDefaultValue}
                         onChange={setSelectedOption}
                         options={categoriesForSelect}
                         placeholder="Select a category"
@@ -138,11 +145,8 @@ function AddTransactionForm() {
             )}
             <div className={s.sum_data_wrap}>
                 <div className={s.sum_wrap}>
-                    <input {...register('amount')} type="text" autoComplete="off" placeholder="0.00" className={s.sum} />
-                    {errors.number && <span>{'amount'}</span>}
-                    {errors.transactionDate && <span>{errors.transactionDate.message}</span>}
-                    {errors.switch && <span>{'switch'}</span>}
-                    {errors.comment && <span>{'comment'}</span>}
+                    <input {...register('amount')} type="number" autoComplete="off" placeholder="0.00" className={s.sum} />
+                    {errors.amount && <span className={s.comment_err}>{'Enter a number'}</span>}
                 </div>
                 <div className={s.data_wrap} onClick={() => setIsDatePickerOpen(true)}>
                     <Controller
@@ -180,6 +184,7 @@ function AddTransactionForm() {
             </div>
             <div className={s.comment}>
                 <input {...register('comment')} type="text" className={s.input} placeholder="Comment" autoComplete="off" />
+                {errors.comment && <span className={s.comment_err}>{'Enter a comment'}</span>}
             </div>
             <button className={clsx(s.btn, s.btn_add)} type="submit">
                 Add

@@ -11,10 +11,6 @@ Modal.setAppElement('#root');
 function ModalAddTransaction() {
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(getTransactionsCategories());
-    }, [dispatch]);
-
     const isAddOpen = useSelector(selectIsAddModalOpen);
 
     return (

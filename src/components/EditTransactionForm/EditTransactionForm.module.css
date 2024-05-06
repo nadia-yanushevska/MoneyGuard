@@ -124,6 +124,19 @@
     font-style: normal;
     font-weight: 600;
     line-height: normal;
+    overflow: none;
+}
+
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+input[type='number'],
+input[type='number']:hover,
+input[type='number']:focus {
+    appearance: none;
+    -moz-appearance: textfield;
 }
 
 .sum:focus {
@@ -212,6 +225,20 @@
     }
 }
 
+.comment_err {
+    position: absolute;
+    color: rgba(255, 255, 255, 0.4);
+    left: 0;
+    top: 34px;
+}
+
+.btn_wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .btn {
     width: 300px;
     height: 50px;
@@ -230,14 +257,16 @@
     line-height: normal;
     letter-spacing: 1.8px;
     text-transform: uppercase;
-    display: block;
-    margin: 0 auto;
+    /* display: block; */
     margin-bottom: 30px;
     cursor: pointer;
+    /* border: 1px solid #ffc727; */
 }
 
 .btn_add:hover,
 .btn_add:focus {
+    /* background: linear-gradient(-97deg, #ffc727 -16.42%, #9e40ba 97.04%, #7000ff 150.71%); */
+    /* border: 2px solid rgba(251, 251, 251, 0.8); */
     transform: translateY(-1px);
     box-shadow: 1px 9px 20px 0px rgba(0, 0, 0, 0.3);
 }
@@ -248,7 +277,7 @@
 }
 
 .btn_cancel {
-    background: #fbfbfb;
+    background: rgb(251, 251, 251);
 
     color: #623f8b;
     text-align: center;
@@ -258,13 +287,12 @@
     line-height: normal;
     letter-spacing: 1.8px;
     text-transform: uppercase;
-    display: block;
-    margin: 0 auto;
     cursor: pointer;
 }
 
 .btn_cancel:hover,
 .btn_cancel:focus {
+    background: rgba(251, 251, 251, 0.8);
     transform: translateY(-1px);
     box-shadow: 1px 9px 20px 0px rgba(0, 0, 0, 0.3);
 }
