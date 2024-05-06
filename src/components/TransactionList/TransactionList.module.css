@@ -38,7 +38,7 @@
         max-height: calc(100vh - 500px);
         margin: auto;
 
-        overflow-y: scroll;
+        overflow: auto;
         scrollbar-width: thin;
     }
     .container {
