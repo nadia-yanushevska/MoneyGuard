@@ -8,6 +8,7 @@ import { getStyleByType } from '../../helpers/transactionsFormatter';
 
 import s from './TransactionItem.module.css';
 import { Icon } from '../../Icons';
+import { getBalanceThunk } from '../../redux/Auth/operations';
 
 function TransactionItem({ transaction, id, first = false }) {
     const dispatch = useDispatch();
@@ -21,8 +22,9 @@ function TransactionItem({ transaction, id, first = false }) {
         dispatch(openEditModal());
     }
 
-    function OnDelete() {
-        dispatch(deleteTransactions(id));
+    async function OnDelete() {
+        await dispatch(deleteTransactions(id));
+        dispatch(getBalanceThunk());
     }
 
     return isMobile ? (
@@ -40,7 +42,7 @@ function TransactionItem({ transaction, id, first = false }) {
                 <button type="button" className={clsx(s.btn_edit, s.row_item)} onClick={onEdit}>
                     <Icon id="#icon-pen" className={s.edit}></Icon>
                 </button>
-                <button type="button" className={clsx(s.btn_edit, s.row_item, 'btn_delete')} onClick={OnDelete}>
+                <button type="button" className={clsx(s.colored, 'btn_delete')} onClick={OnDelete}>
                     Delete
                 </button>
             </li>
@@ -72,7 +74,7 @@ function TransactionItem({ transaction, id, first = false }) {
                     <button type="button" className={s.btn_edit} onClick={onEdit}>
                         <Icon id="#icon-pen" className={s.edit}></Icon>
                     </button>
-                    <button type="button" className="btn_delete" onClick={OnDelete}>
+                    <button type="button" className={clsx(s.colored, 'btn_delete')} onClick={OnDelete}>
                         Delete
                     </button>
                 </li>

@@ -15,6 +15,7 @@ import { selectIsEditID, closeEditModal } from '../../redux/Modals/slice';
 import { selectTransactions } from '../../redux/Transactions/selectors';
 import { useDispatch } from 'react-redux';
 import { editTransactions } from '../../redux/Transactions/operations';
+import { getBalanceThunk } from '../../redux/Auth/operations';
 
 function EditTransactionForm() {
     const categories = useSelector(selectCategories);
@@ -29,10 +30,10 @@ function EditTransactionForm() {
     };
 
     const IdForEdit = useSelector(selectIsEditID);
-    console.log(IdForEdit);
+    // console.log(IdForEdit);
 
     const foundObject = transactions.find(item => item.id === IdForEdit);
-    console.log(foundObject);
+    // console.log(foundObject);
 
     useEffect(() => {
         if (foundObject.type === 'INCOME') {
@@ -76,7 +77,7 @@ function EditTransactionForm() {
         resolver: yupResolver(schema),
     });
 
-    const onSubmit = data => {
+    const onSubmit = async data => {
         if (!isChecked) {
             const categoryId = categories.filter(el => el.name === 'Income');
             console.log(categoryId);
@@ -104,11 +105,10 @@ function EditTransactionForm() {
             data.amount = Math.abs(data.amount) * -1;
         }
         delete data.switch;
-        console.log(data);
-        console.log(IdForEdit);
 
-        dispatch(editTransactions({ id: IdForEdit, transaction: data }));
+        await dispatch(editTransactions({ id: IdForEdit, transaction: data }));
         dispatch(closeEditModal());
+        dispatch(getBalanceThunk());
     };
 
     return (
