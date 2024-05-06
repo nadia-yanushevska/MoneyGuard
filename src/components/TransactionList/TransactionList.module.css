@@ -35,6 +35,7 @@
         overflow-y: scroll;
     }
     .container {
+        width: 704px;
         height: calc(100vh - 500px);
     }
 
@@ -94,11 +95,9 @@
 }
 /* DESKTOP */
 @media only screen and (min-width: 1280px) {
-    .list {
-        width: 715px;
-        max-height: calc(100vh - 224px);
-    }
+    .list,
     .container {
-        height: calc(100vh - 224px);
+        width: 715px;
+        max-height: calc(100vh - 292px);
     }
 }

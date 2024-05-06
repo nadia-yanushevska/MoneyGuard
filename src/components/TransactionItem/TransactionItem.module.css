@@ -70,11 +70,10 @@
 @media only screen and (max-width: 767.98px) {
     .card {
         width: 280px;
-        height: 293px;
+        min-height: 293px;
         border-radius: 10px;
         background-color: rgba(255, 255, 255, 0.1);
         position: relative;
-        overflow: hidden;
 
         &::before {
             display: block;
@@ -89,6 +88,10 @@
     }
     .row {
         justify-content: space-between;
+    }
+
+    .row_item:nth-child(2n) {
+        text-align: end;
     }
 }
 /* TABLET */
