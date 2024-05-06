@@ -4,12 +4,26 @@
     font-size: 14px;
 }
 
+.container {
+    width: 100%;
+    min-height: 100px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
 /* MOBILE ONLY */
 @media only screen and (max-width: 767.98px) {
     .list {
         margin-top: 32px;
         align-items: center;
         gap: 8px;
+    }
+    .container {
+        margin-top: 40px;
     }
 }
 /* TABLET */
@@ -20,11 +34,17 @@
         overflow-y: scroll;
         margin: auto;
     }
+    .container {
+        height: calc(100vh - 500px);
+    }
 }
 /* DESKTOP */
 @media only screen and (min-width: 1280px) {
     .list {
         width: 715px;
         max-height: calc(100vh - 224px);
+    }
+    .container {
+        height: calc(100vh - 224px);
     }
 }
