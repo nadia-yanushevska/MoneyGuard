@@ -157,6 +157,7 @@ function EditTransactionForm() {
                                         open={isDatePickerOpen}
                                         onClickOutside={() => setIsDatePickerOpen(false)}
                                         className={s.customDatePicker}
+                                        calendarClassName={s.calendarClassName}
                                     />
                                 </>
                             )}
@@ -178,7 +179,7 @@ function EditTransactionForm() {
                         </div>
                     </div>
                 </div>
-                <div className={s.comment}>
+                <div className={clsx(s.comment, s.comment_bottom)}>
                     <input {...register('comment')} type="text" className={s.input} placeholder="Comment" defaultValue={commentDefaultValue} autoComplete="off" />
                     {errors.comment && <span className={s.comment_err}>{'Enter a comment'}</span>}
                 </div>

@@ -45,6 +45,8 @@
 //     }),
 // };
 
+import { CgOverflow } from 'react-icons/cg';
+
 export const customStyles = {
     option: provided => {
         return {
@@ -78,12 +80,18 @@ export const customStyles = {
         border: '1px solid rgba(255, 255, 255, 0.4)',
         borderRadius: '8px',
         boxShadow: 'none',
+        backgroundColor: 'rgba(74, 86, 226, 0.10)',
         border: 0,
 
         background: 'transparent',
         color: 'transparent',
+        boxShadow: 'none',
+        display: 'flex',
+        flexWrap: 'nowrap',
         borderColor: 'transparent',
         outline: 'transparent',
+        padding: '0px',
+        // paddingLeft: '11px',
     }),
 
     singleValue: (provided, state) => {
@@ -96,7 +104,11 @@ export const customStyles = {
             transition,
             right: 5,
             color: 'var(--text-color)',
-            padding: '8px 20px',
+            padding: '0',
+
+            '@media screen and (max-width: 768px)': {
+                paddingLeft: '9px',
+            },
         };
     },
 
@@ -106,13 +118,22 @@ export const customStyles = {
             background: 'linear-gradient(0deg,rgba(83, 61, 186, 1) 0%,rgba(80, 48, 154, 1) 36%,rgba(106, 70, 165, 1) 61%,rgba(133, 93, 175, 1) 100%)',
             borderRadius: '8px',
             blur: '5px',
+            scrollBar: 'none',
+            '::-webkit-scrollbar': {
+                width: '0px',
+                height: '0px',
+            },
         };
     },
     menuList: base => ({
         ...base,
+
+        // 'overflow-y': 'none', // Отключаем прокрутку по вертикали
         '::-webkit-scrollbar': {
-            display: 'none',
+            display: 'none', // Скрыть скроллбар WebKit
         },
+        scrollbarWidth: 'none', // Скрыть скроллбар Firefox
+        paddingTop: '0px',
     }),
 
     indicatorSeparator: () => ({}),
@@ -128,9 +149,10 @@ export const customStyles = {
             ...provided,
             margin: '0px',
             color: 'var(--text-color)',
-            padding: '12px 20px',
+            // padding: '12px 20px 20px 12px',
 
             minWidth: '100%',
+            caretColor: 'transparent',
         };
     },
 };
