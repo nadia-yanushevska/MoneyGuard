@@ -9,7 +9,7 @@ import { getStyleByType } from '../../helpers/transactionsFormatter';
 import s from './TransactionItem.module.css';
 import { Icon } from '../../Icons';
 
-function TransactionItem({ transaction, id, first = false }) {
+function TransactionItem({ transaction, id }) {
     const dispatch = useDispatch();
     const { isMobile } = useMedia();
     const idForModal = id;
@@ -47,36 +47,24 @@ function TransactionItem({ transaction, id, first = false }) {
         </ul>
     ) : (
         <>
-            {first && (
-                <ul className={s.row}>
-                    {[...Object.keys(transaction)].map((value, idx) => {
-                        if (value !== 'id')
-                            return (
-                                <li key={idx} className={s.row_item}>
-                                    {value}
-                                </li>
-                            );
+            
+                <ul className={s.row} style={style}>
+                    {[...Object.values(transaction)].map((value, idx) => {
+                        return (
+                            <li key={idx} className={s.row_item}>
+                                {value}
+                            </li>
+                        );
                     })}
-                    <li className={s.row_item}></li>
+                    <li className={clsx(s.row_item, s.controls)}>
+                        <button type="button" className={s.btn_edit} onClick={onEdit}>
+                            <Icon id="#icon-pen" className={s.edit}></Icon>
+                        </button>
+                        <button type="button" className={clsx(s.colored, 'btn_delete')} onClick={OnDelete}>
+                            Delete
+                        </button>
+                    </li>
                 </ul>
-            )}
-            <ul className={s.row} style={style}>
-                {[...Object.values(transaction)].map((value, idx) => {
-                    return (
-                        <li key={idx} className={s.row_item}>
-                            {value}
-                        </li>
-                    );
-                })}
-                <li className={clsx(s.row_item, s.controls)}>
-                    <button type="button" className={s.btn_edit} onClick={onEdit}>
-                        <Icon id="#icon-pen" className={s.edit}></Icon>
-                    </button>
-                    <button type="button" className={clsx(s.colored, 'btn_delete')} onClick={OnDelete}>
-                        Delete
-                    </button>
-                </li>
-            </ul>
         </>
     );
 }
