@@ -41,7 +41,7 @@
 
 @media only screen and (max-width: 768.98px) {
     :root {
-        overflow: scroll;
+        overflow: auto;
     }
 }
 

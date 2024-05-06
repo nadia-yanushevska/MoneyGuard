@@ -9,7 +9,7 @@
     text-transform: uppercase;
     box-shadow: 1px 9px 15px 0 rgba(0, 0, 0, 0.2);
 }
-.color_btn{
+.color_btn {
     background: var(--button-gradient);
     color: var(--text-color);
 }
@@ -17,9 +17,8 @@
 .white_btn {
     background: var(--button-color);
     color: var(--text-button);
-
 }
-.btn_delete{
+.btn_delete {
     border-radius: 20px;
     padding: 4px 12px;
     width: 69px;
@@ -48,4 +47,20 @@
     background: rgba(255, 255, 255, 0.1);
 }
 
+/* Scrollbar styles */
+body {
+    scrollbar-color: #9e40ba #623f8b;
+}
 
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: #623f8b;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #9e40ba;
+    height: 20px;
+}
