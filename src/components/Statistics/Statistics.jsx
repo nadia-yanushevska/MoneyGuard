@@ -17,6 +17,8 @@ function Statistics() {
   const expenseTotal = transactions.expenseSummary;
   const incomeTotal = transactions.incomeSummary;
 
+  
+
   const data = expense.map(item => ({
     ...item,
     color: coloredCategoriesMap.get(item.name),

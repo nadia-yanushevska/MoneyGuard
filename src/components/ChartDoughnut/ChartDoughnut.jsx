@@ -33,18 +33,21 @@ const ChartDoughnut = ({ data, expenseTotal, incomeTotal }) => {
       {(!expenseTotal && !incomeTotal && (
         <div>
           <p>Add some expenses and incomes to see the chart</p>
-          <p>Your balance is ₴ {total} </p>
+          <p>Your balance is ₴ {Math.abs(expenseTotal).toFixed(2)} </p>
         </div>
       )) ||
         (!expenseTotal && incomeTotal && (
           <div>
             <p>Add some expenses</p>
-            <p>Your income is ₴ {incomeTotal}</p>
+            <p>Your income is ₴ {Math.abs(incomeTotal).toFixed(2)}</p>
           </div>
         )) || (
-          <div className={s.balance}>₴ {Math.abs(expenseTotal).toFixed(2)}</div>
-        )}
+<div>
+      <div className={s.balance}>₴ {Math.abs(expenseTotal).toFixed(2)}</div>
       <Doughnut data={doughnutData} options={options} />
+    </div>
+        )}
+      
     </div>
   );
 };
