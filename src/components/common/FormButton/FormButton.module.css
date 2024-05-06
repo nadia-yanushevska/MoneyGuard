@@ -19,15 +19,17 @@
 
 .multiColorButton {
     color: rgba(251, 251, 251, 1);
+    background-image: none;
     background: linear-gradient(96.76deg, #ffc727 -16.42%, #9e40ba 97.04%, #7000ff 150.71%);
+    transition: all 1s ease 0s;
 }
 
-.multiColorButton:hover {
+.multiColorButton:hover,
+.multiColorButton:focus {
     transform: scale(1.05);
     background-image: linear-gradient(to right, #7000ff 0%, #9e40ba 31%, #ffc727 100%);
     background-size: 200%;
     background-position: right center;
-    transition: all 1s ease 0s;
 }
 
 .multiColorButton:active {
@@ -40,7 +42,8 @@
     background: #fcfcfc;
 }
 
-.whiteButton:hover {
+.whiteButton:hover,
+.whiteButton:focus {
     transform: scale(1.05);
     background-image: linear-gradient(to right, rgb(255, 255, 255) 0%, rgb(98, 63, 139) 31%, rgb(255, 255, 255) 100%);
     background-size: 200%;

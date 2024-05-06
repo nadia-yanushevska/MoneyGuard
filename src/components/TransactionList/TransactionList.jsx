@@ -1,24 +1,27 @@
 import { useSelector } from 'react-redux';
-import s from './TransactionList.module.css';
-import { selectTransactions } from '../../redux/Transactions/selectors';
-import TransactionItem from '../TransactionItem/TransactionItem';
+import { selectTransError, selectTransLoading, selectTransactions } from '../../redux/Transactions/selectors';
 import { selectCategories } from '../../redux/Statistics/selectors';
 import { getFormattedTransactions } from '../../helpers/transactionsFormatter';
 
+import s from './TransactionList.module.css';
+import Loader from '../Loader/Loader';
+import TransactionItem from '../TransactionItem/TransactionItem';
+
 function TransactionList() {
     const reduxTransactions = useSelector(selectTransactions);
+    const isLoading = useSelector(selectTransLoading);
+    const isError = useSelector(selectTransError);
     const categories = useSelector(selectCategories);
-    console.log(reduxTransactions);
 
-    const transactions = getFormattedTransactions(reduxTransactions, categories);
     return (
         <>
-            {transactions.length === 0 ? (
+            {isLoading && <Loader />}
+            {isError && <p>Oops, something went wrong...</p>}
+            {!isLoading && reduxTransactions.length === 0 ? (
                 <p>No transactions available.</p>
             ) : (
                 <ul className={s.list}>
-                    {transactions.map(({ id, ...item }, idx) => {
-                        // console.log(id);
+                    {getFormattedTransactions(reduxTransactions, categories).map(({ id, ...item }, idx) => {
                         return <TransactionItem key={id} id={id} transaction={item} first={idx === 0} />;
                     })}
                 </ul>

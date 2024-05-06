@@ -11,7 +11,6 @@ import StatisticsSelector from '../StatisticsSelector/StatisticsSelector';
 
 function Statistics() {
     const transactions = useSelector(selectSummary);
-    console.log(transactions.categoriesSummary);
     const expense = transactions.categoriesSummary ? transactions.categoriesSummary.filter(transaction => transaction.type === 'EXPENSE') : [];
 
     const expenseTotal = transactions.expenseSummary;
@@ -21,6 +20,7 @@ function Statistics() {
         ...item,
         color: coloredCategoriesMap.get(item.name),
     }));
+
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(getTransactionsSummaryByPeriod(getCurrentMonthYear()));

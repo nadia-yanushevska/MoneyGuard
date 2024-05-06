@@ -2,6 +2,7 @@
     display: flex;
     align-items: center;
     padding: 12px 20px;
+    gap: 8px;
 
     color: var(--text-color);
 
@@ -35,6 +36,36 @@
     width: 14px;
     height: 14px;
 }
+
+.colored {
+    color: rgba(251, 251, 251, 1);
+    background-image: none;
+    background: linear-gradient(96.76deg, #ffc727 -16.42%, #9e40ba 97.04%, #7000ff 150.71%);
+    transition: all 1s ease 0s;
+}
+
+@media (hover: hover) {
+    .colored:hover,
+    .colored:focus {
+        transform: scale(1.05);
+        background-image: linear-gradient(to right, #7000ff 0%, #9e40ba 31%, #ffc727 100%);
+        background-size: 200%;
+        background-position: right center;
+    }
+
+    .colored:active {
+        transform: scale(1.08);
+        font-size: 19px;
+    }
+
+    .btn_edit:hover,
+    .btn_edit:focus {
+        & .edit {
+            stroke: #ffc727;
+        }
+    }
+}
+
 /* MOBILE ONLY */
 @media only screen and (max-width: 767.98px) {
     .card {
@@ -91,11 +122,13 @@
         text-wrap: wrap;
         margin: auto;
         color: var(--text-color);
+        flex-grow: 1;
     }
 
     .row_item:first-child {
         width: 54px;
         margin-left: 0;
+        flex-grow: 3;
     }
     .row_item:nth-child(2) {
         width: 40px;
@@ -103,9 +136,11 @@
     }
     .row_item:nth-child(3) {
         width: 77px;
+        flex-grow: 2;
     }
     .row_item:nth-child(4) {
         width: 118px;
+        flex-grow: 2;
     }
     .row_item:nth-child(5) {
         width: 62px;
