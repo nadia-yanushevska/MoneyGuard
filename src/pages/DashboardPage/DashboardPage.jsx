@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router-dom';
-import { Suspense, lazy } from 'react';
+import { Suspense } from 'react';
 import { useSelector } from 'react-redux';
 
 import useMedia from '../../hooks/useMedia';
