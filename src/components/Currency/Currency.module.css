@@ -1,9 +1,11 @@
 .currency_wrapper {
+    max-width: 320px;
     color: #fbfbfb;
     background-color: rgba(74, 86, 226, 0.1);
     margin-top: 32px;
+    margin-left: auto;
+    margin-right: auto;
     grid-area: currency;
-    max-width: 320px;
 }
 
 .currency_table {
@@ -13,18 +15,17 @@
     align-items: center;
     justify-content: center;
 }
+
 .currency_table_head {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     height: 48px;
-    /* padding: 0 20px; */
     width: 100%;
     background-color: rgba(255, 255, 255, 0.2);
     font-weight: 600;
     font-size: 16px;
     margin-bottom: 8px;
-    line-height: normal;
     letter-spacing: -0.05px;
 }
 
