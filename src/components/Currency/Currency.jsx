@@ -34,14 +34,14 @@ const Currency = () => {
                 </ul>
                 <ul className={s.table_body}>
                     <li className={s.currency_tr}>
-                        <p>USD</p>
-                        <p>{rateBuyDollar}</p>
-                        <p>{rateSellDollar}</p>
+                        <p className={s.currency}>USD</p>
+                        <p className={s.currency}>{rateBuyDollar}</p>
+                        <p className={s.currency}>{rateSellDollar}</p>
                     </li>
                     <li className={s.currency_tr}>
-                        <p>EUR</p>
-                        <p>{rateBuyEuro}</p>
-                        <p> {rateSellEuro}</p>
+                        <p className={s.currency}>EUR</p>
+                        <p className={s.currency}>{rateBuyEuro}</p>
+                        <p className={s.currency}> {rateSellEuro}</p>
                     </li>
                 </ul>
             </div>
