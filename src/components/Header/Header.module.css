@@ -63,6 +63,11 @@
         padding: 0;
     }
 }
+.btn:hover,
+.btn:focus{
+    color:var(--text-color);
+}
+
 .exit {
     width: 18px;
     height: 18px;
@@ -71,6 +76,11 @@
         margin: 0 8px 0 12px;
     }
 }
+.exit:hover,
+.exit:focus{
+    fill: var(--text-color);
+}
+
 
 .icon_wrap {
     padding: 12px 20px;

@@ -1,7 +1,6 @@
 import s from './Header.module.css';
 import { Icon } from '../../Icons';
-import { useDispatch, useSelector } from 'react-redux';
-import { logoutThunk } from '../../redux/Auth/operations';
+import { useSelector } from 'react-redux';
 import { selectIsLoggedIn, selectUser } from '../../redux/Auth/selectors';
 import { Link } from 'react-router-dom';
 import useMedia from '../../hooks/useMedia';
@@ -12,7 +11,6 @@ import LogOutModal from '../LogOutModal/LogOutModal';
 function Header() {
     const isLogged = useSelector(selectIsLoggedIn);
     const user = useSelector(selectUser);
-    const dispatch = useDispatch();
     const { isMobile } = useMedia();
 
     const { openModal, isOpen, closeModal } = useToggle();
