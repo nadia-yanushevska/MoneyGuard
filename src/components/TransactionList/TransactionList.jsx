@@ -22,7 +22,7 @@ function TransactionList() {
     return (
         <>
             {isLoading && <Loader />}
-            {isError && <p>Oops, something went wrong...</p>}
+            {isError && <p className={s.text}>Oops, something went wrong...</p>}
             {!isLoading && reduxTransactions.length === 0 ? (
                 <div className={s.container}>
                     <p>No transactions available yet.</p> <p> Let&#39;s add your first transaction:</p>

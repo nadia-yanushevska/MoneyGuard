@@ -100,43 +100,42 @@
         display: flex;
         align-items: center;
         padding: 16px 20px;
+        gap: 8px;
 
         position: relative;
     }
 
     .row_item {
         text-wrap: wrap;
-        margin: auto;
         color: var(--text-color);
-        flex-grow: 1;
     }
 
     .row_item:first-child {
-        width: 54px;
+        max-width: 105px;
+        min-width: 105px;
         margin-left: 0;
         flex-grow: 3;
     }
     .row_item:nth-child(2) {
-        width: 40px;
+        max-width: 56px;
+        min-width: 56px;
         text-align: center;
     }
     .row_item:nth-child(3) {
-        width: 77px;
+        max-width: 130px;
+        min-width: 130px;
         flex-grow: 2;
     }
     .row_item:nth-child(4) {
-        width: 118px;
+        max-width: 150px;
+        min-width: 150px;
         flex-grow: 2;
     }
     .row_item:nth-child(5) {
-        width: 62px;
+        width: 88px;
         text-align: center;
         font-weight: 600;
         color: currentColor;
-    }
-    .row_item:nth-child(6) {
-        width: 100px;
-        margin-right: 0;
     }
 
     .controls {
