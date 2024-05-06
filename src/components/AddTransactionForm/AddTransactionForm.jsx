@@ -42,7 +42,7 @@ function AddTransactionForm() {
             .default(() => new Date(formattedDate)),
         switch: yup.boolean(),
         category: yup.string(),
-        comment: yup.string(),
+        comment: yup.string().required(),
     });
 
     const {
@@ -61,6 +61,11 @@ function AddTransactionForm() {
             data.type = 'INCOME';
         } else if (selectedOption) {
             data.categoryId = selectedOption.value;
+            data.type = 'EXPENSE';
+            data.amount = Math.abs(data.amount) * -1;
+        } else if (!selectedOption) {
+            const categoryId = categories.filter(el => el.name === 'Main expenses');
+            data.categoryId = categoryId[0].id;
             data.type = 'EXPENSE';
             data.amount = Math.abs(data.amount) * -1;
         }
@@ -141,10 +146,7 @@ function AddTransactionForm() {
             <div className={s.sum_data_wrap}>
                 <div className={s.sum_wrap}>
                     <input {...register('amount')} type="number" autoComplete="off" placeholder="0.00" className={s.sum} />
-                    {errors.number && <span>{'amount'}</span>}
-                    {errors.transactionDate && <span>{errors.transactionDate.message}</span>}
-                    {errors.switch && <span>{'switch'}</span>}
-                    {errors.comment && <span>{'comment'}</span>}
+                    {errors.amount && <span className={s.comment_err}>{'Enter a number'}</span>}
                 </div>
                 <div className={s.data_wrap} onClick={() => setIsDatePickerOpen(true)}>
                     <Controller
@@ -182,6 +184,7 @@ function AddTransactionForm() {
             </div>
             <div className={s.comment}>
                 <input {...register('comment')} type="text" className={s.input} placeholder="Comment" autoComplete="off" />
+                {errors.comment && <span className={s.comment_err}>{'Enter a comment'}</span>}
             </div>
             <button className={clsx(s.btn, s.btn_add)} type="submit">
                 Add

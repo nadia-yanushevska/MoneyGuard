@@ -224,6 +224,14 @@ input[type='number']:focus {
         background-color: rgba(255, 255, 255, 0.4);
     }
 }
+
+.comment_err {
+    position: absolute;
+    color: rgba(255, 255, 255, 0.4);
+    left: 0;
+    top: 34px;
+}
+
 .btn_wrap {
     display: flex;
     flex-direction: column;

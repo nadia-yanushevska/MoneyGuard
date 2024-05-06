@@ -15,7 +15,6 @@ import { selectIsEditID, closeEditModal } from '../../redux/Modals/slice';
 import { selectTransactions } from '../../redux/Transactions/selectors';
 import { useDispatch } from 'react-redux';
 import { editTransactions } from '../../redux/Transactions/operations';
-import { getBalanceThunk } from '../../redux/Auth/operations';
 
 function EditTransactionForm() {
     const categories = useSelector(selectCategories);
@@ -30,10 +29,8 @@ function EditTransactionForm() {
     };
 
     const IdForEdit = useSelector(selectIsEditID);
-    // console.log(IdForEdit);
 
     const foundObject = transactions.find(item => item.id === IdForEdit);
-    // console.log(foundObject);
 
     useEffect(() => {
         if (foundObject.type === 'INCOME') {
@@ -77,10 +74,9 @@ function EditTransactionForm() {
         resolver: yupResolver(schema),
     });
 
-    const onSubmit = async data => {
+    const onSubmit = data => {
         if (!isChecked) {
             const categoryId = categories.filter(el => el.name === 'Income');
-            console.log(categoryId);
             data.categoryId = categoryId[0].id;
             data.type = 'INCOME';
         } else if (selectedOption) {
@@ -99,6 +95,7 @@ function EditTransactionForm() {
         } else {
             if (selectedOption) {
                 data.categoryId = selectedOption.value;
+                console.log(selectedOption);
             } else {
                 data.categoryId = foundObject.categoryId;
             }
@@ -106,9 +103,9 @@ function EditTransactionForm() {
         }
         delete data.switch;
 
-        await dispatch(editTransactions({ id: IdForEdit, transaction: data }));
+        console.log(data);
+        dispatch(editTransactions({ id: IdForEdit, transaction: data }));
         dispatch(closeEditModal());
-        dispatch(getBalanceThunk());
     };
 
     return (
@@ -126,23 +123,21 @@ function EditTransactionForm() {
             <form onSubmit={handleSubmit(onSubmit)}>
                 {isChecked && (
                     <div className={s.comment}>
-                        <Select
+                        {selectDefaultValue.label}
+                        {/* <Select
                             classNamePrefix="react-select"
                             styles={customStyles}
                             defaultValue={selectDefaultValue}
                             onChange={setSelectedOption}
                             options={categoriesForSelect}
                             placeholder="Select a category"
-                        />
+                        /> */}
                     </div>
                 )}
                 <div className={s.sum_data_wrap}>
                     <div className={s.sum_wrap}>
                         <input {...register('amount')} type="number" autoComplete="off" placeholder="0.00" defaultValue={amountDefaultValue} className={s.sum} />
-                        {errors.number && <span>{'amount'}</span>}
-                        {errors.transactionDate && <span>{errors.transactionDate.message}</span>}
-                        {errors.switch && <span>{'switch'}</span>}
-                        {errors.comment && <span>{'comment'}</span>}
+                        {errors.amount && <span className={s.comment_err}>{'Enter a number'}</span>}
                     </div>
                     <div className={s.data_wrap} onClick={() => setIsDatePickerOpen(true)}>
                         <Controller
@@ -185,6 +180,7 @@ function EditTransactionForm() {
                 </div>
                 <div className={s.comment}>
                     <input {...register('comment')} type="text" className={s.input} placeholder="Comment" defaultValue={commentDefaultValue} autoComplete="off" />
+                    {errors.comment && <span className={s.comment_err}>{'Enter a comment'}</span>}
                 </div>
                 <div className={s.btn_wrap}>
                     <button className={clsx(s.btn, s.btn_add)} type="submit">

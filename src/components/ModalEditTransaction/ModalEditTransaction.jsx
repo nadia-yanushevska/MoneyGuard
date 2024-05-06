@@ -13,10 +13,6 @@ function ModalEditTransaction() {
     const dispatch = useDispatch();
     const isOpenModal = useSelector(selectIsEditModalOpen);
 
-    useEffect(() => {
-        dispatch(getTransactionsCategories());
-    }, [dispatch]);
-
     return (
         <Modal isOpen={isOpenModal} className={s.modal} overlayClassName={s.modal_Wrap} onRequestClose={() => dispatch(closeEditModal())}>
             <div className={s.modal_close} onClick={() => dispatch(closeEditModal())}>
