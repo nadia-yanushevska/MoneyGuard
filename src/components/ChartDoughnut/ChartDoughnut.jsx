@@ -35,39 +35,39 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 //   };
 
 const ChartDoughnut = ({ data, expenseTotal, incomeTotal }) => {
-  const total = useSelector(selectSummary);
-  console.log(total);
-  const doughnutData = {
-    datasets: [
-      {
-        data: data.map(expense => expense.total),
-        backgroundColor: data.map(expense => expense.color),
-        borderColor: data.map(expense => expense.color),
-      },
-    ],
-  };
+    const total = useSelector(selectSummary);
+    console.log(total);
+    const doughnutData = {
+        datasets: [
+            {
+                data: data.map(expense => expense.total),
+                backgroundColor: data.map(expense => expense.color),
+                borderColor: data.map(expense => expense.color),
+            },
+        ],
+    };
 
-  return (
-    <div className={s.doughnut}>
-      {(!expenseTotal && !incomeTotal && (
-        <div>
-          <p>Add some expenses and incomes to see the chart</p>
-          <p>Your balance is ₴ {total} </p>
+    return (
+        <div className={s.doughnut}>
+            {(!expenseTotal && !incomeTotal && (
+                <div>
+                    <p>Add some expenses and incomes to see the chart</p>
+                    {/* <p>Your balance is ₴ {total} </p> */}
+                </div>
+            )) ||
+                (!expenseTotal && incomeTotal && (
+                    <div>
+                        <p>Add some expenses</p>
+                        <p>Your income is ₴ {incomeTotal}</p>
+                    </div>
+                )) || (
+                    <div>
+                        <p>₴ {expenseTotal} </p>
+                    </div>
+                )}
+            <Doughnut data={doughnutData} />
         </div>
-      ))
-      || (!expenseTotal && incomeTotal && (
-      <div>
-        <p>Add some expenses</p>
-        <p>Your income is ₴ {incomeTotal}</p>
-      </div>
-      )) || (
-        <div>
-          <p>₴ {expenseTotal} </p>
-        </div>
-      )}
-      <Doughnut data={doughnutData} />
-    </div>
-  );
+    );
 };
 
 export default ChartDoughnut;
