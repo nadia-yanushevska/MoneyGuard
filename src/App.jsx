@@ -1,7 +1,7 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { refreshThunk } from './redux/Auth/operations';
 import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
+import { lazy, useEffect } from 'react';
 
 import useMedia from './hooks/useMedia';
 import './App.css';
@@ -12,10 +12,15 @@ import DashboardPage from './pages/DashboardPage/DashboardPage';
 import LoginPage from './pages/LoginPage/LoginPage';
 import RegistrationPage from './pages/RegistrationPage/RegistrationPage';
 
-import Home from './components/Home/Home';
-import Statistics from './components/Statistics/Statistics';
-import Balance from './components/Balance/Balance';
-import Currency from './components/Currency/Currency';
+// import Home from './components/Home/Home';
+// import Statistics from './components/Statistics/Statistics';
+// import Balance from './components/Balance/Balance';
+// import Currency from './components/Currency/Currency';
+
+const Home = lazy(() => import('./components/Home/Home'));
+const Statistics = lazy(() => import('./components/Statistics/Statistics'));
+const Balance = lazy(() => import('./components/Balance/Balance'));
+const Currency = lazy(() => import('./components/Currency/Currency'));
 
 function App() {
     const dispatch = useDispatch();

@@ -1,7 +1,5 @@
-import { nanoid } from '@reduxjs/toolkit';
-
 export function getFormattedTransactions(transactions, categories) {
-    return transactions.map(transaction => getFormattedTransaction(transaction, categories));
+    return transactions.map(transaction => getFormattedTransaction(transaction, categories)).toSorted((a, b) => b.date.localeCompare(a.date));
 }
 function getFormattedTransaction(transaction, categories) {
     const { transactionDate: date, amount: sum, categoryId, type, comment, id } = transaction;
@@ -15,7 +13,7 @@ function getCategoryName(id, categories) {
 }
 
 export function getHeadTransaction() {
-    return { id: nanoid(), date: 'date', type: 'type', category: 'category', comment: 'comment', sum: 'sum' };
+    return ['date', 'type', 'category', 'comment', 'sum'];
 }
 
 export function getStyleByType(type) {
