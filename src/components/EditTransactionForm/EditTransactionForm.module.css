@@ -325,3 +325,84 @@ input[type='number']:focus {
 .date {
     padding-right: 70px;
 }
+
+@media screen and (max-width: 768px) {
+    .form {
+        width: 100%;
+    }
+
+    .switch__wrapper {
+        margin-bottom: 30px;
+    }
+
+    .select_form {
+        width: 100%;
+    }
+
+    .sum_data_wrap {
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 48px;
+        width: 280px;
+        margin-bottom: 48px;
+    }
+    .sum_wrap {
+        width: 280px;
+        padding: 0 20px;
+    }
+
+    .sum {
+        padding: 20px;
+        text-align: left;
+    }
+    .sum::placeholder {
+        text-align: left;
+    }
+
+    .data_wrap {
+        width: 280px;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 20px;
+    }
+
+    .customDatePicker {
+        width: 100%;
+    }
+
+    .comment {
+        max-width: 280px;
+        margin: 0 auto;
+        margin-bottom: 36px;
+        padding: 0 20px;
+
+        &::after {
+            bottom: 0px;
+        }
+    }
+
+    .comment_bottom {
+        width: 280px;
+        margin: 0 auto;
+        margin-bottom: 92px;
+        padding: 0 20px;
+
+        &::after {
+            bottom: -52px;
+        }
+        .input {
+            width: 100%;
+        }
+    }
+
+    .btn {
+        width: 280px;
+    }
+    .calendarClassName {
+        position: absolute;
+        left: 57px;
+    }
+}

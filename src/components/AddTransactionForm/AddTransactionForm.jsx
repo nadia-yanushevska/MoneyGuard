@@ -81,7 +81,7 @@ function AddTransactionForm() {
     };
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmit)} className={s.form}>
             <div className={s.switch__wrapper}>
                 {!isChecked ? <span className={clsx(s.span_text, s.income_active)}>Income</span> : <span className={s.span_text}>Income</span>}
                 <label htmlFor="switch" className={s.switch}>
@@ -136,6 +136,7 @@ function AddTransactionForm() {
                     <Select
                         classNamePrefix="react-select"
                         styles={customStyles}
+                        className={s.select_form}
                         defaultValue={selectDefaultValue}
                         onChange={setSelectedOption}
                         options={categoriesForSelect}
@@ -161,6 +162,7 @@ function AddTransactionForm() {
                                     open={isDatePickerOpen}
                                     onClickOutside={() => setIsDatePickerOpen(false)}
                                     className={s.customDatePicker}
+                                    calendarClassName={s.calendarClassName}
                                 />
                             </>
                         )}
@@ -182,7 +184,7 @@ function AddTransactionForm() {
                     </div>
                 </div>
             </div>
-            <div className={s.comment}>
+            <div className={clsx(s.comment_bottom)}>
                 <input {...register('comment')} type="text" className={s.input} placeholder="Comment" autoComplete="off" />
                 {errors.comment && <span className={s.comment_err}>{'Enter a comment'}</span>}
             </div>
