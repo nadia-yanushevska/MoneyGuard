@@ -101,7 +101,7 @@ function EditTransactionForm() {
             } else {
                 data.categoryId = foundObject.categoryId;
             }
-            data.amount = data.amount * -1;
+            data.amount = Math.abs(data.amount) * -1;
         }
         delete data.switch;
         console.log(data);
@@ -138,7 +138,7 @@ function EditTransactionForm() {
                 )}
                 <div className={s.sum_data_wrap}>
                     <div className={s.sum_wrap}>
-                        <input {...register('amount')} type="text" autoComplete="off" placeholder="0.00" defaultValue={amountDefaultValue} className={s.sum} />
+                        <input {...register('amount')} type="number" autoComplete="off" placeholder="0.00" defaultValue={amountDefaultValue} className={s.sum} />
                         {errors.number && <span>{'amount'}</span>}
                         {errors.transactionDate && <span>{errors.transactionDate.message}</span>}
                         {errors.switch && <span>{'switch'}</span>}
@@ -154,7 +154,10 @@ function EditTransactionForm() {
                                     <DatePicker
                                         selected={field.value || startDateDefaultValue}
                                         // startDate={startDateDefaultValue}
-                                        onChange={date => field.onChange(date)}
+                                        onChange={date => {
+                                            field.onChange(date);
+                                            setIsDatePickerOpen(false);
+                                        }}
                                         dateFormat="dd.MM.yyyy"
                                         open={isDatePickerOpen}
                                         onClickOutside={() => setIsDatePickerOpen(false)}
@@ -183,18 +186,20 @@ function EditTransactionForm() {
                 <div className={s.comment}>
                     <input {...register('comment')} type="text" className={s.input} placeholder="Comment" defaultValue={commentDefaultValue} autoComplete="off" />
                 </div>
-                <button className={clsx(s.btn, s.btn_add)} type="submit">
-                    Save
-                </button>
-                <button
-                    className={clsx(s.btn, s.btn_cancel)}
-                    type="button"
-                    onClick={() => {
-                        dispatch(closeEditModal());
-                    }}
-                >
-                    Cancel
-                </button>
+                <div className={s.btn_wrap}>
+                    <button className={clsx(s.btn, s.btn_add)} type="submit">
+                        Save
+                    </button>
+                    <button
+                        className={clsx(s.btn, s.btn_cancel)}
+                        type="button"
+                        onClick={() => {
+                            dispatch(closeEditModal());
+                        }}
+                    >
+                        Cancel
+                    </button>
+                </div>
             </form>
         </>
     );

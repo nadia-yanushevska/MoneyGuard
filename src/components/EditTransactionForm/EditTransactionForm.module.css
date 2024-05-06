@@ -124,6 +124,19 @@
     font-style: normal;
     font-weight: 600;
     line-height: normal;
+    overflow: none;
+}
+
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+input[type='number'],
+input[type='number']:hover,
+input[type='number']:focus {
+    appearance: none;
+    -moz-appearance: textfield;
 }
 
 .sum:focus {
@@ -211,6 +224,12 @@
         background-color: rgba(255, 255, 255, 0.4);
     }
 }
+.btn_wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
 .btn {
     width: 300px;
@@ -230,8 +249,7 @@
     line-height: normal;
     letter-spacing: 1.8px;
     text-transform: uppercase;
-    display: block;
-    margin: 0 auto;
+    /* display: block; */
     margin-bottom: 30px;
     cursor: pointer;
 }
@@ -258,8 +276,6 @@
     line-height: normal;
     letter-spacing: 1.8px;
     text-transform: uppercase;
-    display: block;
-    margin: 0 auto;
     cursor: pointer;
 }
 

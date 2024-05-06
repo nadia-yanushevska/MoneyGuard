@@ -27,6 +27,8 @@ function AddTransactionForm() {
 
     const categoriesForSelect = categories.map(category => ({ value: category.id, label: category.name }));
 
+    const selectDefaultValue = categoriesForSelect.find(item => item.label === 'Main expenses');
+
     const [selectedOption, setSelectedOption] = useState(null);
 
     const currentDate = new Date();
@@ -60,7 +62,7 @@ function AddTransactionForm() {
         } else if (selectedOption) {
             data.categoryId = selectedOption.value;
             data.type = 'EXPENSE';
-            data.amount = data.amount * -1;
+            data.amount = Math.abs(data.amount) * -1;
         }
 
         const originalDate = new Date(data.transactionDate);
@@ -129,7 +131,7 @@ function AddTransactionForm() {
                     <Select
                         classNamePrefix="react-select"
                         styles={customStyles}
-                        defaultValue={selectedOption}
+                        defaultValue={selectDefaultValue}
                         onChange={setSelectedOption}
                         options={categoriesForSelect}
                         placeholder="Select a category"
@@ -138,7 +140,7 @@ function AddTransactionForm() {
             )}
             <div className={s.sum_data_wrap}>
                 <div className={s.sum_wrap}>
-                    <input {...register('amount')} type="text" autoComplete="off" placeholder="0.00" className={s.sum} />
+                    <input {...register('amount')} type="number" autoComplete="off" placeholder="0.00" className={s.sum} />
                     {errors.number && <span>{'amount'}</span>}
                     {errors.transactionDate && <span>{errors.transactionDate.message}</span>}
                     {errors.switch && <span>{'switch'}</span>}
