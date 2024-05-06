@@ -13,6 +13,8 @@ function Balance() {
         dispatch(getBalanceThunk());
     }, [dispatch]);
 
+    useEffect(() => {}, [balance]);
+
     return (
         <div className={css.balance}>
             <h3>Your balance</h3>
