@@ -266,7 +266,7 @@ input[type='number']:focus {
 .btn_add:hover,
 .btn_add:focus {
     /* background: linear-gradient(-97deg, #ffc727 -16.42%, #9e40ba 97.04%, #7000ff 150.71%); */
-    border: 2px solid rgba(251, 251, 251, 0.8);
+    /* border: 2px solid rgba(251, 251, 251, 0.8); */
     transform: translateY(-1px);
     box-shadow: 1px 9px 20px 0px rgba(0, 0, 0, 0.3);
 }
