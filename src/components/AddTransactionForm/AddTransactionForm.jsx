@@ -14,6 +14,7 @@ import { customStyles } from './customStyles';
 import { useDispatch } from 'react-redux';
 import { addTransactions } from '../../redux/Transactions/operations';
 import { closeAddModal } from '../../redux/Modals/slice';
+import CustomDropIndicator from '../CustomDropIndicator/CustomDropIndicator';
 
 function AddTransactionForm() {
     const categories = useSelector(selectCategories);
@@ -80,8 +81,18 @@ function AddTransactionForm() {
         dispatch(closeAddModal());
     };
 
+    const [menuIsOpen, setMenuIsOpen] = useState(false);
+
+    const handleMenuOpen = () => {
+        setMenuIsOpen(true);
+    };
+
+    const handleMenuClose = () => {
+        setMenuIsOpen(false);
+    };
+
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmit)} className={s.form}>
             <div className={s.switch__wrapper}>
                 {!isChecked ? <span className={clsx(s.span_text, s.income_active)}>Income</span> : <span className={s.span_text}>Income</span>}
                 <label htmlFor="switch" className={s.switch}>
@@ -136,10 +147,18 @@ function AddTransactionForm() {
                     <Select
                         classNamePrefix="react-select"
                         styles={customStyles}
+                        className={s.select_form}
                         defaultValue={selectDefaultValue}
                         onChange={setSelectedOption}
                         options={categoriesForSelect}
                         placeholder="Select a category"
+                        onMenuOpen={handleMenuOpen}
+                        onMenuClose={handleMenuClose}
+                        components={{
+                            DropdownIndicator: () => {
+                                return menuIsOpen ? <CustomDropIndicator up={true} /> : <CustomDropIndicator up={false} />;
+                            },
+                        }}
                     />
                 </div>
             )}
@@ -161,6 +180,7 @@ function AddTransactionForm() {
                                     open={isDatePickerOpen}
                                     onClickOutside={() => setIsDatePickerOpen(false)}
                                     className={s.customDatePicker}
+                                    calendarClassName={s.calendarClassName}
                                 />
                             </>
                         )}
@@ -182,7 +202,7 @@ function AddTransactionForm() {
                     </div>
                 </div>
             </div>
-            <div className={s.comment}>
+            <div className={clsx(s.comment_bottom)}>
                 <input {...register('comment')} type="text" className={s.input} placeholder="Comment" autoComplete="off" />
                 {errors.comment && <span className={s.comment_err}>{'Enter a comment'}</span>}
             </div>
