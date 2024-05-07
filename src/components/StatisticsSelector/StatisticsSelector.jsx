@@ -55,6 +55,26 @@ function StatisticsSelector() {
     //     }
     // });
 
+    const [menuIsOpen, setMenuIsOpen] = useState(false);
+
+    const handleMenuOpen = () => {
+        setMenuIsOpen(true);
+    };
+
+    const handleMenuClose = () => {
+        setMenuIsOpen(false);
+    };
+
+    const [yearIsOpen, setYearIsOpen] = useState(false);
+
+    const handleYearOpen = () => {
+        setYearIsOpen(true);
+    };
+
+    const handleYearClose = () => {
+        setYearIsOpen(false);
+    };
+
     return (
         <div className={style.selectContainer}>
             <Select
@@ -67,7 +87,13 @@ function StatisticsSelector() {
                 id="month-select"
                 placeholder={month.label}
                 isSearchable={false}
-                components={{ DropdownIndicator: () => <CustomDropIndicator up={true} /> }}
+                onMenuOpen={handleMenuOpen}
+                onMenuClose={handleMenuClose}
+                components={{
+                    DropdownIndicator: () => {
+                        return menuIsOpen ? <CustomDropIndicator up={true} /> : <CustomDropIndicator up={false} />;
+                    },
+                }}
             />
             <Select
                 className={style.select}
@@ -79,7 +105,13 @@ function StatisticsSelector() {
                 id="years-select"
                 placeholder={year.label}
                 isSearchable={false}
-                components={{ DropdownIndicator: () => <CustomDropIndicator up={false} /> }}
+                onMenuOpen={handleYearOpen}
+                onMenuClose={handleYearClose}
+                components={{
+                    DropdownIndicator: () => {
+                        return yearIsOpen ? <CustomDropIndicator up={true} /> : <CustomDropIndicator up={false} />;
+                    },
+                }}
             />
         </div>
     );
