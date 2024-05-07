@@ -12,6 +12,7 @@
 @media only screen and (max-width: 768px) {
   .selectContainer {
    width: 280px;
+   margin-top: 32px;
   }
 }
 
@@ -23,15 +24,8 @@
     flex-direction: row;
     gap: 16px;
     max-width: 336px;
-    margin-top: 40px;
   }
 }
-
-/* @media only screen and (min-width: 1280px) {
-  .select {
-    min-width: 180px;
-  }
-} */
 
 @media only screen and (min-width: 1280px) {
     .select {
@@ -39,7 +33,6 @@
   }
   .selectContainer {
     gap: 32px;
-    margin-top: 97px;
     max-width: 395px;
   }
 }
