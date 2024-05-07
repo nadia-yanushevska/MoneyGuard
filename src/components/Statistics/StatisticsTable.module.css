@@ -1,57 +1,59 @@
 .table_head {
-  display: flex;
+    display: flex;
 
-  justify-content: space-between;
-  padding: 16px;
+    justify-content: space-between;
+    padding: 16px;
 
-  backdrop-filter: blur(100px);
-  box-shadow: 0 4px 60px 0 rgba(0, 0, 0, 0.25);
-  background: rgba(82, 59, 126, 0.6);
+    backdrop-filter: blur(100px);
+    box-shadow: 0 4px 60px 0 rgba(0, 0, 0, 0.25);
+    background: rgba(82, 59, 126, 0.6);
 
-  border-radius: 8px;
-  height: 56px;
+    border-radius: 8px;
+    height: 56px;
 
-  font-weight: 600;
-  font-size: 16px;
+    font-weight: 600;
+    font-size: 16px;
 }
 .list_wrapper {
-  font-weight: 400;
-  font-size: 14px;
+    font-weight: 400;
+    font-size: 14px;
+    max-height: calc(100vh - 332px);
+    overflow: auto;
 }
 
 .item_wrapper {
-  display: flex;
-  justify-content: space-between;
-  border-bottom: 1px solid hsla(0, 0%, 100%, 0.2);
-  padding: 16px;
-  line-height: 21px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid hsla(0, 0%, 100%, 0.2);
+    padding: 16px;
+    line-height: 21px;
 }
 
 .first_column {
-  display: flex;
+    display: flex;
 }
 
 .span_indicator {
-  display: inline-block;
-  width: 24px;
-  height: 24px;
-  margin-right: 16px;
-  border-radius: 2px;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    margin-right: 16px;
+    border-radius: 2px;
 }
 
 .table_bottom {
-  display: flex;
-  justify-content: space-between;
-  padding: 16px 16px 8px 16px;
+    display: flex;
+    justify-content: space-between;
+    padding: 16px 16px 8px 16px;
 
-  font-weight: 600;
-  font-size: 14px;
+    font-weight: 600;
+    font-size: 14px;
 }
 
 .expense {
-    color:#FF868D;
+    color: #ff868d;
 }
 
 .income {
-   color:#FFB627
+    color: #ffb627;
 }

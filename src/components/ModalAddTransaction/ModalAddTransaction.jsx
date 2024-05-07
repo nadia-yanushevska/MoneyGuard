@@ -1,8 +1,6 @@
-import React, { useEffect } from 'react';
 import Modal from 'react-modal';
 import AddTransactionForm from '../AddTransactionForm/AddTransactionForm';
 import { useDispatch, useSelector } from 'react-redux';
-import { getTransactionsCategories } from '../../redux/Statistics/operations';
 import s from './ModalAddTransaction.module.css';
 import { selectIsAddModalOpen, closeAddModal } from '../../redux/Modals/slice';
 

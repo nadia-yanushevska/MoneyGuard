@@ -8,52 +8,53 @@ import { logoutThunk } from '../../redux/Auth/operations';
 import { Icon } from '../../Icons';
 
 const LogOutModal = ({ closeModal }) => {
-  const dispatch = useDispatch();
+    const dispatch = useDispatch();
 
-  useEffect(() => {
-    document.body.style.overflow = 'hidden';
+    useEffect(() => {
+        document.body.style.overflow = 'hidden';
 
-    const addCloseEvent = event => {
-      event.key === 'Escape' && closeModal();
+        const addCloseEvent = event => {
+            event.key === 'Escape' && closeModal();
+        };
+        document.addEventListener('keydown', addCloseEvent);
+
+        return () => {
+            document.body.style.overflow = 'auto';
+            document.removeEventListener('keydown', addCloseEvent);
+        };
+    });
+
+    const closeOnClickOutside = event => {
+        event.currentTarget === event.target && closeModal();
     };
-    document.addEventListener('keydown', addCloseEvent);
 
-    return () => {
-      document.body.style.overflow = 'auto';
-      document.removeEventListener('keydown', addCloseEvent);
-    };
-  });
+    const screenCondition = useMediaQuery({ query: '(min-width: 768px)' });
 
-  const closeOnClickOutside = event => {
-    event.currentTarget === event.target && closeModal();
-  };
+    return (
+        <div className={styles.logOutModal} onClick={closeOnClickOutside}>
+            <div className={styles.modalContent}>
+                <div
+                    className={styles.modal_close}
+                    onClick={() => {
+                        closeModal();
+                    }}
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                        <path d="M1 1L17 17" stroke="#FBFBFB" />
+                        <path d="M1 17L17 0.999999" stroke="#FBFBFB" />
+                    </svg>
+                </div>
+                {screenCondition && <Icon id="#icon-logo_tab_desk" className={styles.homeIcon} />}
 
-  const screenCondition = useMediaQuery({ query: '(min-width: 768px)' });
+                <p>Are you sure you want to log out?</p>
 
-  return (
-    <div className={styles.logOutModal} onClick={closeOnClickOutside}>
-      <div className={styles.modalContent}>
-        {screenCondition && <Icon id="#icon-logo_tab_desk" className={styles.homeIcon} />}
-
-        <p>Are you sure you want to log out?</p>
-
-        <div className={styles.buttonsWrapper}>
-          <FormButton
-            type={'button'}
-            text={'Logout'}
-            variant={'multiColorButton'}
-            handlerFunction={() => dispatch(logoutThunk())}
-          />
-          <FormButton
-            type={'button'}
-            text={'cancel'}
-            variant={'whiteButton'}
-            handlerFunction={() => closeModal()}
-          />
+                <div className={styles.buttonsWrapper}>
+                    <FormButton type={'button'} text={'Logout'} variant={'multiColorButton'} handlerFunction={() => dispatch(logoutThunk())} />
+                    <FormButton type={'button'} text={'cancel'} variant={'whiteButton'} handlerFunction={() => closeModal()} />
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  );
+    );
 };
 
 export default LogOutModal;

@@ -25,7 +25,6 @@ function Statistics() {
     useEffect(() => {
         dispatch(getTransactionsSummaryByPeriod(getCurrentMonthYear()));
     }, [dispatch]);
-    //TODO: Change div-s to components, remove temp classes
     return (
         <div className={s.container}>
             <div className={s.column}>
@@ -34,7 +33,6 @@ function Statistics() {
             </div>
 
             <div className={s.column}>
-                {/* <div className={s.temp_selectors}>Selectors</div> */}
                 <StatisticsSelector />
                 <StatisticsTable data={data} expenseTotal={expenseTotal} incomeTotal={incomeTotal} />
             </div>
