@@ -20,12 +20,12 @@ const AuthForm = ({ type, validationSchema, initialValues, onSubmit }) => {
                         {type === 'register' && <CustomField type="password" name="confirmPassword" placeholder="Confirm password" />}
                         {type === 'register' && <Bar password={password} confirmPassword={confirmPassword} />}
 
-                        <button className={style.button_main} type="submit">
+                        <button className={`${style.button_main} ${style.colored} `} type="submit">
                             {type === 'register' ? 'Register' : 'Login'}
                         </button>
 
                         <Link to={type === 'register' ? '/login' : '/register'}>
-                            <button className={style.button_secondary} type="submit">
+                            <button className={`${style.button_secondary} ${style.whiteButton}`} type="submit">
                                 {type === 'register' ? 'Login' : 'Register'}
                             </button>
                         </Link>
