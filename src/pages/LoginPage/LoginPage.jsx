@@ -15,7 +15,7 @@ const LoginPage = () => {
                 toast.success(`Welcome ${data.user.username}!`);
             })
             .catch(() => {
-                toast.error('email or password invalid');
+                toast.error('Invalid credentials');
             });
         resetForm();
     };

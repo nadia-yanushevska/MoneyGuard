@@ -19,7 +19,6 @@ import CustomDropIndicator from '../CustomDropIndicator/CustomDropIndicator';
 function AddTransactionForm() {
     const categories = useSelector(selectCategories);
     const [isChecked, setIsChecked] = useState(false);
-    const [startDate, setStartDate] = useState(new Date());
     const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
     const handleChange = () => {
         setIsChecked(!isChecked);
@@ -36,7 +35,7 @@ function AddTransactionForm() {
     const formattedDate = format(currentDate, "EEE MMM dd yyyy HH:mm:ss 'GMT'XXX (zzz)");
 
     const schema = yup.object().shape({
-        amount: yup.number().required('number invalid value'),
+        amount: yup.number().required('Number invalid value'),
         transactionDate: yup
             .date()
             .required('Date is required')

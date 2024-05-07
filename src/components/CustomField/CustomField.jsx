@@ -11,7 +11,7 @@ const CustomField = ({ type, name, placeholder }) => {
     return (
         <div className={style.field}>
             <label className={style.label}>
-                <Field className={style.input} type={showPassword ? 'text' : type} name={name} placeholder={placeholder} />
+                <Field className={style.input} type={showPassword ? 'text' : type} name={name} placeholder={placeholder} autocomplete="off" />
                 {type === 'password' ? (
                     <svg className={`${style.icon} ${style.iconPassword}`} onClick={() => setShowPassword(!showPassword)}>
                         <use href={`${Icons}${showPassword ? '#icon-eye-blocked' : '#icon-eye'}`} />
