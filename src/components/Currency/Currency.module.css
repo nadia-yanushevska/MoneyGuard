@@ -29,6 +29,11 @@
     letter-spacing: -0.05px;
 }
 
+.table_body {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
 .currency_tr {
     display: flex;
     justify-content: space-evenly;
@@ -69,6 +74,7 @@ img {
         border-radius: 0px 0px 8px 8px;
         gap: 12px;
         margin-top: 0;
+        max-width: 336px;
     }
 
     .currency_table_head {
@@ -81,6 +87,7 @@ img {
     }
     .currency_tr {
         gap: 65px;
+        justify-content: space-around;
     }
 
     img {
@@ -110,9 +117,6 @@ img {
         justify-content: flex-start;
     }
     .table_body {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
         margin-bottom: 15px;
     }
     .currency_tr {
