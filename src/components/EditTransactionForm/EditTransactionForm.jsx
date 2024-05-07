@@ -9,8 +9,6 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { format } from 'date-fns';
 import { selectCategories } from '../../redux/Statistics/selectors';
 import { useSelector } from 'react-redux';
-import Select from 'react-select';
-import { customStyles } from '../AddTransactionForm/customStyles';
 import { selectIsEditID, closeEditModal } from '../../redux/Modals/slice';
 import { selectTransactions } from '../../redux/Transactions/selectors';
 import { useDispatch } from 'react-redux';
@@ -20,13 +18,8 @@ function EditTransactionForm() {
     const categories = useSelector(selectCategories);
     const transactions = useSelector(selectTransactions);
     const [isChecked, setIsChecked] = useState(true);
-    const [startDate, setStartDate] = useState(new Date());
     const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
     const dispatch = useDispatch();
-
-    const handleChange = () => {
-        setIsChecked(!isChecked);
-    };
 
     const IdForEdit = useSelector(selectIsEditID);
 
@@ -48,7 +41,7 @@ function EditTransactionForm() {
 
     const selectDefaultValue = categoriesForSelect.find(item => item.value === foundObject.categoryId);
 
-    const [selectedOption, setSelectedOption] = useState(null);
+    const [selectedOption] = useState(null);
 
     const currentDate = new Date();
     const formattedDate = format(currentDate, "EEE MMM dd yyyy HH:mm:ss 'GMT'XXX (zzz)");
@@ -118,19 +111,7 @@ function EditTransactionForm() {
             </div>
 
             <form onSubmit={handleSubmit(onSubmit)}>
-                {isChecked && (
-                    <div className={s.comment}>
-                        {selectDefaultValue.label}
-                        {/* <Select
-                            classNamePrefix="react-select"
-                            styles={customStyles}
-                            defaultValue={selectDefaultValue}
-                            onChange={setSelectedOption}
-                            options={categoriesForSelect}
-                            placeholder="Select a category"
-                        /> */}
-                    </div>
-                )}
+                {isChecked && <div className={s.comment}>{selectDefaultValue.label}</div>}
                 <div className={s.sum_data_wrap}>
                     <div className={s.sum_wrap}>
                         <input {...register('amount')} type="number" autoComplete="off" placeholder="0.00" defaultValue={amountDefaultValue} className={s.sum} />
@@ -145,7 +126,6 @@ function EditTransactionForm() {
                                 <>
                                     <DatePicker
                                         selected={field.value || startDateDefaultValue}
-                                        // startDate={startDateDefaultValue}
                                         onChange={date => {
                                             field.onChange(date);
                                             setIsDatePickerOpen(false);
