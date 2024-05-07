@@ -24,6 +24,7 @@
     padding: 20px;
     width: 100%;
     min-height: 100%;
+    position: relative;
 }
 
 .modalContent p {
@@ -40,6 +41,13 @@
     flex-direction: column;
     align-items: center;
     gap: 20px;
+}
+
+.modal_close {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    cursor: pointer;
 }
 
 @media screen and (min-width: 768px) {
