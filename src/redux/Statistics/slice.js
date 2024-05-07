@@ -20,7 +20,7 @@ const slice = createSlice({
             })
             .addCase(getTransactionsSummaryByPeriod.fulfilled, (state, { payload }) => {
                 state.isStatisticsLoading = false;
-                state.summary = payload.categoriesSummary;
+                state.summary = payload;
             })
             .addMatcher(isAnyOf(getTransactionsCategories.rejected, getTransactionsSummaryByPeriod.rejected), (state, { payload }) => {
                 state.isStatisticsLoading = false;

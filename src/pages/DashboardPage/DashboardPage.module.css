@@ -47,7 +47,7 @@
         margin: 0 auto;
         padding: 0;
         flex-direction: row;
-        gap: 68px;
+        gap: 60px;
     }
     .column_narrow {
         padding-top: 40px;
