@@ -8,7 +8,6 @@ import { register } from '../../redux/AuthSlice/ops';
 const RegistrationForm = () => {
     const dispatch = useDispatch();
     const onSubmit = ({ email, name, password }, { resetForm }) => {
-        console.log(email, name, password);
         dispatch(register({ email, name, password }));
         resetForm();
     };
