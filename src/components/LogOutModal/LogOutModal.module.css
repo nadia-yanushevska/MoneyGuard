@@ -54,7 +54,7 @@
     }
 
     .modalContent {
-        background: rgba(82, 59, 126, 1);
+        background: var(--dropdown);
         box-shadow: 0px 4px 60px 0px #00000040;
         border-radius: 8px;
         min-height: fit-content;
