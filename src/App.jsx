@@ -1,6 +1,6 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { refreshThunk } from './redux/Auth/operations';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { lazy, useEffect } from 'react';
 
 import useMedia from './hooks/useMedia';
@@ -11,6 +11,8 @@ import PrivateRoute from './routes/PrivateRoute';
 import DashboardPage from './pages/DashboardPage/DashboardPage';
 import LoginPage from './pages/LoginPage/LoginPage';
 import RegistrationPage from './pages/RegistrationPage/RegistrationPage';
+import clsx from 'clsx';
+import { selectIsAddModalOpen, selectIsEditModalOpen } from './redux/Modals/slice';
 
 const Home = lazy(() => import('./components/Home/Home'));
 const Statistics = lazy(() => import('./components/Statistics/Statistics'));
@@ -25,8 +27,11 @@ function App() {
 
     const { isMobile } = useMedia();
 
+    const isEditOpen = useSelector(selectIsEditModalOpen);
+    const isAddOpen = useSelector(selectIsAddModalOpen);
+
     return (
-        <>
+        <div className={clsx('app', isEditOpen || isAddOpen && 'block-scroll')}>
             <Routes>
                 <Route
                     path="/"
@@ -71,7 +76,7 @@ function App() {
 
                 <Route path="*" element={<Navigate to="/" />}></Route>
             </Routes>
-        </>
+        </div>
     );
 }
 

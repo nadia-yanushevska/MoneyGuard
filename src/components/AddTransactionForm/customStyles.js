@@ -106,7 +106,7 @@ export const customStyles = {
             color: 'var(--text-color)',
             padding: '0',
 
-            '@media screen and (max-width: 768px)': {
+            '@media screen and (max-width: 767.98px)': {
                 paddingLeft: '9px',
             },
         };

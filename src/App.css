@@ -64,3 +64,23 @@ body {
     background: #9e40ba;
     height: 20px;
 }
+
+@media only screen and (max-width: 767.98px) {
+    .app {
+        height: 100vh;
+        overflow: auto;
+    }
+    .block-scroll {
+        overflow: hidden;
+    }
+}
+@media only screen and (min-width: 768px) {
+    .app {
+        overflow: hidden;
+    }
+}
+@media only screen and (min-width: 1280px) {
+    .app {
+        overflow: hidden;
+    }
+}
