@@ -12,11 +12,6 @@ import DashboardPage from './pages/DashboardPage/DashboardPage';
 import LoginPage from './pages/LoginPage/LoginPage';
 import RegistrationPage from './pages/RegistrationPage/RegistrationPage';
 
-// import Home from './components/Home/Home';
-// import Statistics from './components/Statistics/Statistics';
-// import Balance from './components/Balance/Balance';
-// import Currency from './components/Currency/Currency';
-
 const Home = lazy(() => import('./components/Home/Home'));
 const Statistics = lazy(() => import('./components/Statistics/Statistics'));
 const Balance = lazy(() => import('./components/Balance/Balance'));
