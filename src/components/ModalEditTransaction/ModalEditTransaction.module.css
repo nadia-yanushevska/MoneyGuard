@@ -13,7 +13,10 @@
     position: relative;
     width: 540px;
     border-radius: 8px;
-    margin: 104px auto;
+    /* margin: 104px auto; */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     padding: 40px 0;
     min-height: 511px;
     background: linear-gradient(0deg, rgba(83, 61, 186, 0.8) 0%, rgba(80, 48, 154, 0.8) 36%, rgba(106, 70, 165, 0.8) 61%, rgba(133, 93, 175, 0.8) 100%);

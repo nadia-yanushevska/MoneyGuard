@@ -64,8 +64,8 @@
     }
 }
 .btn:hover,
-.btn:focus{
-    color:var(--text-color);
+.btn:focus {
+    color: var(--text-color);
 }
 
 .exit {
@@ -77,10 +77,9 @@
     }
 }
 .exit:hover,
-.exit:focus{
+.exit:focus {
     fill: var(--text-color);
 }
-
 
 .icon_wrap {
     padding: 12px 20px;
