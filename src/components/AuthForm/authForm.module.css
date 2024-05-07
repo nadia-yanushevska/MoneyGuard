@@ -91,9 +91,44 @@ backdrop-filter: blur(50px);
     margin-top: 40px;
 }
 
+
+
+
 .button_secondary {
    background: var(--button-color);
 }
+
+@media (hover: hover) {
+    .colored:hover,
+    .colored:focus {
+        transform: scale(1.05);
+        background-image: linear-gradient(to right, #7000ff 0%, #9e40ba 31%, #ffc727 100%);
+        background-size: 200%;
+        background-position: right center;
+    }
+
+    .colored:active {
+        transform: scale(1.08);
+        font-size: 19px;
+    }
+
+
+.whiteButton:hover,
+.whiteButton:focus {
+    transform: scale(1.05);
+    background-image: linear-gradient(to right, rgb(255, 255, 255) 0%, rgb(98, 63, 139) 31%, rgb(255, 255, 255) 100%);
+    background-size: 200%;
+    background-position: right center;
+    transition: all 1s ease 0s;
+}
+
+.whiteButton:active {
+    transform: scale(1.08);
+    font-size: 19px;
+}
+}
+
+
 
 @media screen and (max-width: 767.98px) {
     .button_main, .button_secondary {
