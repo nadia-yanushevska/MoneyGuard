@@ -7,13 +7,16 @@
     height: 100%;
     background: rgba(34, 13, 91, 0.23);
     backdrop-filter: blur(3.5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .modal {
     position: relative;
     width: 540px;
     border-radius: 8px;
-    margin: 104px auto;
+    /* margin: 104px auto; */
     padding: 40px 0;
     min-height: 511px;
     background: linear-gradient(0deg, rgba(83, 61, 186, 0.8) 0%, rgba(80, 48, 154, 0.8) 36%, rgba(106, 70, 165, 0.8) 61%, rgba(133, 93, 175, 0.8) 100%);
