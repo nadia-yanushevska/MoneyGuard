@@ -14,6 +14,7 @@ import { customStyles } from './customStyles';
 import { useDispatch } from 'react-redux';
 import { addTransactions } from '../../redux/Transactions/operations';
 import { closeAddModal } from '../../redux/Modals/slice';
+import CustomDropIndicator from '../CustomDropIndicator/CustomDropIndicator';
 
 function AddTransactionForm() {
     const categories = useSelector(selectCategories);
@@ -80,6 +81,16 @@ function AddTransactionForm() {
         dispatch(closeAddModal());
     };
 
+    const [menuIsOpen, setMenuIsOpen] = useState(false);
+
+    const handleMenuOpen = () => {
+        setMenuIsOpen(true);
+    };
+
+    const handleMenuClose = () => {
+        setMenuIsOpen(false);
+    };
+
     return (
         <form onSubmit={handleSubmit(onSubmit)} className={s.form}>
             <div className={s.switch__wrapper}>
@@ -141,6 +152,13 @@ function AddTransactionForm() {
                         onChange={setSelectedOption}
                         options={categoriesForSelect}
                         placeholder="Select a category"
+                        onMenuOpen={handleMenuOpen}
+                        onMenuClose={handleMenuClose}
+                        components={{
+                            DropdownIndicator: () => {
+                                return menuIsOpen ? <CustomDropIndicator up={true} /> : <CustomDropIndicator up={false} />;
+                            },
+                        }}
                     />
                 </div>
             )}

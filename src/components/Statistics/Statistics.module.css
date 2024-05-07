@@ -4,39 +4,6 @@
     font-weight: 400;
 }
 
-/* TEMP classes */
-.temp_chart {
-    width: 280px;
-    height: 280px;
-    border-radius: 50%;
-    background-color: cadetblue;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.temp_selectors {
-    width: 280px;
-    height: 120px;
-    background-color: darkgoldenrod;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.temp_table {
-    width: 280px;
-    height: 350px;
-    background-color: darkslategrey;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-/*end TEMP classes */
-
 /* MOBILE ONLY */
 @media only screen and (max-width: 767.98px) {
     .container {
@@ -46,6 +13,7 @@
     }
     .heading {
         align-self: flex-start;
+        margin-top: 28px;
     }
 }
 /* TABLET */
@@ -63,25 +31,4 @@
     .column:last-child {
         margin-top: 20px;
     }
-
-    /* TEMP classes */
-    .temp_chart {
-        width: 336px;
-        height: 336px;
-    }
-
-    .temp_selectors {
-        width: 336px;
-        height: 50px;
-    }
-
-    .temp_table {
-        width: 336px;
-        min-height: 400px;
-
-        flex-grow: 1;
-    }
-    /*end TEMP classes */
 }
-
-
