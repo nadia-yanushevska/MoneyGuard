@@ -45,7 +45,7 @@
     cursor: pointer;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767.98px) {
     .modal_Wrap {
         margin-top: 60px;
     }
