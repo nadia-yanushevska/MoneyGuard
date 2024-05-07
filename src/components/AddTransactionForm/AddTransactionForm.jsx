@@ -19,7 +19,6 @@ import CustomDropIndicator from '../CustomDropIndicator/CustomDropIndicator';
 function AddTransactionForm() {
     const categories = useSelector(selectCategories);
     const [isChecked, setIsChecked] = useState(false);
-    const [startDate, setStartDate] = useState(new Date());
     const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
     const handleChange = () => {
         setIsChecked(!isChecked);
