@@ -257,27 +257,38 @@ input[type='number']:focus {
     line-height: normal;
     letter-spacing: 1.8px;
     text-transform: uppercase;
-    /* display: block; */
+    display: block;
+    margin: 0 auto;
     margin-bottom: 30px;
     cursor: pointer;
-    /* border: 1px solid #ffc727; */
+
+    color: rgba(251, 251, 251, 1);
+    background-image: none;
+    background: linear-gradient(96.76deg, #ffc727 -16.42%, #9e40ba 97.04%, #7000ff 150.71%);
+    transition: all 1s ease 0s;
 }
 
 .btn_add:hover,
 .btn_add:focus {
-    /* background: linear-gradient(-97deg, #ffc727 -16.42%, #9e40ba 97.04%, #7000ff 150.71%); */
-    /* border: 2px solid rgba(251, 251, 251, 0.8); */
     transform: translateY(-1px);
     box-shadow: 1px 9px 20px 0px rgba(0, 0, 0, 0.3);
+
+    transform: scale(1.05);
+    background-image: linear-gradient(to right, #7000ff 0%, #9e40ba 31%, #ffc727 100%);
+    background-size: 200%;
+    background-position: right center;
 }
 
 .btn_add:active {
     transform: translateY(2px);
     box-shadow: 1px 5px 10px 0px rgba(0, 0, 0, 0.4);
+
+    transform: scale(1.08);
+    font-size: 19px;
 }
 
 .btn_cancel {
-    background: rgb(251, 251, 251);
+    background: #fbfbfb;
 
     color: #623f8b;
     text-align: center;
@@ -287,19 +298,32 @@ input[type='number']:focus {
     line-height: normal;
     letter-spacing: 1.8px;
     text-transform: uppercase;
+    display: block;
+    margin: 0 auto;
     cursor: pointer;
+
+    color: #623f8b;
+    background: #fcfcfc;
 }
 
 .btn_cancel:hover,
 .btn_cancel:focus {
-    background: rgba(251, 251, 251, 0.8);
     transform: translateY(-1px);
     box-shadow: 1px 9px 20px 0px rgba(0, 0, 0, 0.3);
+
+    transform: scale(1.05);
+    background-image: linear-gradient(to right, rgb(255, 255, 255) 0%, rgb(98, 63, 139) 31%, rgb(255, 255, 255) 100%);
+    background-size: 200%;
+    background-position: right center;
+    transition: all 1s ease 0s;
 }
 
 .btn_cancel:active {
     transform: translateY(2px);
     box-shadow: 1px 9px 20px 0px rgba(0, 0, 0, 0.4);
+
+    transform: scale(1.08);
+    font-size: 19px;
 }
 
 .select {
