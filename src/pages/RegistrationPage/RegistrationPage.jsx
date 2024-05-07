@@ -23,7 +23,7 @@ const RegistrationPage = () => {
                 toast.success(`Registration is success ${data.user.name}, welcome!`);
             })
             .catch(() => {
-                toast.error('email or password invalid');
+                toast.error('Invalid credentials');
             });
 
         resetForm();

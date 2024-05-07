@@ -36,7 +36,7 @@ function AddTransactionForm() {
     const formattedDate = format(currentDate, "EEE MMM dd yyyy HH:mm:ss 'GMT'XXX (zzz)");
 
     const schema = yup.object().shape({
-        amount: yup.number().required('number invalid value'),
+        amount: yup.number().required('Number invalid value'),
         transactionDate: yup
             .date()
             .required('Date is required')
