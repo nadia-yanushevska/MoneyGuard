@@ -24,15 +24,9 @@ const Currency = lazy(() => import('./components/Currency/Currency'));
 
 function App() {
     const dispatch = useDispatch();
-    const summary = useSelector(selectSummary);
     useEffect(() => {
         dispatch(refreshThunk());
     }, [dispatch]);
-
-    useEffect(() => {
-        dispatch(getTransactionsSummaryByPeriod());
-    }, [dispatch]);
-    console.log(summary);
 
     const { isMobile } = useMedia();
 
