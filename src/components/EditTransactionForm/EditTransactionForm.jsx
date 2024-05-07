@@ -47,7 +47,6 @@ function EditTransactionForm() {
     const categoriesForSelect = categories.map(category => ({ value: category.id, label: category.name }));
 
     const selectDefaultValue = categoriesForSelect.find(item => item.value === foundObject.categoryId);
-    console.log(selectDefaultValue);
 
     const [selectedOption, setSelectedOption] = useState(null);
 
@@ -95,7 +94,6 @@ function EditTransactionForm() {
         } else {
             if (selectedOption) {
                 data.categoryId = selectedOption.value;
-                console.log(selectedOption);
             } else {
                 data.categoryId = foundObject.categoryId;
             }
@@ -103,7 +101,6 @@ function EditTransactionForm() {
         }
         delete data.switch;
 
-        console.log(data);
         dispatch(editTransactions({ id: IdForEdit, transaction: data }));
         dispatch(closeEditModal());
     };
