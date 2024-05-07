@@ -59,6 +59,7 @@ function AddTransactionForm() {
             const categoryId = categories.filter(el => el.name === 'Income');
             data.categoryId = categoryId[0].id;
             data.type = 'INCOME';
+            data.amount = Math.abs(data.amount);
         } else if (selectedOption) {
             data.categoryId = selectedOption.value;
             data.type = 'EXPENSE';
@@ -180,6 +181,7 @@ function AddTransactionForm() {
                                     onClickOutside={() => setIsDatePickerOpen(false)}
                                     className={s.customDatePicker}
                                     calendarClassName={s.calendarClassName}
+                                    maxDate={formattedDate}
                                 />
                             </>
                         )}

@@ -84,6 +84,7 @@ function EditTransactionForm() {
 
         if (foundObject.type === 'INCOME') {
             data.categoryId = foundObject.categoryId;
+            data.amount = Math.abs(data.amount);
         } else {
             if (selectedOption) {
                 data.categoryId = selectedOption.value;
@@ -135,6 +136,7 @@ function EditTransactionForm() {
                                         onClickOutside={() => setIsDatePickerOpen(false)}
                                         className={s.customDatePicker}
                                         calendarClassName={s.calendarClassName}
+                                        maxDate={formattedDate}
                                     />
                                 </>
                             )}
